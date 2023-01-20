@@ -1,0 +1,1 @@
+export default function azimuth(y=0 , x=0): number { return Math.atan2(y,x) }

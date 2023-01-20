@@ -1,0 +1,1 @@
+export default function magnitude(...values: number[]): number { return Math.hypot(...values) }
