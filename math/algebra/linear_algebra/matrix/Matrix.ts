@@ -211,14 +211,14 @@ class Matrix extends Array implements matrix {
    * @param {matrix}  [matrix] [matrix]
    * @param {num_mat} [arg]    Number or matrix for addition.
    * */
-  static add  = matrix_operator(this.addMatrix  , this.addNumber)
+  static add = matrix_operator(this.addMatrix  , this.addNumber)
 
   /**
    * Subtraction function. Gets matrix or number as second parameter.
    * @param {matrix}  [matrix] [matrix]
    * @param {num_mat} [arg]    Number or matrix for subtraction.
    * */
-  static sub  = matrix_operator(this.subMatrix  , this.subNumber)
+  static sub = matrix_operator(this.subMatrix  , this.subNumber)
   
   /**
    * Multiplication function. Gets matrix or number as second parameter.
@@ -232,7 +232,9 @@ class Matrix extends Array implements matrix {
    * @param {matrix}  [matrix] [matrix]
    * @param {num_mat} [arg]    Number or matrix for division.
    */
-  static div  = matrix_operator(this.divMatrix  , this.divNumber)
+  static div = matrix_operator(this.divMatrix  , this.divNumber)
+
+
 
   /**
    * Transposing of matrix.
@@ -259,6 +261,7 @@ class Matrix extends Array implements matrix {
   static reversing(matrix :matrix) :void { matrix.reverse() , matrix.forEach(m => m.reverse()) } 
 
 
+
   /**
    * Returns array with size parameters of given matrix.
    * @param {matrix} [matrix] [matrix]
@@ -276,6 +279,9 @@ class Matrix extends Array implements matrix {
     return `${width}x${height}`
   }
 
+
+
+  
 
   /**
    * Returns true if [matrix] width equals to [matrix] height.

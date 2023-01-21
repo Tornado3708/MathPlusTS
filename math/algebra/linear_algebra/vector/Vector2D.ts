@@ -1,14 +1,13 @@
-import cart2polar from "./../../../../coordinates_system_translation/cartesian2polar.js"
-import azimuth from "../../../../generic_calculations/azimuth.js"
-import magnitude from "../../../../generic_calculations/magnitude.js"
-import norm2d from "../../../../generic_calculations/norm2d.js"
-import unit2d from "../../../../generic_calculations/unit2d.js"
-import Dot2D from "../../../geometry/Dot2D.js"
+import cart2polar  from "./../../../../coordinates_system_translation/cartesian2polar.js"
+import azimuth     from "../../../../generic_calculations/azimuth.js"
+import magnitude   from "../../../../generic_calculations/magnitude.js"
+import norm2d      from "../../../../generic_calculations/norm2d.js"
+import unit2d      from "../../../../generic_calculations/unit2d.js"
+import Dot2D       from "../../../geometry/Dot2D.js"
 import VectorPolar from "./VectorPolar.js"
 
 
 
-//OK
 /**Class for representation of vector in 2-dimensional space.*/
 class Vector2D implements Point2D {
 
@@ -32,40 +31,40 @@ class Vector2D implements Point2D {
 
 
   /**Addition function.
-   * @param {number} x [x].
-   * @param {number} y [y].
+   * @param {number} x [x]
+   * @param {number} y [y]
    * */
-  add (x: number=0, y: number=0) :void { this.x += x, this.y += y }
+  add(x: number=0, y: number=0) :void { this.x += x , this.y += y }
   
   
   /**Subtraction function.
-   * @param {number} x [x].
-   * @param {number} y [y].
+   * @param {number} x [x]
+   * @param {number} y [y]
    * */
-  sub (x: number=0, y: number=0) :void { this.add(-x,-y) }
+  sub(x: number=0, y: number=0) :void { this.add(-x , -y) }
 
 
   /**Multiplication function.
-   * @param {number} x [x].
-   * @param {number} y [y].
+   * @param {number} x [x]
+   * @param {number} y [y]
    * */
-  mult(x: number=1, y: number=1) :void { this.x *= x, this.y *= y }
+  mult(x: number=1, y: number=1) :void { this.x *= x , this.y *= y }
   
   
   /**Division function.
-   * @param {number} x [x].
-   * @param {number} y [y].
+   * @param {number} x [x]
+   * @param {number} y [y]
    * */
-  div (x: number=1, y: number=1) :void { this.mult(1 / x , 1 / y) }
+  div(x: number=1, y: number=1) :void { this.mult(1 / x , 1 / y) }
 
 
 
 
   /**Returns magnitude of vector.*/
-  get magnitude():number{ return magnitude(this.x, this.y) }
+  get magnitude() :number { return magnitude(this.x, this.y) }
 
   /**Returns azimuth of vector.*/
-  get azimuth()  :number{ return azimuth(this.y, this.x) }
+  get azimuth() :number { return azimuth(this.y, this.x) }
 
 
 
@@ -100,6 +99,7 @@ class Vector2D implements Point2D {
   /**Returns this vector values in matrix form.*/
   get matrix() :matrix { return Vector2D.matrix(this) }
   
+  /**Returns Dot2D with this vector parameters.*/
   get point() :Dot2D { return new Dot2D(this) }
 
 

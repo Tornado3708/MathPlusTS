@@ -1,11 +1,11 @@
-import azimuth from "../../../../generic_calculations/azimuth.js"
-import magnitude from "../../../../generic_calculations/magnitude.js"
-import norm3d from "../../../../generic_calculations/norm3d.js"
-import unit3d from "../../../../generic_calculations/unit3d.js"
-import zenith from "../../../../generic_calculations/zenith.js"
-import Dot3D from "../../../geometry/Dot3D.js"
+import azimuth           from "../../../../generic_calculations/azimuth.js"
+import magnitude         from "../../../../generic_calculations/magnitude.js"
+import norm3d            from "../../../../generic_calculations/norm3d.js"
+import unit3d            from "../../../../generic_calculations/unit3d.js"
+import zenith            from "../../../../generic_calculations/zenith.js"
+import Dot3D             from "../../../geometry/Dot3D.js"
 import VectorCylindrical from "./VectorCylindrical.js"
-import VectorSpherical from "./VectorSpherical.js"
+import VectorSpherical   from "./VectorSpherical.js"
 
 
 
@@ -14,18 +14,12 @@ let SQRT3_3 = Math.SQRT3 / 3
 
 
 
-//BAD
 /**Class for representation of vector in 3-dimensional space.*/
 class Vector3D implements Point3D {
 
-  /**Value of x-axis.*/
-  public x :number = 0
-
-  /**Value of y-axis.*/
-  public y :number = 0
-
-  /**Value of z-axis.*/
-  public z :number = 0
+  /**Value of x-axis.*/   public x :number=0
+  /**Value of y-axis.*/   public y :number=0
+  /**Value of z-axis.*/   public z :number=0
 
   /**
    * - [ x: number , y: number , z: number ]
@@ -49,39 +43,37 @@ class Vector3D implements Point3D {
 
   /**
    * Addition function.
-   * @param {number} x [x].
-   * @param {number} y [y].
-   * @param {number} z [z].
+   * @param {number} x [x]
+   * @param {number} y [y]
+   * @param {number} z [z]
    * */
-  add (x :number=0, y :number=0, z :number=0) :void { this.x += x, this.y += y, this.z += z }
+  add(x :number=0, y :number=0, z :number=0) :void { this.x += x, this.y += y, this.z += z }
 
   /**
    * Substraction function.
-   * @param {number} x [x].
-   * @param {number} y [y].
-   * @param {number} z [z].
+   * @param {number} x [x]
+   * @param {number} y [y]
+   * @param {number} z [z]
    * */
-  sub (x :number=0, y :number=0, z :number=0) :void { this.add(-x, -y, -z) }
+  sub(x :number=0, y :number=0, z :number=0) :void { this.add(-x, -y, -z) }
 
   /**
    * Multiplication function.
-   * @param {number} x [x].
-   * @param {number} y [y].
-   * @param {number} z [z].
+   * @param {number} x [x]
+   * @param {number} y [y]
+   * @param {number} z [z]
    * */
   mult(x :number=1, y :number=x, z :number=y) :void { this.x *= x, this.y *= y, this.z *= z }
   
   /**
    * Division function.
-   * @param {number} x [x].
-   * @param {number} y [y].
-   * @param {number} z [z].
+   * @param {number} x [x]
+   * @param {number} y [y]
+   * @param {number} z [z]
    * */
-  div (x :number=1, y :number=x, z :number=y) :void { this.mult(1 / x , 1 / y , 1 / z) }
+  div(x :number=1, y :number=x, z :number=y) :void { this.mult(1 / x , 1 / y , 1 / z) }
   
   
-
-
 
 
   /**
@@ -162,7 +154,7 @@ class Vector3D implements Point3D {
 
   /**
    * Returns this vector in matrix form.
-   * @returns number[][]
+   * @returns matrix
    * */
   get matrix() :matrix { return Vector3D.matrix(this) }
 
@@ -177,13 +169,46 @@ class Vector3D implements Point3D {
 
   /**Dot product functions.*/
   dotProduct = {
-    full: (vec3 :Point3D) :number => { return Vector3D.dotProduct.full(this , vec3) }
+    full :(vec3 :Point3D) :number => Vector3D.dotProduct.full(this , vec3),
+    xy   :(vec3 :Point3D) :number => Vector3D.dotProduct.xy  (this , vec3),
+    xz   :(vec3 :Point3D) :number => Vector3D.dotProduct.xz  (this , vec3),
+    yz   :(vec3 :Point3D) :number => Vector3D.dotProduct.yz  (this , vec3)
+  }
+
+  /**Normalised dot product functions.*/
+  dotProductCos = {
+    full :(vec3 :Point3D) :number => Vector3D.dotProductCos.full(this , vec3),
+    xy   :(vec3 :Point3D) :number => Vector3D.dotProductCos.xy  (this , vec3),
+    xz   :(vec3 :Point3D) :number => Vector3D.dotProductCos.xz  (this , vec3),
+    yz   :(vec3 :Point3D) :number => Vector3D.dotProductCos.yz  (this , vec3)
+  }
+
+  /*Angular dot product functions.*/
+  dotProductAcos = {
+    full :(vec3 :Point3D) :number => Vector3D.dotProductAcos.full(this , vec3),
+    xy   :(vec3 :Point3D) :number => Vector3D.dotProductAcos.xy  (this , vec3),
+    xz   :(vec3 :Point3D) :number => Vector3D.dotProductAcos.xz  (this , vec3),
+    yz   :(vec3 :Point3D) :number => Vector3D.dotProductAcos.yz  (this , vec3)
   }
 
   /**Cross product funtions.*/
-  crossProduct = Vector3D.crossProduct
+  crossProduct = {
+    full  :(vec3 :Point3D) :number => Vector3D.crossProduct.full(this , vec3),
+    x     :(vec3 :Point3D) :number => Vector3D.crossProduct.x   (this , vec3),
+    y     :(vec3 :Point3D) :number => Vector3D.crossProduct.y   (this , vec3),
+    z     :(vec3 :Point3D) :number => Vector3D.crossProduct.z   (this , vec3),
 
+    _full :(vec3 :Point3D) :number => Vector3D.crossProduct.full(vec3 , this),
+    _x    :(vec3 :Point3D) :number => Vector3D.crossProduct.x   (vec3 , this),
+    _y    :(vec3 :Point3D) :number => Vector3D.crossProduct.y   (vec3 , this),
+    _z    :(vec3 :Point3D) :number => Vector3D.crossProduct.z   (vec3 , this)
 
+  }
+
+  /**Nornalised cross product functions.*/
+  crossProductSin = {
+    
+  }
 
 
 
