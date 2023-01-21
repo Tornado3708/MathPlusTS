@@ -1,7 +1,9 @@
+const size_equality_error = Error(`Size of matrices are not same.`)
+
 function matrix_operator(
-  matrix_func: (matrix: matrix | Matrix, arg: matrix | Matrix) => void,
-  number_func: (matrix: matrix | Matrix, arg: number) => void){
-    return (matrix: matrix | Matrix, arg: any): void => {
+  matrix_func: (matrix: matrix, arg: matrix) => void,
+  number_func: (matrix: matrix, arg: number) => void){
+    return (matrix: matrix, arg: any): void => {
       let name = arg.constructor.name
       switch(name){
         case 'Matrix' || ('Array' && arg[0].constructor.name === 'Array') : matrix_func(matrix, arg)
@@ -12,14 +14,14 @@ function matrix_operator(
 
 
 
-
+type num_mat = number | matrix
 
 /**Class for representation of matrix.*/
 class Matrix extends Array implements matrix {
 
   /**
    * Creates Matrix using 2-dimensional array.
-   * @param {number[][]} matrix 2-dimensional array.
+   * @param {matrix} matrix 2-dimensional array.
    */
   constructor(matrix: matrix){
     super()
@@ -39,63 +41,140 @@ class Matrix extends Array implements matrix {
 
   
   /**
-   * Addition function.
+   * Addition function. Gets matrix or number as second parameter.
    * @param {number | matrix} add Matrix or number for addition.
-   */
+   * */
   add (add: number | matrix=0)  :void { Matrix.add (this ,  add) }
 
   /**
-   * Subtraction function.
+   * Subtraction function. Gets matrix or number as second parameter.
    * @param {number | matrix} sub Matrix or number for subtraction.
-   */
+   * */
   sub (sub: number | matrix=0)  :void { Matrix.sub (this ,  sub) }
 
   /**
-   * Multiplication function.
+   * Multiplication function. Gets matrix or number as second parameter.
    * @param {number | matrix} mult Matrix or number for multiplication.
-   */
+   * */
   mult(mult: number | matrix=0) :void { Matrix.mult(this , mult) }
 
   /**
-   * Division function.
+   * Division function. Gets matrix or number as second parameter.
    * @param {number | matrix} div Matrix or number for division. 
-   */
+   * */
   div (div: number | matrix=0)  :void { Matrix.div (this ,  div) }
 
+  /**Transpose matrix.*/
   transposing() :void { Matrix.transposing(this) }
+  
+  /**Reversing matrix.*/
   reversing()   :void { Matrix.reversing  (this) }
 
-  get size()    :number[] { return Matrix.size(this) }
-  get strSize() :string   { return Matrix.strSize(this) }
+  /**
+   * Returns size of matrix as array. [Matrix[0].length , Matrix.length].
+   * @returns [ number , number ]
+   * */
+  get size() :[number,number] { return Matrix.size(this) }
 
+  /**
+   * Returns size of matrix as string. "Matrix[0].length , Matrix.length".
+   * @returns String
+   * */
+  get strSize() :string { return Matrix.strSize(this) }
+
+  /**
+   * Returns true if matrix row count is eqiuvalent to matrix column count. Else returns false.
+   * @returns Boolean
+   * */
   get iSquare() :boolean { return Matrix.isSquare(this) }
-  equalSize  (matrix :matrix | Matrix) :boolean { return Matrix.isEqualSize (this , matrix) }
-  isMultAble (matrix :matrix | Matrix) :boolean { return Matrix.isMultAble  (this , matrix) }
+
+
+  /**
+   * Returns true if this matrix width and given matrix height are same.
+   * @param {matrix} [matrix] Given matrix.
+   * @returns Boolean 
+   * */
+  isMultAble (matrix :matrix) :boolean { return Matrix.isMultAble(this , matrix) }
 
 
 
-  static addNumber (matrix :matrix | Matrix , number :number=0) :void { for(let row in matrix) { for(let col in matrix[row]) { matrix[row][col] += number } } }
-  static subNumber (matrix :matrix | Matrix , number :number=0) :void { this.addNumber(matrix, -number) }
-  static multNumber(matrix :matrix | Matrix , number :number=1) :void { for(let row in matrix) { for(let col in matrix[row]){ matrix[row][col] *= number } } }
-  static divNumber (matrix :matrix | Matrix , number :number=1) :void { this.multNumber(matrix, 1 / number) }
-
-  static addMatrix (main_matrix :matrix | Matrix , add_matrix :matrix | Matrix) :void {
-    if(!this.isSquare(add_matrix) && this.isMultAble(main_matrix ,add_matrix)){ this.transposing(add_matrix) }
-    if(this.isEqualSize(main_matrix , add_matrix)){
-      for(let row in main_matrix){
-        for(let col in main_matrix[row]){
-          main_matrix[row][col] += add_matrix[row][col]
-        }
+  /**
+   * Addition function. Gets number as second parameter.
+   * @param {matrix} [matrix] [matrix]
+   * @param {number} [number] [number]
+   * */
+  static addNumber (matrix :matrix , number :number=0) :void {
+    for(let row in matrix){
+      for(let col in matrix[row]){
+        matrix[row][col] += number
       }
     }
   }
+  
+  /**
+   * Subtraction function. Gets number as second parameter.
+   * @param {matrix} [matrix] [matrix]
+   * @param {number} [number] [number]
+   * */
+  static subNumber (matrix :matrix , number :number=0) :void { this.addNumber(matrix, -number) }
 
-  static subMatrix (main_matrix :matrix | Matrix , sub_matrix :matrix | Matrix) :void {
+  /**
+   * Multiplication function. Gets number as second parameter.
+   * @param {matrix} [matrix] [matrix] 
+   * @param {number} [number] [number]
+   * */
+  static multNumber(matrix :matrix , number :number=1) :void {
+    for(let row in matrix){
+      for(let col in matrix[row]){
+        matrix[row][col] *= number
+      }
+    }
+  }
+  
+  /**
+   * Division function. Gets number as second parameter.
+   * @param {matrix} [matrix] [matrix] 
+   * @param {number} [number] [number] 
+   * */
+  static divNumber (matrix :matrix , number :number=1) :void { this.multNumber(matrix, 1 / number) }
+
+  /**Addition function. Gets matrix as second parameter.
+   * @param {matrix} main_matrix Matrix for changing.
+   * @param {matrix} add_matrix  Matrix for addition.
+   * */
+  static addMatrix (main_matrix :matrix , add_matrix :matrix) :void {
+    if(this.equalSize(main_matrix,add_matrix)){
+      for(let row in main_matrix){
+        for(let col in main_matrix[row]){
+            main_matrix[row][col] += add_matrix[row][col]
+        }
+      }
+    }else{
+      throw size_equality_error
+    }
+  }
+
+  /**
+   * Subtraction function. Gets matrix as second parameter.
+   * @param {matrix} [main_matrix] Matrix for changing. 
+   * @param {matrix} [sub_matrix] Matrix for substraction.
+   * */
+  static subMatrix (main_matrix :matrix , sub_matrix :matrix) :void {
     let sub = sub_matrix
-    for(let row in sub){ for(let col in sub[row]){ sub[row][col] *= -1 } }
+    for(let row in sub){
+      for(let col in sub[row]){
+        sub[row][col] *= -1
+      }
+    }
     this.addMatrix(main_matrix , sub)
   }
-  static multMatrix(main_matrix :matrix | Matrix , mult_matrix :matrix | Matrix) :void {
+
+  /**
+   * Multiplication function. Gets matrix as second parameter.
+   * @param {matrix} main_matrix Matrix for changing.
+   * @param {matrix} mult_matrix Matrix for multiplication.
+   * */
+  static multMatrix(main_matrix :matrix , mult_matrix :matrix) :void {
     let res_y  = main_matrix.length
     let res_x  = mult_matrix[0].length
     let mult_y = mult_matrix.length
@@ -116,18 +195,46 @@ class Matrix extends Array implements matrix {
     }
   }
 
-  static divMatrix (main_matrix :matrix | Matrix , div_matrix :matrix | Matrix) :void {
+  /**
+   * Division function. Gets matrix as second parameter.
+   * @param {matrix} main_matrix Matrix for changing. 
+   * @param {matrix} div_matrix Matrix for division.
+   * */
+  static divMatrix (main_matrix :matrix , div_matrix :matrix) :void {
     let div = div_matrix
     for(let row in div){ for(let col in div[row]){ div[row][col] = 1 / div[row][col] } }
     this.multMatrix(main_matrix, div)
   }
 
+  /**
+   * Addition function. Gets matrix or number as second parameter.
+   * @param {matrix}  [matrix] [matrix]
+   * @param {num_mat} [arg]    Number or matrix for addition.
+   * */
   static add  = matrix_operator(this.addMatrix  , this.addNumber)
+
+  /**
+   * Subtraction function. Gets matrix or number as second parameter.
+   * @param {matrix}  [matrix] [matrix]
+   * @param {num_mat} [arg]    Number or matrix for subtraction.
+   * */
   static sub  = matrix_operator(this.subMatrix  , this.subNumber)
+  
+  /**
+   * Multiplication function. Gets matrix or number as second parameter.
+   * @param {matrix}  [matrix] [matrix]
+   * @param {num_mat} [arg]    Number or matrix for multiplication.
+   * */
   static mult = matrix_operator(this.multMatrix , this.multNumber)
+
+  /**
+   * Division function. Gets matrix or number as second parameter.
+   * @param {matrix}  [matrix] [matrix]
+   * @param {num_mat} [arg]    Number or matrix for division.
+   */
   static div  = matrix_operator(this.divMatrix  , this.divNumber)
 
-  static transposing(matrix :matrix | Matrix) :void {
+  static transposing(matrix :matrix) :void {
     let prev = matrix
     let row = matrix.length
     let col = matrix[0].length
@@ -141,20 +248,20 @@ class Matrix extends Array implements matrix {
     }
   }
 
-  static reversing(matrix :matrix | Matrix) :void {
+  static reversing(matrix :matrix) :void {
     matrix.reverse()
     matrix.forEach(m => m.reverse())
   } 
 
-  static size(matrix: matrix | Matrix) :number[] { return [ matrix[0].length , matrix.length ] }
-  static strSize(matrix: matrix | Matrix) :string {
+  static size(matrix: matrix) :[number,number] { return [ matrix[0].length , matrix.length ] }
+  static strSize(matrix: matrix) :string {
     let [width,height] = this.size(matrix)
     return `${width}x${height}`
   }
-  static isSquare   (matrix   :matrix | Matrix){ return matrix.length === matrix[0].length }
-  static isEqualSize(matrix_a :matrix | Matrix , matrix_b :matrix | Matrix) :boolean { return ((matrix_a.length === matrix_b.length) && (matrix_a[0].length === matrix_b[0].length)) }
-  static isMultAble (matrix_a :matrix | Matrix , matrix_b :matrix | Matrix) :boolean { return (matrix_a.length === matrix_b[0].length) }
-
+  static isSquare      (matrix   :matrix){ return matrix.length === matrix[0].length }
+  static isMultAble    (matrix_a :matrix , matrix_b :matrix) :boolean { return (matrix_a[0].length === matrix_b.length) }
+  static needTranspose (matrix_a :matrix , matrix_b :matrix) :boolean { return (matrix_a.length === matrix_b[0].length) }
+  static equalSize     (matrix_a :matrix , matrix_b :matrix) :boolean { return (matrix_a.length === matrix_b.length) && (matrix_a[0].length === matrix_b[0].length) }
 }
   
 
