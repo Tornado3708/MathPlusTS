@@ -1,4 +1,4 @@
-import * as methods      from "./install.js"
+import { install }       from "./install.js"
 
 import Complex           from "./math/comlpex/Complex.js"
 
@@ -15,7 +15,7 @@ import VectorSpherical   from "./math/algebra/linear_algebra/vector/VectorSpheri
 import Polygon           from "./math/geometry/curves/Polygon.js"
 import Roulette          from "./math/geometry/curves/Roulette.js"
 import Spiral            from "./math/geometry/curves/Spiral.js"
-import Tensor from "./math/algebra/linear_algebra/tensor/Tensor.js"
+import Tensor            from "./math/algebra/linear_algebra/tensor/Tensor.js"
 
 
 
@@ -73,4 +73,4 @@ declare global {
 }
 
 
-export default methods.install
+export default  install
