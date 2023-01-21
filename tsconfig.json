@@ -6,5 +6,8 @@
     "outDir" : "./mathplus/",
     "strict": true,
     "removeComments": true
-  }
+  },
+  "include": [
+    "."
+  ]
 }
