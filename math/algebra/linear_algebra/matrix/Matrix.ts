@@ -234,6 +234,10 @@ class Matrix extends Array implements matrix {
    */
   static div  = matrix_operator(this.divMatrix  , this.divNumber)
 
+  /**
+   * Transposing of matrix.
+   * @param {matrix} [matrix] [matrix]
+   * */
   static transposing(matrix :matrix) :void {
     let prev = matrix
     let row = matrix.length
@@ -248,20 +252,61 @@ class Matrix extends Array implements matrix {
     }
   }
 
-  static reversing(matrix :matrix) :void {
-    matrix.reverse()
-    matrix.forEach(m => m.reverse())
-  } 
+  /**
+   * Reversing of matrix.
+   * @param {matrix} [matrix] [matrix] 
+   * */
+  static reversing(matrix :matrix) :void { matrix.reverse() , matrix.forEach(m => m.reverse()) } 
 
+
+  /**
+   * Returns array with size parameters of given matrix.
+   * @param {matrix} [matrix] [matrix]
+   * @returns [matrix[0].length , matrix.length]
+   * */
   static size(matrix: matrix) :[number,number] { return [ matrix[0].length , matrix.length ] }
+
+  /**
+   * Returns string with 
+   * @param {matrix} [matrix] [matrix] 
+   * @returns `${matrix[0].length}x${matrix.length}`
+   * */
   static strSize(matrix: matrix) :string {
     let [width,height] = this.size(matrix)
     return `${width}x${height}`
   }
-  static isSquare      (matrix   :matrix){ return matrix.length === matrix[0].length }
-  static isMultAble    (matrix_a :matrix , matrix_b :matrix) :boolean { return (matrix_a[0].length === matrix_b.length) }
-  static needTranspose (matrix_a :matrix , matrix_b :matrix) :boolean { return (matrix_a.length === matrix_b[0].length) }
-  static equalSize     (matrix_a :matrix , matrix_b :matrix) :boolean { return (matrix_a.length === matrix_b.length) && (matrix_a[0].length === matrix_b[0].length) }
+
+
+  /**
+   * Returns true if [matrix] width equals to [matrix] height.
+   * @param {matrix} [matrix] [matrix] 
+   * @returns Boolean
+   * */
+  static isSquare(matrix :matrix){ return matrix.length === matrix[0].length }
+
+  /**
+   * Returns true is [matrix_a] width equals to [matrix_b] height.
+   * @param {matrix} [matrix_a] [matrix_a]
+   * @param {matrix} [matrix_b] [matrix_b]
+   * @returns Boolean
+   * */
+  static isMultAble(matrix_a :matrix , matrix_b :matrix) :boolean { return (matrix_a[0].length === matrix_b.length) }
+
+  /**
+   * Returns true if [matrix_a] height equals to [matrix_b] width.
+   * @param {matrix} matrix_a [matrix_a]
+   * @param {matrix} matrix_b [matrix_b]
+   * @returns Boolean
+   * */
+  static needTranspose(matrix_a :matrix , matrix_b :matrix) :boolean { return (matrix_a.length === matrix_b[0].length) }
+
+  /**
+   * Returns true if matrices heights are equals and matrices widths are equals.
+   * @param {matrix} matrix_a [matrix_a]
+   * @param {matrix} matrix_b [matrix_b]
+   * @returns Boolean
+   */
+  static equalSize(matrix_a :matrix , matrix_b :matrix) :boolean { return (matrix_a.length === matrix_b.length) && (matrix_a[0].length === matrix_b[0].length) }
 }
   
 
