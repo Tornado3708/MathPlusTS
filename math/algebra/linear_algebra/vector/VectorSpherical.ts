@@ -1,13 +1,14 @@
 import VectorCylindrical from "./VectorCylindrical.js"
-import Vector3D from "./Vector3D.js"
+import Vector3D          from "./Vector3D.js"
 
+const toArray = ({ azimuth , zenith , radius } :PointSpherical) => {return [azimuth , zenith , radius] }
 
 class VectorSpherical implements PointSpherical{
 
 
-  public radius:  number = 0
-  public azimuth: number = 0
-  public zenith:  number = 0
+  public radius  :number=0
+  public azimuth :number=0
+  public zenith  :number=0
 
 
   constructor({...params}){
@@ -20,7 +21,7 @@ class VectorSpherical implements PointSpherical{
     
     if(!isFinite(this.azimuth)){
     this.azimuth = 0;
-    }else if(Math.abs(this.azimuth) > (Math.TAU ?? Math.PI * 2)){ this.azimuth %= Math.TAU }
+    }else if(Math.abs(this.azimuth) > Math.TAU){ this.azimuth %= Math.TAU }
 
     if(!isFinite(this.zenith)){
       this.azimuth = 0;
@@ -33,30 +34,18 @@ class VectorSpherical implements PointSpherical{
   }
 
 
-  static ZERO: PointSpherical = {azimuth : 0 , zenith: 0 , radius: 0}
-  static BACK: PointSpherical = {azimuth : 0 , zenith : Math.PI , radius : 1}
-  static DOWN: PointSpherical = {azimuth : -Math.PI * 0.5 , zenith : Math.PI * 0.5 , radius : 1}
-  static FORWARD: PointSpherical = {azimuth : 0 , zenith : 0 , radius : 1}
-  static LEFT: PointSpherical = {azimuth : Math.PI , zenith : Math.PI * 0.5 , radius : 1}
-  static RIGHT: PointSpherical = {azimuth : 0 , zenith : Math.PI * 0.5 , radius : 1}
-  static UP: PointSpherical = {azimuth : Math.PI * 0.5 , zenith : Math.PI * 0.5 , radius : 1}
-  static zero = [0 , 0 , 0];
-  static back = [0 , Math.PI , 1];
-  static down = [-Math.PI_HALF || -Math.PI * 0.5 , Math.PI_HALF || Math.PI * 0.5 , 1];
-  static forward = [0 , 0 , 1];
-  static left = [Math.PI , Math.PI_HALF || Math.PI * 0.5 , 1];
-  static right = [0 , Math.PI_HALF || Math.PI * 0.5 , 1];
-  static up = [Math.PI_HALF || Math.PI * 0.5 , Math.PI_HALF || Math.PI * 0.5 , 1];
+  
 
 
   add(azimuth: number = 0, zenith: number = 0, radius: number = 0): void{
 
+    this.azimuth += azimuth
+    this.zenith  += zenith
+    this.radius  += radius
 
-    this.azimuth += azimuth;
-    this.zenith  += zenith;
-    this.radius  += radius;
-
-    if(Math.abs(this.azimuth) > Math.TAU)       { this.azimuth %= Math.TAU }
+    if(Math.abs(this.azimuth) > Math.TAU){
+      this.azimuth %= Math.TAU
+    }
     if(this.zenith > Math.PI || this.zenith < 0){
     
       this.azimuth  = -this.azimuth;
@@ -220,11 +209,11 @@ class VectorSpherical implements PointSpherical{
     let zenith = this.zenith;
     let radius = this.radius;
 
-    return new VectorCylindrical(
+    return new VectorCylindrical([
       this.azimuth,
       radius * Math.cos(zenith),
       radius * Math.sin(zenith)
-    );
+    ]);
 
   }
 
@@ -245,7 +234,20 @@ class VectorSpherical implements PointSpherical{
     }
 
   }
-  
+  static ZERO    : PointSpherical = {azimuth : 0 , zenith: 0 , radius: 0}
+  static BACK    : PointSpherical = {azimuth : 0 , zenith : Math.PI , radius : 1}
+  static DOWN    : PointSpherical = {azimuth : -Math.PI * 0.5 , zenith : Math.PI * 0.5 , radius : 1}
+  static FORWARD : PointSpherical = {azimuth : 0 , zenith : 0 , radius : 1}
+  static LEFT    : PointSpherical = {azimuth : Math.PI , zenith : Math.PI * 0.5 , radius : 1}
+  static RIGHT   : PointSpherical = {azimuth : 0 , zenith : Math.PI * 0.5 , radius : 1}
+  static UP      : PointSpherical = {azimuth : Math.PI * 0.5 , zenith : Math.PI * 0.5 , radius : 1}
+  static zero    = [0 , 0 , 0];
+  static back    = toArray(this.BACK)
+  static down = [-Math.PI_HALF || -Math.PI * 0.5 , Math.PI_HALF || Math.PI * 0.5 , 1];
+  static forward = [0 , 0 , 1];
+  static left = [Math.PI , Math.PI_HALF || Math.PI * 0.5 , 1];
+  static right = [0 , Math.PI_HALF || Math.PI * 0.5 , 1];
+  static up = [Math.PI_HALF || Math.PI * 0.5 , Math.PI_HALF || Math.PI * 0.5 , 1];
 }
 
 export default VectorSpherical

@@ -85,7 +85,7 @@ class Vector2D implements Point2D {
   /**Rotates vector by azimuth in radians.
    * @param {number} azimuth Azimuth for rotation.
    * */
-  rotate(azimuth :number=0): void { Vector2D.rotate(this, azimuth) }
+  rotate(azimuth :number=0): void { Vector2D.rotate(this , azimuth) }
 
 
 
@@ -296,7 +296,7 @@ class Vector2D implements Point2D {
    * @param {Point2D} vec2 Object with properties.
    * @returns Polar vector.
    * */
-  static polarVector(vec2 :Point2D): VectorPolar { return new VectorPolar([ this.azimuth(vec2) , this.magnitude(vec2) ]) }
+  static polarVector(vec2 :Point2D): VectorPolar { return new VectorPolar(this.polar(vec2)) }
 
   /**Returns [vec2] in matrix form.
    * @param {Point2D} vec2 Object with properties.

@@ -100,17 +100,6 @@ class PolygonRegular implements poly_regular {
     }else{ throw infinite_error }
   }
 
-
-  // function test(gons,radius){
-  //   let apothem = radius * Math.cos(Math.PI / gons)
-  //   let gon = Math.PI / gons * 2
-  //   let side = Math.hypot(radius - Math.cos(gon) * radius, Math.sin(gon) * radius)
-  //   let perimeter = side * gons
-  //   return apothem * perimeter * .5
-  //   }
-
-
-
   static gon_value(gons :number=3) :number { return Math.TAU / gons }
   static gon_length({gons=3,radius=0}){
     let gon = this.gon_value(gons)

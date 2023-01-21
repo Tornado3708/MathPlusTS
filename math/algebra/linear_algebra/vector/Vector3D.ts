@@ -47,7 +47,7 @@ class Vector3D implements Point3D {
    * @param {number} y [y]
    * @param {number} z [z]
    * */
-  add(x :number=0, y :number=0, z :number=0) :void { this.x += x, this.y += y, this.z += z }
+  add(x :number=0, y :number=0, z :number=0) :void { this.x += x , this.y += y , this.z += z }
 
   /**
    * Substraction function.
@@ -63,7 +63,7 @@ class Vector3D implements Point3D {
    * @param {number} y [y]
    * @param {number} z [z]
    * */
-  mult(x :number=1, y :number=x, z :number=y) :void { this.x *= x, this.y *= y, this.z *= z }
+  mult(x :number=1, y :number=1, z :number=1) :void { this.x *= x , this.y *= y , this.z *= z }
   
   /**
    * Division function.
@@ -71,7 +71,7 @@ class Vector3D implements Point3D {
    * @param {number} y [y]
    * @param {number} z [z]
    * */
-  div(x :number=1, y :number=x, z :number=y) :void { this.mult(1 / x , 1 / y , 1 / z) }
+  div(x :number=1, y :number=1, z :number=1) :void { this.mult(1 / x , 1 / y , 1 / z) }
   
   
 
@@ -201,13 +201,53 @@ class Vector3D implements Point3D {
     _full :(vec3 :Point3D) :number => Vector3D.crossProduct.full(vec3 , this),
     _x    :(vec3 :Point3D) :number => Vector3D.crossProduct.x   (vec3 , this),
     _y    :(vec3 :Point3D) :number => Vector3D.crossProduct.y   (vec3 , this),
-    _z    :(vec3 :Point3D) :number => Vector3D.crossProduct.z   (vec3 , this)
+    _z    :(vec3 :Point3D) :number => Vector3D.crossProduct.z   (vec3 , this),
 
+    xy    :(vec3 :Point3D) :number => Vector3D.crossProduct.z   (this , vec3),
+    xz    :(vec3 :Point3D) :number => Vector3D.crossProduct.y   (this , vec3),
+    yx    :(vec3 :Point3D) :number => Vector3D.crossProduct.z   (vec3 , this),
+    yz    :(vec3 :Point3D) :number => Vector3D.crossProduct.x   (this , vec3),
+    zx    :(vec3 :Point3D) :number => Vector3D.crossProduct.y   (vec3 , this),
+    zy    :(vec3 :Point3D) :number => Vector3D.crossProduct.z   (vec3 , this)
   }
 
   /**Nornalised cross product functions.*/
   crossProductSin = {
+    full  :(vec3 :Point3D) :number => Vector3D.crossProductSin.full(this , vec3),
+    x     :(vec3 :Point3D) :number => Vector3D.crossProductSin.x   (this , vec3),
+    y     :(vec3 :Point3D) :number => Vector3D.crossProductSin.y   (this , vec3),
+    z     :(vec3 :Point3D) :number => Vector3D.crossProductSin.z   (this , vec3),
     
+    _full :(vec3 :Point3D) :number => Vector3D.crossProductSin.full(vec3 , this),
+    _x    :(vec3 :Point3D) :number => Vector3D.crossProductSin.x   (vec3 , this),
+    _y    :(vec3 :Point3D) :number => Vector3D.crossProductSin.y   (vec3 , this),
+    _z    :(vec3 :Point3D) :number => Vector3D.crossProductSin.z   (vec3 , this),
+
+    xy    :(vec3 :Point3D) :number => Vector3D.crossProductSin.z   (this , vec3),
+    xz    :(vec3 :Point3D) :number => Vector3D.crossProductSin.y   (this , vec3),
+    yx    :(vec3 :Point3D) :number => Vector3D.crossProductSin.z   (vec3 , this),
+    yz    :(vec3 :Point3D) :number => Vector3D.crossProductSin.x   (this , vec3),
+    zx    :(vec3 :Point3D) :number => Vector3D.crossProductSin.y   (vec3 , this),
+    zy    :(vec3 :Point3D) :number => Vector3D.crossProductSin.z   (vec3 , this)
+  }
+
+  crossProductAsin = {
+    full  :(vec3 :Point3D) :number => Vector3D.crossProductAsin.full(this , vec3),
+    x     :(vec3 :Point3D) :number => Vector3D.crossProductAsin.x   (this , vec3),
+    y     :(vec3 :Point3D) :number => Vector3D.crossProductAsin.y   (this , vec3),
+    z     :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z   (this , vec3),
+    
+    _full :(vec3 :Point3D) :number => Vector3D.crossProductAsin.full(vec3 , this),
+    _x    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.x   (vec3 , this),
+    _y    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.y   (vec3 , this),
+    _z    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z   (vec3 , this),
+
+    xy    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z   (this , vec3),
+    xz    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.y   (this , vec3),
+    yx    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z   (vec3 , this),
+    yz    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.x   (this , vec3),
+    zx    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.y   (vec3 , this),
+    zy    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z   (vec3 , this)
   }
 
 
@@ -755,7 +795,7 @@ class Vector3D implements Point3D {
   static spherical         (vec3 :Point3D) :PointSpherical    { return { azimuth :this.azimuth(vec3), zenith :this.zenith(vec3), radius :this.magnitude(vec3) } }
   static sphericalVector   (vec3 :Point3D) :VectorSpherical   { return new VectorSpherical([this.azimuth(vec3), this.zenith(vec3), this.magnitude(vec3)]) }
   static cylindrical       (vec3 :Point3D) :PointCylindrical  { return { azimuth :this.azimuth(vec3), radius :this.magnitude(vec3), z :vec3.z } }
-  static cylindricalVector (vec3 :Point3D) :VectorCylindrical { return new VectorCylindrical(this.azimuth(vec3), this.magnitude(vec3), vec3.z) }
+  static cylindricalVector (vec3 :Point3D) :VectorCylindrical { return new VectorCylindrical([this.azimuth(vec3), this.magnitude(vec3), vec3.z]) }
   static matrix            (vec3 :Point3D) :matrix            { return [[vec3.x , vec3.y , vec3.z]] }
   static point             (vec3 :Point3D) :Dot3D             { return new Dot3D(vec3) }
 

@@ -44,27 +44,56 @@ class VectorPolar implements PointPolar {
   static radiusSub (polar :PointPolar, sub: number=0) :void { polar.radius -= sub }
   static radiusDiv (polar :PointPolar, d :number=1)   :void { this.radiusMult(polar, 1 / d) }
   
-  static cartesian(polar :PointPolar) :Point2D { return {
-    x: Math.cos(polar.azimuth) * polar.radius,
-    y: Math.sin(polar.azimuth) * polar.radius
-  }}
+  static cartesian({azimuth=0,radius=0} :PointPolar) :Point2D { return {
+      x: Math.cos(azimuth) * radius,
+      y: Math.sin(azimuth) * radius
+    }
+  }
 
-  static cartesianVector(polar :PointPolar) :Vector2D { return new Vector2D([
-    Math.cos(polar.azimuth) * polar.radius,
-    Math.sin(polar.azimuth) * polar.radius
-  ])}
+  static cartesianVector(polar :PointPolar) :Vector2D { return new Vector2D(this.cartesian(polar))}
+
+
+
+
 
   static ZERO   :PointPolar = { azimuth:  0          , radius: 0 }
   static DOWN   :PointPolar = { azimuth: -Math.PI*.5 , radius: 1 }
   static LEFT   :PointPolar = { azimuth:  Math.PI    , radius: 1 }
   static RIGHT  :PointPolar = { azimuth:  0          , radius: 1 }
-  static UP     :PointPolar = {azimuth:   Math.PI*.5 , radius: 1 }
+  static UP     :PointPolar = { azimuth:  Math.PI*.5 , radius: 1 }
+  
 
-  static zero   :number[]   = toArray(this.ZERO)
-  static down   :number[]   = toArray(this.DOWN)
-  static left   :number[]   = toArray(this.LEFT)
-  static right  :number[]   = toArray(this.RIGHT)
-  static up     :number[]   = toArray(this.UP)
+
+
+  static LEFT_UP    :PointPolar = { azimuth: Math.PI * .75          , radius: 1 }
+  static LEFT_DONW  :PointPolar = { azimuth: -this.LEFT_UP.azimuth  , radius: 1 }
+  static RIGHT_UP   :PointPolar = { azimuth: Math.PI * .25          , radius: 1 }
+  static RIGHT_DOWN :PointPolar = { azimuth: -this.RIGHT_UP.azimuth , radius: 1 }
+  static UP_LEFT                = this.LEFT_UP
+  static UP_RIGHT               = this.RIGHT_UP
+  static DOWN_LEFT              = this.LEFT_DONW
+  static DOWN_RIGHT             = this.RIGHT_DOWN
+
+
+
+
+  static zero  :number[] = [ 0 , 0 ]
+  static down  :number[] = toArray(this.DOWN)
+  static left  :number[] = toArray(this.LEFT)
+  static right :number[] = toArray(this.RIGHT)
+  static up    :number[] = toArray(this.UP)
+
+
+
+
+  static left_up    :number[] = toArray(this.LEFT_UP)
+  static left_down  :number[] = toArray(this.LEFT_DONW)
+  static right_up   :number[] = toArray(this.RIGHT_UP)
+  static right_down :number[] = toArray(this.RIGHT_DOWN)
+  static up_left    = this.left_up
+  static up_right   = this.right_up
+  static down_left  = this.left_down
+  static down_right = this.right_down
 }
 
 export default VectorPolar
