@@ -8,6 +8,7 @@ import VectorPolar from "./VectorPolar.js"
 
 
 
+
 /**Class for representation of vector in 2-dimensional space.*/
 class Vector2D implements Point2D {
 
@@ -27,6 +28,7 @@ class Vector2D implements Point2D {
       if(!isFinite(this.y)){ this.y = 0 }
 
     }
+
 
 
 
@@ -103,7 +105,8 @@ class Vector2D implements Point2D {
   get point() :Dot2D { return new Dot2D(this) }
 
 
-  
+
+
   /**Returns dot product of this vector and vector [vec2].
    * @param {Point2D} vec2 2-dimensional vector or object with [x] and [y] values.
    * @returns Dot product of two vectors.
@@ -174,7 +177,7 @@ class Vector2D implements Point2D {
    * */
   static div(vec2 :Point2D, x :number=1, y :number=1) :void { this.mult(vec2 , 1 / x , 1 / y) }
 
-  
+
 
   
   /**Returns magnitude of given vector.
@@ -187,7 +190,7 @@ class Vector2D implements Point2D {
    * @param {Point2D} vec2 Object with properties.
    * @returns Azimuth of vector.
    */
-  static azimuth(vec2:Point2D)   :number { return azimuth(vec2.y, vec2.x) }
+  static azimuth(vec2:Point2D) :number { return azimuth(vec2.y, vec2.x) }
 
   
 
@@ -224,9 +227,6 @@ class Vector2D implements Point2D {
     result = result * (1 / (this.magnitude(vec2_a) * this.magnitude(vec2_b)))
     return result + Number.EPSILON * Math.sign(result)
   }
-
-
-
   
   /**Returns azimuth between these vectors.
    * @param {Point2D} vec2_a Vector A.
@@ -234,6 +234,7 @@ class Vector2D implements Point2D {
    * @returns Arccosine of dot product.
    * */
   static dotProductAcos(vec2_a :Point2D, vec2_b :Point2D) :number { return Math.acos(this.dotProductCos(vec2_a, vec2_b)) }
+
 
 
 
@@ -245,9 +246,6 @@ class Vector2D implements Point2D {
    * */
   static crossProduct(vec2_a :Point2D, vec2_b :Point2D) :number { return vec2_a.x * vec2_b.y - vec2_a.y * vec2_b.x }
 
-
-
-  
   /**Returns normalised cross product of these vectors.
    * @param {Point2D} vec2_a Vector A.
    * @param {Point2D} vec2_b Vector B.
@@ -259,9 +257,6 @@ class Vector2D implements Point2D {
     return result + Number.EPSILON * Math.sign(result) * .5 
   }
 
-
-
-  
   /**Returns azimuth between two vectors.
    * @param {Point2D} vec2_a Vector A.
    * @param {Point2D} vec2_b Vector B.
@@ -303,6 +298,13 @@ class Vector2D implements Point2D {
    * @returns 2-dimensional array.
    * */
   static matrix(vec2 :Point2D): matrix { return [ [ vec2.x , vec2.y ] ] }
+
+  /**
+   * Returns [vec2] as dot in 2-dimensional point.
+   * @param {Point2D} vec2 2-dimensional vector.
+   * @returns Dot2D
+   */
+  static point(vec2 :Point2D): Dot2D { return new Dot2D(vec2) }
 
 
 
