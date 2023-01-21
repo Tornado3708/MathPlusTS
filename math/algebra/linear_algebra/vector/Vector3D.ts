@@ -97,8 +97,6 @@ class Vector3D implements Point3D {
 
 
 
-
-
   /**
    * Rotates this vector by azimuth and zenith.
    * @param {number} azimuth Will be add to this [azimuth].
@@ -108,8 +106,6 @@ class Vector3D implements Point3D {
 
 
   
-  
-
   
   /**
    * Returns normalised properties of this vector. Calculation by magnitude.
@@ -122,8 +118,6 @@ class Vector3D implements Point3D {
    * @returns Normalised vector.
    * */
   get norm() :Point3D { return norm3d(this) }
-
-
 
 
 
@@ -169,93 +163,458 @@ class Vector3D implements Point3D {
 
   /**Dot product functions.*/
   dotProduct = {
+    
+    /**
+     * Returns dot product from all parameters of this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
     full :(vec3 :Point3D) :number => Vector3D.dotProduct.full(this , vec3),
-    xy   :(vec3 :Point3D) :number => Vector3D.dotProduct.xy  (this , vec3),
-    xz   :(vec3 :Point3D) :number => Vector3D.dotProduct.xz  (this , vec3),
-    yz   :(vec3 :Point3D) :number => Vector3D.dotProduct.yz  (this , vec3)
+
+    /**
+     * Returns dot product from [x], [y] of this and given vectors.
+     * @param {Point3D} vec3 Given vector. 
+     * @returns Number
+     * */
+    xy :(vec3 :Point3D) :number => Vector3D.dotProduct.xy(this , vec3),
+    
+    /**
+     * Return dot product from [x], [z] of this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    xz :(vec3 :Point3D) :number => Vector3D.dotProduct.xz(this , vec3),
+
+    /**
+     * Returns dot product from [y], [z] of this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    yz :(vec3 :Point3D) :number => Vector3D.dotProduct.yz(this , vec3)
+
   }
+
+
+
 
   /**Normalised dot product functions.*/
   dotProductCos = {
+
+    /**
+     * Returns normalised dot product from all parameters of this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
     full :(vec3 :Point3D) :number => Vector3D.dotProductCos.full(this , vec3),
-    xy   :(vec3 :Point3D) :number => Vector3D.dotProductCos.xy  (this , vec3),
-    xz   :(vec3 :Point3D) :number => Vector3D.dotProductCos.xz  (this , vec3),
-    yz   :(vec3 :Point3D) :number => Vector3D.dotProductCos.yz  (this , vec3)
+
+    /**
+     * Returns normalised dot product from [x], [y] of this and given vectors.
+     * @param {p3} vec3 Given vector.
+     * @returns Number
+     * */
+    xy :(vec3 :Point3D) :number => Vector3D.dotProductCos.xy(this , vec3),
+
+    /**
+     * Returns dot product from [x], [z] of this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    xz :(vec3 :Point3D) :number => Vector3D.dotProductCos.xz(this , vec3),
+
+    /**
+     * Returns dot product from [y], [z] of this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    yz :(vec3 :Point3D) :number => Vector3D.dotProductCos.yz(this , vec3)
+  
   }
+
+
+
 
   /*Angular dot product functions.*/
   dotProductAcos = {
+
+    /**
+     * Returns angle from dot product from all parameters of this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
     full :(vec3 :Point3D) :number => Vector3D.dotProductAcos.full(this , vec3),
-    xy   :(vec3 :Point3D) :number => Vector3D.dotProductAcos.xy  (this , vec3),
-    xz   :(vec3 :Point3D) :number => Vector3D.dotProductAcos.xz  (this , vec3),
-    yz   :(vec3 :Point3D) :number => Vector3D.dotProductAcos.yz  (this , vec3)
+
+    /**
+     * Returns angle from dot product from [x], [y] of this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    xy :(vec3 :Point3D) :number => Vector3D.dotProductAcos.xy(this , vec3),
+
+    /**
+     * Returns angle from dot product from [x], [z] of this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    xz :(vec3 :Point3D) :number => Vector3D.dotProductAcos.xz(this , vec3),
+
+    /**
+     * Returns angle from dot product from [y], [z] of this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    yz :(vec3 :Point3D) :number => Vector3D.dotProductAcos.yz(this , vec3)
+  
   }
 
   /**Cross product funtions.*/
   crossProduct = {
-    full  :(vec3 :Point3D) :number => Vector3D.crossProduct.full(this , vec3),
-    x     :(vec3 :Point3D) :number => Vector3D.crossProduct.x   (this , vec3),
-    y     :(vec3 :Point3D) :number => Vector3D.crossProduct.y   (this , vec3),
-    z     :(vec3 :Point3D) :number => Vector3D.crossProduct.z   (this , vec3),
 
+    /**
+     * Returns cross product from all parameters of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    full :(vec3 :Point3D) :number => Vector3D.crossProduct.full(this , vec3),
+
+    /**
+     * Returns cross product from [y], [z] ofr this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    x :(vec3 :Point3D) :number => Vector3D.crossProduct.x(this , vec3),
+
+    /**
+     * Returns cross product from [x], [z] ofr this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    y :(vec3 :Point3D) :number => Vector3D.crossProduct.y(this , vec3),
+
+    /**
+     * Returns cross product from [x], [y] ofr this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    z :(vec3 :Point3D) :number => Vector3D.crossProduct.z(this , vec3),
+
+    /**
+     * Returns opposite cross product from all parameters of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
     _full :(vec3 :Point3D) :number => Vector3D.crossProduct.full(vec3 , this),
-    _x    :(vec3 :Point3D) :number => Vector3D.crossProduct.x   (vec3 , this),
-    _y    :(vec3 :Point3D) :number => Vector3D.crossProduct.y   (vec3 , this),
-    _z    :(vec3 :Point3D) :number => Vector3D.crossProduct.z   (vec3 , this),
 
-    xy    :(vec3 :Point3D) :number => Vector3D.crossProduct.z   (this , vec3),
-    xz    :(vec3 :Point3D) :number => Vector3D.crossProduct.y   (this , vec3),
-    yx    :(vec3 :Point3D) :number => Vector3D.crossProduct.z   (vec3 , this),
-    yz    :(vec3 :Point3D) :number => Vector3D.crossProduct.x   (this , vec3),
-    zx    :(vec3 :Point3D) :number => Vector3D.crossProduct.y   (vec3 , this),
-    zy    :(vec3 :Point3D) :number => Vector3D.crossProduct.z   (vec3 , this)
+    /**
+     * Returns opposite cross product from [y], [z] ofr this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    _x :(vec3 :Point3D) :number => Vector3D.crossProduct.x(vec3 , this),
+
+    /**
+     * Returns opposite cross product from [x], [z] ofr this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    _y :(vec3 :Point3D) :number => Vector3D.crossProduct.y(vec3 , this),
+
+    /**
+     * Returns opposite cross product from [x], [y] ofr this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    _z :(vec3 :Point3D) :number => Vector3D.crossProduct.z(vec3 , this),
+
+    /**
+     * Returns cross product from [x], [y] ofr this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    xy :(vec3 :Point3D) :number => Vector3D.crossProduct.z(this , vec3),
+
+    /**
+     * Returns cross product from [x], [z] ofr this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    xz :(vec3 :Point3D) :number => Vector3D.crossProduct.y(this , vec3),
+
+    /**
+     * Returns opposite cross product from [x], [y] ofr this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    yx :(vec3 :Point3D) :number => Vector3D.crossProduct.z(vec3 , this),
+
+    /**
+     * Returns cross product from [y], [z] ofr this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    yz :(vec3 :Point3D) :number => Vector3D.crossProduct.x(this , vec3),
+
+    /**
+     * Returns opposite cross product from [x], [z] ofr this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    zx :(vec3 :Point3D) :number => Vector3D.crossProduct.y(vec3 , this),
+
+    /**
+     * Returns opposite cross product from [y], [z] ofr this and given vectors.
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    zy :(vec3 :Point3D) :number => Vector3D.crossProduct.z(vec3 , this)
   }
 
   /**Nornalised cross product functions.*/
   crossProductSin = {
-    full  :(vec3 :Point3D) :number => Vector3D.crossProductSin.full(this , vec3),
-    x     :(vec3 :Point3D) :number => Vector3D.crossProductSin.x   (this , vec3),
-    y     :(vec3 :Point3D) :number => Vector3D.crossProductSin.y   (this , vec3),
-    z     :(vec3 :Point3D) :number => Vector3D.crossProductSin.z   (this , vec3),
+
+    /**
+     * Returns normalised cross product from all parameters of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    full :(vec3 :Point3D) :number => Vector3D.crossProductSin.full(this , vec3),
+
+    /**
+     * Returns normalised cross product from [y], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    x :(vec3 :Point3D) :number => Vector3D.crossProductSin.x(this , vec3),
+
+    /**
+     * Returns normalised cross product from [x], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    y :(vec3 :Point3D) :number => Vector3D.crossProductSin.y(this , vec3),
+
+    /**
+     * Returns normalised cross product from [x], [y] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    z :(vec3 :Point3D) :number => Vector3D.crossProductSin.z(this , vec3),
     
+    /**
+     * Returns opposite cross product from all parameters of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
     _full :(vec3 :Point3D) :number => Vector3D.crossProductSin.full(vec3 , this),
-    _x    :(vec3 :Point3D) :number => Vector3D.crossProductSin.x   (vec3 , this),
-    _y    :(vec3 :Point3D) :number => Vector3D.crossProductSin.y   (vec3 , this),
-    _z    :(vec3 :Point3D) :number => Vector3D.crossProductSin.z   (vec3 , this),
 
-    xy    :(vec3 :Point3D) :number => Vector3D.crossProductSin.z   (this , vec3),
-    xz    :(vec3 :Point3D) :number => Vector3D.crossProductSin.y   (this , vec3),
-    yx    :(vec3 :Point3D) :number => Vector3D.crossProductSin.z   (vec3 , this),
-    yz    :(vec3 :Point3D) :number => Vector3D.crossProductSin.x   (this , vec3),
-    zx    :(vec3 :Point3D) :number => Vector3D.crossProductSin.y   (vec3 , this),
-    zy    :(vec3 :Point3D) :number => Vector3D.crossProductSin.z   (vec3 , this)
-  }
+    /**
+     * Returns opposite normalised cross product from [y], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    _x :(vec3 :Point3D) :number => Vector3D.crossProductSin.x(vec3 , this),
 
-  crossProductAsin = {
-    full  :(vec3 :Point3D) :number => Vector3D.crossProductAsin.full(this , vec3),
-    x     :(vec3 :Point3D) :number => Vector3D.crossProductAsin.x   (this , vec3),
-    y     :(vec3 :Point3D) :number => Vector3D.crossProductAsin.y   (this , vec3),
-    z     :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z   (this , vec3),
+    /**
+     * Returns opposite normalised cross product from [x], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    _y :(vec3 :Point3D) :number => Vector3D.crossProductSin.y(vec3 , this),
+
+    /**
+     * Returns opposite normalised cross product from [x], [y] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    _z :(vec3 :Point3D) :number => Vector3D.crossProductSin.z(vec3 , this),
+
+    /**
+     * Returns normalised cross product from [x], [y] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    xy :(vec3 :Point3D) :number => Vector3D.crossProductSin.z(this , vec3),
     
-    _full :(vec3 :Point3D) :number => Vector3D.crossProductAsin.full(vec3 , this),
-    _x    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.x   (vec3 , this),
-    _y    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.y   (vec3 , this),
-    _z    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z   (vec3 , this),
+    /**
+     * Returns normalised cross product from [x], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    xz :(vec3 :Point3D) :number => Vector3D.crossProductSin.y(this , vec3),
 
-    xy    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z   (this , vec3),
-    xz    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.y   (this , vec3),
-    yx    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z   (vec3 , this),
-    yz    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.x   (this , vec3),
-    zx    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.y   (vec3 , this),
-    zy    :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z   (vec3 , this)
+    /**
+     * Returns opposite normalised cross product from [x], [y] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    yx :(vec3 :Point3D) :number => Vector3D.crossProductSin.z(vec3 , this),
+    
+    /**
+     * Returns normalised cross product from [y], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    yz :(vec3 :Point3D) :number => Vector3D.crossProductSin.x(this , vec3),
+
+    /**
+     * Returns opposite normalised cross product from [x], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    zx :(vec3 :Point3D) :number => Vector3D.crossProductSin.y(vec3 , this),
+
+    /**
+     * Returns opposite normalised cross product from [y], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    zy :(vec3 :Point3D) :number => Vector3D.crossProductSin.z(vec3 , this)
+
   }
 
 
 
+  /**Angular cross product.*/
+  crossProductAsin = {
+
+    /**
+     * Returns angular cross product from [y], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    full :(vec3 :Point3D) :number => Vector3D.crossProductAsin.full(this , vec3),
+
+    /**
+     * Returns angular cross product from [y], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    x :(vec3 :Point3D) :number => Vector3D.crossProductAsin.x(this , vec3),
+
+    /**
+     * Returns angular cross product from [x], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    y :(vec3 :Point3D) :number => Vector3D.crossProductAsin.y(this , vec3),
+    /**
+     * Returns angular cross product from [x], [y] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    z :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z(this , vec3),
+    
+    /**
+     * Returns opposite angular cross product from [y], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number.
+     * */
+    _full :(vec3 :Point3D) :number => Vector3D.crossProductAsin.full(vec3 , this),
+
+    /**
+     * Returns opposite angular cross product from [y], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    _x :(vec3 :Point3D) :number => Vector3D.crossProductAsin.x(vec3 , this),
+
+    /**
+     * Returns opposite angular cross product from [x], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    _y :(vec3 :Point3D) :number => Vector3D.crossProductAsin.y(vec3 , this),
+
+    /**
+     * Returns opposite angular cross product from [x], [y] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    _z :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z(vec3 , this),
+
+    /**
+     * Returns angular cross product from [x], [y] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    xy :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z(this , vec3),
+
+    /**
+     * Returns angular cross product from [x], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    xz :(vec3 :Point3D) :number => Vector3D.crossProductAsin.y(this , vec3),
+
+    /**
+     * Returns opposite angular cross product from [x], [y] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    yx :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z(vec3 , this),
+
+    /**
+     * Returns angular cross product from [y], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    yz :(vec3 :Point3D) :number => Vector3D.crossProductAsin.x(this , vec3),
+    
+    /**
+     * Returns opposite angular cross product from [x], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    zx :(vec3 :Point3D) :number => Vector3D.crossProductAsin.y(vec3 , this),
+
+    /**
+     * Returns opposite angular cross product from [y], [z] of this and given vectors. 
+     * @param {Point3D} vec3 Given vector.
+     * @returns Number
+     * */
+    zy :(vec3 :Point3D) :number => Vector3D.crossProductAsin.z(vec3 , this)
+  
+  }
+
+
+
+  /**
+   * Addition function.
+   * @param {Point3D} vec3 Vector.
+   * @param {number} x [x]
+   * @param {number} y [y]
+   * @param {number} z [z]
+   * */
   static add (vec3 :Point3D, x :number=0, y :number=0, z :number=0): void{ vec3.x += x , vec3.y += y , vec3.z += z }
+
+  /**
+   * Subtraction function.
+   * @param {Point3D} vec3 Vector.
+   * @param {number} x [x]
+   * @param {number} y [y]
+   * @param {number} z [z]
+   * */
   static sub (vec3 :Point3D, x :number=0, y :number=0, z :number=0): void{ this.add(vec3 , -x , -y , -z) }
+
+  /**
+   * Multiplication function.
+   * @param {Point3D} vec3 Vector.
+   * @param {number} x [x]
+   * @param {number} y [y]
+   * @param {number} z [z]
+   * */
   static mult(vec3 :Point3D, x :number=1, y :number=1, z :number=1): void{ vec3.x *= x , vec3.y *= y , vec3.z *= z }
+
+  /**
+   * Division function.
+  * @param {Point3D} vec3 Vector.
+  * @param {number} x [x]
+  * @param {number} y [y]
+  * @param {number} z [z]
+  * */
   static div (vec3 :Point3D, x :number=1, y :number=1, z :number=1): void{ this.mult(vec3 , 1 / x, 1 / y , 1 / z) }
+
+
+
 
   /**
    * Returns magnitude of given vector.
@@ -274,7 +633,7 @@ class Vector3D implements Point3D {
    * @returns Zenith of vector.
    * */
   static zenith(vec3 :Point3D) :number { return zenith(vec3.x , vec3.y , vec3.z) }
-  
+
 
 
 
@@ -309,11 +668,12 @@ class Vector3D implements Point3D {
 
 
 
+
   /**Dot product functions.*/
   static dotProduct = {
 
     /**
-     * Dot product of all parameters of these vectors.
+     * Dot product from all parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Dot product.
@@ -321,7 +681,7 @@ class Vector3D implements Point3D {
     full(vec3_a :Point3D, vec3_b :Point3D) :number{ return vec3_a.x * vec3_b.x + vec3_a.y * vec3_b.y + vec3_a.z * vec3_b.z },
     
     /**
-     * Dot product of [x] and [y] parameters of these vectors.
+     * Dot product from [x] and [y] parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Dot product.
@@ -329,7 +689,7 @@ class Vector3D implements Point3D {
     xy  (vec3_a :Point3D, vec3_b :Point3D) :number{ return vec3_a.x * vec3_b.x + vec3_a.y * vec3_b.y },
 
     /**
-     * Dot product of [x] and [z] parameters of these vectors.
+     * Dot product from [x] and [z] parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Dot product.
@@ -337,7 +697,7 @@ class Vector3D implements Point3D {
     xz  (vec3_a :Point3D, vec3_b :Point3D) :number{ return vec3_a.x * vec3_b.x + vec3_a.z * vec3_b.z },
 
     /**
-     * Dot product of [y] and [z] parameters of these vectors.
+     * Dot product from [y] and [z] parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Dot product.
@@ -346,10 +706,10 @@ class Vector3D implements Point3D {
 
   }
 
-  /**Normalised dot products.*/
+  /**Normalised dot product functions.*/
   static dotProductCos = {
     /**
-     * Cosine from dot product of all parameters of these vectors.
+     * Cosine from dot product from all parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Dot product cosine.
@@ -357,7 +717,7 @@ class Vector3D implements Point3D {
     full(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.dotProduct.full(vec3_a,vec3_b) * (1 / (Vector3D.magnitude(vec3_a) * Vector3D.magnitude(vec3_b))) },
     
     /**
-     * Cosine from dot product of [x] and [y] parameters of these vectors.
+     * Cosine from dot product from [x] and [y] parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Dot product cosine.
@@ -368,7 +728,7 @@ class Vector3D implements Point3D {
     },
     
     /**
-     * Cosine from dot product of [x] and [z] parameters of these vectors.
+     * Cosine from dot product from [x] and [z] parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Dot product cosine.
@@ -379,7 +739,7 @@ class Vector3D implements Point3D {
     },
     
     /**
-     * Cosine from dot product of [y] and [z] parameters of these vectors.
+     * Cosine from dot product from [y] and [z] parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Dot product cosine.
@@ -390,10 +750,10 @@ class Vector3D implements Point3D {
     }
   }
 
-  /**Angular dot products.*/
+  /**Angular dot product functions.*/
   static dotProductAcos = {
     /**
-     * Arccosine from dot product of all parameters of these vectors.
+     * Arccosine from dot product from all parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Dot product arccosine.
@@ -401,7 +761,7 @@ class Vector3D implements Point3D {
     full(vec3_a :Point3D, vec3_b :Point3D) :number { return Math.acos(Vector3D.dotProductCos.full(vec3_a, vec3_b)) },
     
     /**
-     * Arccosine from dot product of [y] and [y] parameters of these vectors.
+     * Arccosine from dot product from [y] and [y] parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Dot product arccosine.
@@ -409,7 +769,7 @@ class Vector3D implements Point3D {
     xy(vec3_a :Point3D, vec3_b :Point3D) :number { return Math.acos(Vector3D.dotProductCos.xy(vec3_a, vec3_b)) },
     
     /**
-     * Arccosine from dot product of [x] and [z] parameters of these vectors.
+     * Arccosine from dot product from [x] and [z] parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Dot product arccosine.
@@ -417,7 +777,7 @@ class Vector3D implements Point3D {
     xz(vec3_a :Point3D, vec3_b :Point3D) :number { return Math.acos(Vector3D.dotProductCos.xz(vec3_a, vec3_b)) },
 
     /**
-     * Arccosine from dot product of [y] and [z] parameters of these vectors.
+     * Arccosine from dot product from [y] and [z] parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Dot product arccosine.
@@ -428,11 +788,11 @@ class Vector3D implements Point3D {
 
 
   
-  /**Cross products.*/
+  /**Cross product functions.*/
   static crossProduct = {
 
     /**
-     * Returns cross product of all parameters of these vectors.
+     * Returns cross product from all parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product.
@@ -440,7 +800,7 @@ class Vector3D implements Point3D {
      full(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProduct.x(vec3_a,vec3_b) - Vector3D.crossProduct.y(vec3_a,vec3_b) + Vector3D.crossProduct.z(vec3_a, vec3_b) },
      
     /**
-     * Returns opposite cross product of all parameters of these vectors.
+     * Returns opposite cross product from all parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vecotr B.
      * @returns Cross product.
@@ -449,7 +809,7 @@ class Vector3D implements Point3D {
 
 
     /**
-     * Returns cross product of [y] and [z] parameters.
+     * Returns cross product from [y] and [z] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product.
@@ -457,7 +817,7 @@ class Vector3D implements Point3D {
     x(vec3_a :Point3D, vec3_b :Point3D) :number { return vec3_a.y * vec3_b.z - vec3_a.z * vec3_b.y },
 
     /**
-     * Returns cross product of [z] and [x] parameters.
+     * Returns cross product from [z] and [x] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product.
@@ -465,7 +825,7 @@ class Vector3D implements Point3D {
     y(vec3_a :Point3D, vec3_b :Point3D) :number { return vec3_a.z * vec3_b.x - vec3_a.x * vec3_b.z },
 
     /**
-     * Returns cross product of [x] and [y] parameters.
+     * Returns cross product from [x] and [y] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product.
@@ -474,7 +834,7 @@ class Vector3D implements Point3D {
 
 
     /**
-     * Returns opposite cross product of [y] and [z] parameters.
+     * Returns opposite cross product from [y] and [z] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product.
@@ -482,7 +842,7 @@ class Vector3D implements Point3D {
     _x(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProduct.x(vec3_b, vec3_a) },
 
     /**
-     * Returns opposite cross product of [z] and [x] parameters.
+     * Returns opposite cross product from [z] and [x] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product.
@@ -490,7 +850,7 @@ class Vector3D implements Point3D {
     _y(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProduct.y(vec3_b, vec3_a) },
 
     /**
-     * Returns opposite cross product of [x] and [y] parameters.
+     * Returns opposite cross product from [x] and [y] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product.
@@ -498,7 +858,7 @@ class Vector3D implements Point3D {
     _z(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProduct.z(vec3_b, vec3_a) },
     
     /**
-     * Returns cross product of [x] and [y] parameters.
+     * Returns cross product from [x] and [y] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product.
@@ -506,7 +866,7 @@ class Vector3D implements Point3D {
     xy(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProduct.z(vec3_a , vec3_b) },
 
     /**
-     * Returns cross product of [z] and [x] parameters.
+     * Returns cross product from [z] and [x] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product.
@@ -514,7 +874,7 @@ class Vector3D implements Point3D {
     xz(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProduct.y(vec3_a , vec3_b) },
 
     /**
-     * Returns opposite cross product of [x] and [y] parameters.
+     * Returns opposite cross product from [x] and [y] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product.
@@ -522,7 +882,7 @@ class Vector3D implements Point3D {
     yx(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProduct.z(vec3_b , vec3_a) },
 
     /**
-     * Returns cross product of [y] and [z] parameters.
+     * Returns cross product from [y] and [z] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product.
@@ -530,7 +890,7 @@ class Vector3D implements Point3D {
     yz(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProduct.x(vec3_a , vec3_b) },
 
     /**
-     * Returns opposite cross product of [z] and [x] parameters.
+     * Returns opposite cross product from [z] and [x] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product.
@@ -538,7 +898,7 @@ class Vector3D implements Point3D {
     zx(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProduct.y(vec3_b , vec3_a) },
 
     /**
-     * Returns opposite cross product of [y] and [z] parameters.
+     * Returns opposite cross product from [y] and [z] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product.
@@ -548,11 +908,11 @@ class Vector3D implements Point3D {
   
 
 
-  /**Normalised cross products.*/
+  /**Normalised cross product functions.*/
   static crossProductSin = {
 
     /**
-     * Returns sine of cross product of all parameters of these vectors.
+     * Returns sine of cross product from all parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vecotr B.
      * @returns Cross product sine.
@@ -560,7 +920,7 @@ class Vector3D implements Point3D {
     full(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProduct.full(vec3_a , vec3_b) * (1 / (Vector3D.magnitude(vec3_a) * Vector3D.magnitude(vec3_b))) },
 
     /**
-     * Returns sine of opposite cross product of all parameters of these vectors.
+     * Returns sine of opposite cross product from all parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vecotr B.
      * @returns Cross product sine.
@@ -569,7 +929,7 @@ class Vector3D implements Point3D {
 
 
     /**
-     * Returns sine of cross product of [y] and [z] parameters.
+     * Returns sine of cross product from [y] and [z] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product sine.
@@ -577,7 +937,7 @@ class Vector3D implements Point3D {
     x(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProduct.x(vec3_a , vec3_b) * (1 / (magnitude(vec3_a.y , vec3_a.z) * magnitude(vec3_b.y , vec3_b.z))) },
 
     /**
-     * Returns sine of cross product of [z] and [x] parameters.
+     * Returns sine of cross product from [z] and [x] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product sine.
@@ -585,7 +945,7 @@ class Vector3D implements Point3D {
     y(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProduct.y(vec3_a , vec3_b) * (1 / (magnitude(vec3_a.x , vec3_a.z) * magnitude(vec3_b.x , vec3_b.z))) },
 
     /**
-     * Returns cross product of [x] and [y] parameters.
+     * Returns cross product from [x] and [y] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product sine.
@@ -594,7 +954,7 @@ class Vector3D implements Point3D {
 
 
     /**
-     * Returns sine of opposite cross product of [y] and [z] parameters.
+     * Returns sine of opposite cross product from [y] and [z] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product sine.
@@ -602,7 +962,7 @@ class Vector3D implements Point3D {
     _x(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProductSin.x(vec3_b , vec3_a) },
 
     /**
-     * Returns sine of opposite cross product of [z] and [x] parameters.
+     * Returns sine of opposite cross product from [z] and [x] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product sine.
@@ -610,7 +970,7 @@ class Vector3D implements Point3D {
     _y(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProductSin.y(vec3_b , vec3_a) },
 
     /**
-     * Returns sine of opposite cross product of [x] and [y] parameters.
+     * Returns sine of opposite cross product from [x] and [y] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product sine.
@@ -619,7 +979,7 @@ class Vector3D implements Point3D {
 
 
     /**
-     * Returns sine of cross product of [x] and [y] parameters.
+     * Returns sine of cross product from [x] and [y] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product sine.
@@ -627,7 +987,7 @@ class Vector3D implements Point3D {
     xy(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProductSin.z(vec3_a , vec3_b) },
 
     /**
-     * Returns sine of cross product of [z] and [x] parameters.
+     * Returns sine of cross product from [z] and [x] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product sine.
@@ -635,7 +995,7 @@ class Vector3D implements Point3D {
     xz(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProductSin.y(vec3_a , vec3_b) },
 
     /**
-     * Returns sine of opposite cross product of [x] and [y] parameters.
+     * Returns sine of opposite cross product from [x] and [y] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product sine.
@@ -643,7 +1003,7 @@ class Vector3D implements Point3D {
     yx(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProductSin.z(vec3_b , vec3_a) },
     
     /**
-     * Returns sine of cross product of [y] and [z] parameters.
+     * Returns sine of cross product from [y] and [z] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product sine.
@@ -651,7 +1011,7 @@ class Vector3D implements Point3D {
     yz(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProductSin.x(vec3_a , vec3_b) },
 
     /**
-     * Returns sine of opposite cross product of [z] and [x] parameters.
+     * Returns sine of opposite cross product from [z] and [x] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product sine.
@@ -659,7 +1019,7 @@ class Vector3D implements Point3D {
     zx(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProductSin.y(vec3_b , vec3_a) },
 
     /**
-     * Returns sine of opposite cross product of [y] and [z] parameters.
+     * Returns sine of opposite cross product from [y] and [z] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product sine.
@@ -669,11 +1029,11 @@ class Vector3D implements Point3D {
 
 
 
-  /**Angular cross products.*/
+  /**Angular cross product functions.*/
   static crossProductAsin = {
 
     /**
-     * Returns arcsine of cross product of all parameters of these vectors.
+     * Returns arcsine of cross product from all parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vecotr B.
      * @returns Cross product arcsine.
@@ -681,7 +1041,7 @@ class Vector3D implements Point3D {
     full(vec3_a :Point3D, vec3_b :Point3D)  :number { return Math.asin(Vector3D.crossProductSin.full(vec3_a , vec3_b)) },
 
     /**
-     * Returns arcsine of opposite cross product of all parameters of these vectors.
+     * Returns arcsine of opposite cross product from all parameters of these vectors.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vecotr B.
      * @returns Cross product arcsine.
@@ -690,7 +1050,7 @@ class Vector3D implements Point3D {
 
 
     /**
-     * Returns arcsine of cross product of [y] and [z] parameters.
+     * Returns arcsine of cross product from [y] and [z] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product arcsine.
@@ -698,7 +1058,7 @@ class Vector3D implements Point3D {
     x(vec3_a :Point3D, vec3_b :Point3D) :number { return Math.asin(Vector3D.crossProductSin.x(vec3_a, vec3_b)) },
 
     /**
-     * Returns arcsine of cross product of [z] and [x] parameters.
+     * Returns arcsine of cross product from [z] and [x] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product arcsine.
@@ -706,7 +1066,7 @@ class Vector3D implements Point3D {
     y(vec3_a :Point3D, vec3_b :Point3D) :number { return Math.asin(Vector3D.crossProductSin.y(vec3_a, vec3_b)) },
 
     /**
-     * Returns arcsine of cross product of [x] and [y] parameters.
+     * Returns arcsine of cross product from [x] and [y] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product arcsine.
@@ -715,7 +1075,7 @@ class Vector3D implements Point3D {
 
 
     /**
-     * Returns arcsine of opposite cross product of [y] and [z] parameters.
+     * Returns arcsine of opposite cross product from [y] and [z] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product arcsine.
@@ -723,7 +1083,7 @@ class Vector3D implements Point3D {
     _x(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProductAsin.x(vec3_b , vec3_a) },
 
     /**
-     * Returns arcsine of opposite cross product of [z] and [x] parameters.
+     * Returns arcsine of opposite cross product from [z] and [x] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product arcsine.
@@ -731,7 +1091,7 @@ class Vector3D implements Point3D {
     _y(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProductAsin.y(vec3_b , vec3_a) },
 
     /**
-     * Returns arcsine of opposite cross product of [x] and [y] parameters.
+     * Returns arcsine of opposite cross product from [x] and [y] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product arcsine.
@@ -741,7 +1101,7 @@ class Vector3D implements Point3D {
 
 
     /**
-     * Returns arcsine of cross product of [x] and [y] parameters.
+     * Returns arcsine of cross product from [x] and [y] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product arcsine.
@@ -749,7 +1109,7 @@ class Vector3D implements Point3D {
     xy(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProductAsin.z(vec3_a , vec3_b) },
 
     /**
-     * Returns arcsine of cross product of [z] and [x] parameters.
+     * Returns arcsine of cross product from [z] and [x] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product arcsine.
@@ -757,7 +1117,7 @@ class Vector3D implements Point3D {
     xz(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProductAsin.y(vec3_a , vec3_b) },
 
     /**
-     * Returns arcsine of opposite cross product of [x] and [y] parameters.
+     * Returns arcsine of opposite cross product from [x] and [y] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product arcsine.
@@ -765,7 +1125,7 @@ class Vector3D implements Point3D {
     yx(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProductAsin.z(vec3_b , vec3_a) },
 
     /**
-     * Returns arcsine of cross product of [y] and [z] parameters.
+     * Returns arcsine of cross product from [y] and [z] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product arcsine.
@@ -773,7 +1133,7 @@ class Vector3D implements Point3D {
     yz(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProductAsin.x(vec3_a , vec3_b) },
 
     /**
-     * Returns arcsine of opposite cross product of [z] and [x] parameters.
+     * Returns arcsine of opposite cross product from [z] and [x] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product arcsine.
@@ -781,7 +1141,7 @@ class Vector3D implements Point3D {
     zx(vec3_a :Point3D, vec3_b :Point3D) :number { return Vector3D.crossProductAsin.y(vec3_b , vec3_a) },
 
     /**
-     * Returns arcsine of opposite cross product of [y] and [z] parameters.
+     * Returns arcsine of opposite cross product from [y] and [z] parameters.
      * @param {Point3D} vec3_a Vector A.
      * @param {Point3D} vec3_b Vector B.
      * @returns Cross product arcsine.
@@ -792,12 +1152,47 @@ class Vector3D implements Point3D {
   
   
 
-  static spherical         (vec3 :Point3D) :PointSpherical    { return { azimuth :this.azimuth(vec3), zenith :this.zenith(vec3), radius :this.magnitude(vec3) } }
-  static sphericalVector   (vec3 :Point3D) :VectorSpherical   { return new VectorSpherical([this.azimuth(vec3), this.zenith(vec3), this.magnitude(vec3)]) }
-  static cylindrical       (vec3 :Point3D) :PointCylindrical  { return { azimuth :this.azimuth(vec3), radius :this.magnitude(vec3), z :vec3.z } }
-  static cylindricalVector (vec3 :Point3D) :VectorCylindrical { return new VectorCylindrical([this.azimuth(vec3), this.magnitude(vec3), vec3.z]) }
-  static matrix            (vec3 :Point3D) :matrix            { return [[vec3.x , vec3.y , vec3.z]] }
-  static point             (vec3 :Point3D) :Dot3D             { return new Dot3D(vec3) }
+  /**
+   * Returns parameters of given vector in spherical coordinate system.
+   * @param {Point3D} vec3 Given vector.
+   * @returns PointSpherical
+   * */
+  static spherical (vec3 :Point3D) :PointSpherical { return { azimuth :this.azimuth(vec3), zenith :this.zenith(vec3), radius :this.magnitude(vec3) } }
+  
+  /**
+   * Returns spherical vector, equivalent to given vector.
+   * @param {Point3D} vec3 Given vector.
+   * @returns VectorSpherical
+   * */
+  static sphericalVector(vec3 :Point3D) :VectorSpherical { return new VectorSpherical([this.azimuth(vec3), this.zenith(vec3), this.magnitude(vec3)]) }
+
+  /**
+   * Returns parameters of given vector in cylindrical coordinate system.
+   * @param {Point3D} vec3 Given vector.
+   * @returns PointSpherical
+   * */
+  static cylindrical(vec3 :Point3D) :PointCylindrical { return { azimuth :this.azimuth(vec3), radius :this.magnitude(vec3), z :vec3.z } }
+
+  /**
+   * Returns cylindrical vector, equivalent to given vector.
+   * @param {Point3D} vec3 Given vector.
+   * @returns VectorSpherical
+   * */
+  static cylindricalVector (vec3 :Point3D) :VectorCylindrical { return new VectorCylindrical(this.cylindrical(vec3)) }
+
+  /**
+   * Returns given vector im matrix form.
+   * @param {Point3D} vec3 Given vector.
+   * @returns matrix
+   * */
+  static matrix(vec3 :Point3D) :matrix { return [[vec3.x , vec3.y , vec3.z]] }
+
+  /**
+   * Returns Dot3D with given vector parameters.
+   * @param {Point3D} vec3 Given vector.
+   * @returns Dot3D
+   * */
+  static point(vec3 :Point3D) :Dot3D { return new Dot3D(vec3) }
 
 
 
