@@ -281,7 +281,29 @@ class Matrix extends Array implements matrix {
 
 
 
+
+  /**
+   * Returns cartesian product of two 1-dimensional arrays.
+   * @param {number[]} array_a Array A.
+   * @param {number[]} array_b Array B.
+   * @returns number[][][]
+   * */
+  static cartesianProduct(array_a :number[], array_b :number[]) :number[][][] {
+    let out_height = array_a.length
+    let out_width  = array_b.length
+    let out = []
+    for(let y = 0; y < out_height; y++){
+      out[y] = new Array(out_width)
+      for(let x = 0; x < out_width; x++){
+        out[y][x] = [array_a[y] , array_b[x]]
+      }
+    }
+    return out
+  }
+
   
+
+
 
   /**
    * Returns true if [matrix] width equals to [matrix] height.
