@@ -9,4 +9,4 @@ interface Round2D extends Point2D { radius: number }
 interface Round3D extends Round2D { z: number }
 
 type matrix = number[][]
-interface poly_regular extends Point2D , PointPolar{ gons :number}
+interface poly_regular extends Point2D , PointPolar{ gons :number }
