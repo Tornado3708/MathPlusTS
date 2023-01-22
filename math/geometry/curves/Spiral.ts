@@ -6,7 +6,7 @@ import SpiralParabolic   from "./spirals/SpiralParabolic.js";
 import SpiralSinusoidal  from "./spirals/SpiralSinusoidal.js";
 
 
-class Spiral {
+export default class Spiral {
 
   
   static Archimedean = SpiralArchimedean;
@@ -18,5 +18,3 @@ class Spiral {
 
   
 }
-
-export default Spiral;

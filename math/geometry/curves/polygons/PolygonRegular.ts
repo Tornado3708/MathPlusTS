@@ -4,7 +4,7 @@ const polygon_error  = Error(`Count of polygons is lower than 3.`)
 
 
 /**Class for representation of regular polygon.*/
-class PolygonRegular implements poly_regular {
+export default class PolygonRegular implements poly_regular {
 
   public x       :number=0
   public y       :number=0
@@ -147,5 +147,3 @@ class PolygonRegular implements poly_regular {
   static HEXAGON        :poly_regular = { x: 0, y: 0, gons: 6, radius: 1, azimuth:  0 }
   
 }
-
-export default PolygonRegular

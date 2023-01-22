@@ -5,7 +5,7 @@ import Hypocycloid      from "./roulettes/Hypocycloid.js";
 import Hypotrochoid     from "./roulettes/Hypotrochoid.js";
 import Trochoid         from "./roulettes/Trochoid.js";
 
-class Roulette {
+export default class Roulette {
 
   static Cycloid          = Cycloid;
   static Epicycloid       = Epicycloid;
@@ -16,5 +16,3 @@ class Roulette {
   
 
 }
-
-export default Roulette;
