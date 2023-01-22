@@ -7,8 +7,4 @@ import { simplePolar } from "../simplify.js"
  * @param {point2D} [param0] Object.{x: number, y: number} 
  * @returns polar
  * */
-export default function cart2polar({x=0,y=0} :point2D): polar {
-  let mag  = magnitude(x,y)
-  let azim = azimuth  (y,x)
-  return simplePolar(azim,mag)
-}
+export default function cart2polar({x=0,y=0} :point2D): polar { return simplePolar(azimuth(y,x),magnitude(x,y)) }
