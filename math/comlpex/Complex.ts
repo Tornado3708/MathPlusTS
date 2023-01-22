@@ -46,8 +46,8 @@ class Complex implements complex {
   static modulus   ({real,imag} :complex)          :number      { return magnitude(real , imag) }
   static argument  ({real,imag} :complex)          :number      { return azimuth(imag , real) }
   static value     ({real,imag} :complex)          :number      { return magnitude(real , imag) * Math.cas(azimuth(imag,real)) }
-  static toPolar   ({real,imag} :complex)          :PointPolar  { return { azimuth: azimuth(imag , real) , radius: magnitude(imag , real) } }
-  static fromPolar ({azimuth,radius} :PointPolar)  :Complex     { return new Complex([Math.cos(azimuth) * radius , Math.sin(azimuth) * radius]) }
+  static toPolar   ({real,imag} :complex)          :polar       { return { azimuth: azimuth(imag , real) , radius: magnitude(imag , real) } }
+  static fromPolar ({azimuth,radius} :polar)       :Complex     { return new Complex([Math.cos(azimuth) * radius , Math.sin(azimuth) * radius]) }
 
 
   static ZERO         :complex = { real: 0 , imag: 0 }

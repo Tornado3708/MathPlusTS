@@ -1,5 +1,5 @@
 /**Class that represents 2-dimensional circle.*/
-class Circle implements Round2D{
+class Circle implements round2D{
 
   public x:number=0
   public y:number=0

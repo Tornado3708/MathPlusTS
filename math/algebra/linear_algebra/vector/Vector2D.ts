@@ -3,7 +3,7 @@ import azimuth     from "../../../../generic_calculations/azimuth.js"
 import magnitude   from "../../../../generic_calculations/magnitude.js"
 import norm2d      from "../../../../generic_calculations/norm2d.js"
 import unit2d      from "../../../../generic_calculations/unit2d.js"
-import Dot2D       from "../../../geometry/Dot2D.js"
+import Dot2D       from "../../../geometry/Point2D.js"
 import VectorPolar from "./VectorPolar.js"
 
 

@@ -1,5 +1,9 @@
 class Triangle extends Array implements matrix {
+
+
   constructor(...points: Array<any>){
+
+
     super()
     for(let i = 0; i < 3; i++){
       this[i].push(
@@ -10,5 +14,6 @@ class Triangle extends Array implements matrix {
     }
   }
 }
+
 
 export default Triangle

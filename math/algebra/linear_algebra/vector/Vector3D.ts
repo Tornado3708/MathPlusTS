@@ -3,7 +3,7 @@ import magnitude         from "../../../../generic_calculations/magnitude.js"
 import norm3d            from "../../../../generic_calculations/norm3d.js"
 import unit3d            from "../../../../generic_calculations/unit3d.js"
 import zenith            from "../../../../generic_calculations/zenith.js"
-import Dot3D             from "../../../geometry/Dot3D.js"
+import Dot3D             from "../../../geometry/Point3D.js"
 import VectorCylindrical from "./VectorCylindrical.js"
 import VectorSpherical   from "./VectorSpherical.js"
 
