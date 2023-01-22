@@ -22,12 +22,18 @@ export default class Point3D implements point3D{
 
 
   /**
-   * Returns distance between this dot
-   * @param d2 
-   * @returns 
-   */
-  distance(d2 :point3D) :number { return Point3D.distance(this , d2) }
-  vector(start=Vector3D.ZERO) :Vector3D { return Point3D.vector  (this , start) }
+   * Returns distance between this point and given point.
+   * @param {point3D} [p2] Given point.
+   * @returns Number
+   * */
+  distance(p2 :point3D) :number { return Point3D.distance(this , p2) }
+
+  /**
+   * Returns vector with this point parameters, relative to [start] point.
+   * @param {point3D} [start] [start] If is, vector will be generated relative to [start] as start of 3-dimensional coordinate system.
+   * @returns Number
+   * */
+  vector = (start: point3D  = Vector3D.ZERO) :Vector3D => Point3D.vector(this , start) 
 
 
   /**
@@ -45,5 +51,10 @@ export default class Point3D implements point3D{
    * @param {point3D} param1 Start point, as relative start of coordinate system.
    * @returns Vector3D
    * */
-  static vector({x=0,y=0,z=0} :point3D, {x:x0,y:y0,z:z0} :point3D=Vector3D.ZERO) :Vector3D { return new Vector3D([x - x0 , y - y0 , z - z0]) }
+  static vector({x=0,y=0,z=0} :point3D, {x:x0,y:y0,z:z0} :point3D=Point3D.ZERO) :Vector3D { return new Vector3D([x - x0 , y - y0 , z - z0]) }
+
+
+
+  static ZERO: point3D = Vector3D.ZERO
+  static zero: matrix  = Vector3D.zero
 }

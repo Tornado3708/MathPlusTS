@@ -1,7 +1,7 @@
-class Triangle extends Array implements matrix {
+export default class Triangle extends Array implements matrix {
 
 
-  constructor(...points: Array<any>){
+  constructor({...points}){
 
 
     super()
@@ -14,6 +14,3 @@ class Triangle extends Array implements matrix {
     }
   }
 }
-
-
-export default Triangle
