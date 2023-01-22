@@ -10,7 +10,7 @@ import VectorPolar from "./VectorPolar.js"
 
 
 /**Class for representation of vector in 2-dimensional space.*/
-class Vector2D implements Point2D {
+class Vector2D implements point2D {
 
   public x :number = 0
   public y :number = 0
@@ -74,12 +74,12 @@ class Vector2D implements Point2D {
   /**Returns normalised vector, calculated by magnitude.
    * @returns Object with normalised parameters.
    * */
-  get unit() :Point2D{ return unit2d(this) }
+  get unit() :point2D{ return unit2d(this) }
   
   /**Returns normalised vector, calculated by azimuth.
    * @returns Object with normalised parameters.
    * */
-  get norm() :Point2D{ return norm2d(this) }
+  get norm() :point2D{ return norm2d(this) }
 
 
 
@@ -93,7 +93,7 @@ class Vector2D implements Point2D {
 
   
   /**Returns coordinates of this vector in polar coordinates.*/
-  get polar() :PointPolar { return cart2polar(this) }
+  get polar() :polar { return cart2polar(this) }
 
   /**Returns vector in polar coordinates, that is equivalent of this vector.*/
   get polarVector() :VectorPolar { return Vector2D.polarVector(this) }
@@ -108,170 +108,170 @@ class Vector2D implements Point2D {
 
 
   /**Returns dot product of this vector and vector [vec2].
-   * @param {Point2D} vec2 2-dimensional vector or object with [x] and [y] values.
+   * @param {point2D} vec2 2-dimensional vector or object with [x] and [y] values.
    * @returns Dot product of two vectors.
    * */
-  dotProduct(vec2: Point2D) :number { return Vector2D.dotProduct(this, vec2) }
+  dotProduct(vec2: point2D) :number { return Vector2D.dotProduct(this, vec2) }
   
   /**Returns cosine of dot product of this vector and vector [vec2].
-   * @param {Point2D} vec2 2-dimensional vector or object with [x] and [y] values.
+   * @param {point2D} vec2 2-dimensional vector or object with [x] and [y] values.
    * @returns Cosine of dot product.
    * */
-  dotProductCos(vec2: Point2D) :number { return Vector2D.dotProductCos (this, vec2) }
+  dotProductCos(vec2: point2D) :number { return Vector2D.dotProductCos (this, vec2) }
 
   /**Returns azimuth between this vector and vector [vec2].
-   * @param {Point2D} vec2 2-dimensional vector or object with [x] and [y] values.
+   * @param {point2D} vec2 2-dimensional vector or object with [x] and [y] values.
    * @returns Arccosine of dot product.
    * */
-  dotProductAcos(vec2: Point2D) :number { return Vector2D.dotProductAcos(this, vec2) }
+  dotProductAcos(vec2: point2D) :number { return Vector2D.dotProductAcos(this, vec2) }
 
 
 
   
   /**Returns cross product of this vector and given vector.
-   * @param {Point2D} vec2 Object with parameters.
+   * @param {point2D} vec2 Object with parameters.
    * @returns Cross product of these vectors.
    * */
-  crossProduct(vec2 :Point2D) :number { return Vector2D.crossProduct(this, vec2) }
+  crossProduct(vec2 :point2D) :number { return Vector2D.crossProduct(this, vec2) }
 
   /**Returns normalised cross product of this vector and given vector.
-   * @param {Point2D} vec2 Object with parameters.
+   * @param {point2D} vec2 Object with parameters.
    * @returns Sine of cross product of these vectors.
    * */
-  crossProductSin(vec2: Point2D) :number { return Vector2D.crossProductSin(this, vec2) }
+  crossProductSin(vec2: point2D) :number { return Vector2D.crossProductSin(this, vec2) }
 
   /**Returns azimuth between this vector and given vector.
-   * @param {Point2D0} vec2 Object with parameters.
+   * @param {point2D0} vec2 Object with parameters.
    * @returns Arcsine of cross product.
    * */
-  crossProductAsin(vec2: Point2D) :number { return Vector2D.crossProductAsin(this, vec2)}
+  crossProductAsin(vec2: point2D) :number { return Vector2D.crossProductAsin(this, vec2)}
 
 
 
 
   /**Addition function.
-   * @param {Point2D} vec2 Object with parameters.
+   * @param {point2D} vec2 Object with parameters.
    * @param {number} x [x].
    * @param {number} y [y].
    * */
-  static add(vec2 :Point2D, x :number=0, y :number=0) :void { vec2.x += x , vec2.y += y }
+  static add(vec2 :point2D, x :number=0, y :number=0) :void { vec2.x += x , vec2.y += y }
 
   /**Subtraction function.
-   * @param {Point2D} vec2 Object with parameters.
+   * @param {point2D} vec2 Object with parameters.
    * @param {number} x [x].
    * @param {number} y [y].
    * */
-  static sub( vec2 :Point2D, x :number=0, y :number=0) :void { this.add(vec2, -x, -y) }
+  static sub( vec2 :point2D, x :number=0, y :number=0) :void { this.add(vec2, -x, -y) }
 
   /**Multiplication function.
-   * @param {Point2D} vec2 Object with parameters.
+   * @param {point2D} vec2 Object with parameters.
    * @param {number} x [x].
    * @param {number} y [y].
    * */
-  static mult(vec2 :Point2D, x :number=1, y :number=1) :void { vec2.x *= x , vec2.y *= y }
+  static mult(vec2 :point2D, x :number=1, y :number=1) :void { vec2.x *= x , vec2.y *= y }
 
   /**Division function.
-   * @param {Point2D} vec2 Object with parameters.
+   * @param {point2D} vec2 Object with parameters.
    * @param {number} x [x].
    * @param {number} y [y].
    * */
-  static div(vec2 :Point2D, x :number=1, y :number=1) :void { this.mult(vec2 , 1 / x , 1 / y) }
+  static div(vec2 :point2D, x :number=1, y :number=1) :void { this.mult(vec2 , 1 / x , 1 / y) }
 
 
 
   
   /**Returns magnitude of given vector.
-   * @param {Point2D} vec2 
+   * @param {point2D} vec2 
    * @returns Magnitude of vector.
    */
-  static magnitude(vec2:Point2D) :number { return magnitude(vec2.x,vec2.y) }
+  static magnitude(vec2:point2D) :number { return magnitude(vec2.x,vec2.y) }
 
   /**Returns azimuth of given vector.
-   * @param {Point2D} vec2 Object with properties.
+   * @param {point2D} vec2 Object with properties.
    * @returns Azimuth of vector.
    */
-  static azimuth(vec2:Point2D) :number { return azimuth(vec2.y, vec2.x) }
+  static azimuth(vec2:point2D) :number { return azimuth(vec2.y, vec2.x) }
 
   
 
   
   /**Returns given vector as normalised, calculated by magnitude.
-   * @param {Point2D} vec2 Object with parameters.
+   * @param {point2D} vec2 Object with parameters.
    * @returns Object with normalised parameters.
    * */
-  static unit(vec2 :Point2D) :Point2D { return unit2d(vec2) }
+  static unit(vec2 :point2D) :point2D { return unit2d(vec2) }
 
   /**Returns given vector as normalised, calculated by azimuth.
-   * @param {Point2D} vec2 Object with parameters.
+   * @param {point2D} vec2 Object with parameters.
    * @returns Object with normalised parameters.
    * */
-  static norm(vec2 :Point2D) :Point2D { return norm2d(vec2) }
+  static norm(vec2 :point2D) :point2D { return norm2d(vec2) }
 
 
 
   
   /**Returns dot product of these vectors.
-   * @param {Point2D} vec2_a Vector A.
-   * @param {Point2D} vec2_b Vector B.
+   * @param {point2D} vec2_a Vector A.
+   * @param {point2D} vec2_b Vector B.
    * @returns Dot product of vectors.
    * */
-  static dotProduct(vec2_a :Point2D, vec2_b :Point2D) :number { return vec2_a.x * vec2_b.x + vec2_a.y * vec2_b.y }
+  static dotProduct(vec2_a :point2D, vec2_b :point2D) :number { return vec2_a.x * vec2_b.x + vec2_a.y * vec2_b.y }
 
   /**Returns normalised dot product of these vectors.
-   * @param {Point2D} vec2_a Vector A.
-   * @param {Point2D} vec2_b Vector B.
+   * @param {point2D} vec2_a Vector A.
+   * @param {point2D} vec2_b Vector B.
    * @returns Cosine of dot product of this vectors.
    * */
-  static dotProductCos(vec2_a: Point2D, vec2_b: Point2D): number {
+  static dotProductCos(vec2_a: point2D, vec2_b: point2D): number {
     let result = this.dotProduct(vec2_a, vec2_b)
     result = result * (1 / (this.magnitude(vec2_a) * this.magnitude(vec2_b)))
     return result + Number.EPSILON * Math.sign(result)
   }
   
   /**Returns azimuth between these vectors.
-   * @param {Point2D} vec2_a Vector A.
-   * @param {Point2D} vec2_b Vector B.
+   * @param {point2D} vec2_a Vector A.
+   * @param {point2D} vec2_b Vector B.
    * @returns Arccosine of dot product.
    * */
-  static dotProductAcos(vec2_a :Point2D, vec2_b :Point2D) :number { return Math.acos(this.dotProductCos(vec2_a, vec2_b)) }
+  static dotProductAcos(vec2_a :point2D, vec2_b :point2D) :number { return Math.acos(this.dotProductCos(vec2_a, vec2_b)) }
 
 
 
 
   /**
    * Returns cross product of these vectors.
-   * @param {Point2D} vec2_a Vector A.
-   * @param {Point2D} vec2_b Vector B.
+   * @param {point2D} vec2_a Vector A.
+   * @param {point2D} vec2_b Vector B.
    * @returns Cross product of these vectors.
    * */
-  static crossProduct(vec2_a :Point2D, vec2_b :Point2D) :number { return vec2_a.x * vec2_b.y - vec2_a.y * vec2_b.x }
+  static crossProduct(vec2_a :point2D, vec2_b :point2D) :number { return vec2_a.x * vec2_b.y - vec2_a.y * vec2_b.x }
 
   /**Returns normalised cross product of these vectors.
-   * @param {Point2D} vec2_a Vector A.
-   * @param {Point2D} vec2_b Vector B.
+   * @param {point2D} vec2_a Vector A.
+   * @param {point2D} vec2_b Vector B.
    * @returns Sine of cross product of these vectors.
    * */
-  static crossProductSin(vec2_a :Point2D, vec2_b :Point2D) :number {
+  static crossProductSin(vec2_a :point2D, vec2_b :point2D) :number {
     let result = this.crossProduct(vec2_a, vec2_b)
     result = result * (1 / (this.magnitude(vec2_a) * this.magnitude(vec2_b)))
     return result + Number.EPSILON * Math.sign(result) * .5 
   }
 
   /**Returns azimuth between two vectors.
-   * @param {Point2D} vec2_a Vector A.
-   * @param {Point2D} vec2_b Vector B.
+   * @param {point2D} vec2_a Vector A.
+   * @param {point2D} vec2_b Vector B.
    * @returns Arcsine of cross product.
    * */
-  static crossProductAsin(vec2_a :Point2D, vec2_b :Point2D) :number { return Math.asin(this.crossProductSin(vec2_a, vec2_b)) }
+  static crossProductAsin(vec2_a :point2D, vec2_b :point2D) :number { return Math.asin(this.crossProductSin(vec2_a, vec2_b)) }
 
 
 
   
   /**Rotates vector by azimuth.
-   * @param {Point2D} vec2 Object with properties.
+   * @param {point2D} vec2 Object with properties.
    * @param {number} azimuth Azimuth of rotation.
    * */
-  static rotate(vec2 :Point2D ,azimuth :number=0): void {
+  static rotate(vec2 :point2D ,azimuth :number=0): void {
     let mag = this.magnitude(vec2)
     azimuth += this.azimuth(vec2)
     vec2.x = mag * Math.cos(azimuth)
@@ -282,42 +282,42 @@ class Vector2D implements Point2D {
   
   
   /**Returns given vector in polar coordinate system.
-   * @param {Point2D} vec2 Object with properties.
+   * @param {point2D} vec2 Object with properties.
    * @returns Vector in polar coordinate system.
    * */
-  static polar(vec2 :Point2D): PointPolar { return cart2polar(vec2) }
+  static polar(vec2 :point2D): polar { return cart2polar(vec2) }
   
   /**Returns polar vector, equivalent to [vec2].
-   * @param {Point2D} vec2 Object with properties.
+   * @param {point2D} vec2 Object with properties.
    * @returns Polar vector.
    * */
-  static polarVector(vec2 :Point2D): VectorPolar { return new VectorPolar(this.polar(vec2)) }
+  static polarVector(vec2 :point2D): VectorPolar { return new VectorPolar(this.polar(vec2)) }
 
   /**Returns [vec2] in matrix form.
-   * @param {Point2D} vec2 Object with properties.
+   * @param {point2D} vec2 Object with properties.
    * @returns 2-dimensional array.
    * */
-  static matrix(vec2 :Point2D): matrix { return [ [ vec2.x , vec2.y ] ] }
+  static matrix(vec2 :point2D): matrix { return [ [ vec2.x , vec2.y ] ] }
 
   /**
    * Returns [vec2] as dot in 2-dimensional point.
-   * @param {Point2D} vec2 2-dimensional vector.
+   * @param {point2D} vec2 2-dimensional vector.
    * @returns Dot2D
    */
-  static point(vec2 :Point2D): Dot2D { return new Dot2D(vec2) }
+  static point(vec2 :point2D): Dot2D { return new Dot2D(vec2) }
 
 
 
 
-  static ZERO       :Point2D = { x:  0 , y:  0 }
-  static DOWN       :Point2D = { x:  0 , y: -1 }
-  static LEFT       :Point2D = { x: -1 , y:  0 }
-  static RIGHT      :Point2D = { x:  1 , y:  0 } 
-  static UP         :Point2D = { x:  0 , y:  1 }
-  static LEFT_DOWN  :Point2D = { x: -Math.SQRT1_2 , y: -Math.SQRT1_2 }
-  static LEFT_UP    :Point2D = { x: -Math.SQRT1_2 , y:  Math.SQRT1_2 }
-  static RIGHT_DOWN :Point2D = { x:  Math.SQRT1_2 , y: -Math.SQRT1_2 }
-  static RIGHT_UP   :Point2D = { x:  Math.SQRT1_2 , y:  Math.SQRT1_2 }
+  static ZERO       :point2D = { x:  0 , y:  0 }
+  static DOWN       :point2D = { x:  0 , y: -1 }
+  static LEFT       :point2D = { x: -1 , y:  0 }
+  static RIGHT      :point2D = { x:  1 , y:  0 } 
+  static UP         :point2D = { x:  0 , y:  1 }
+  static LEFT_DOWN  :point2D = { x: -Math.SQRT1_2 , y: -Math.SQRT1_2 }
+  static LEFT_UP    :point2D = { x: -Math.SQRT1_2 , y:  Math.SQRT1_2 }
+  static RIGHT_DOWN :point2D = { x:  Math.SQRT1_2 , y: -Math.SQRT1_2 }
+  static RIGHT_UP   :point2D = { x:  Math.SQRT1_2 , y:  Math.SQRT1_2 }
   static DOWN_LEFT           = this.LEFT_DOWN
   static DOWN_RIGHT          = this.RIGHT_DOWN
   static UP_LEFT             = this.LEFT_UP

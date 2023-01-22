@@ -1,9 +1,9 @@
 import VectorCylindrical from "./VectorCylindrical.js"
 import Vector3D          from "./Vector3D.js"
 
-const toArray = ({ azimuth , zenith , radius } :PointSpherical) => {return [azimuth , zenith , radius] }
+const toArray = ({ azimuth , zenith , radius } :spherical) => {return [azimuth , zenith , radius] }
 
-class VectorSpherical implements PointSpherical{
+class VectorSpherical implements spherical{
 
 
   public radius  :number=0
@@ -185,7 +185,7 @@ class VectorSpherical implements PointSpherical{
    * @readonly
    * @returns Object{x , y , z}
    */
-  get toCartesian(): Point3D{
+  get toCartesian(): point3D{
 
     let azimuth = this.azimuth;
     let zenith  = this.zenith;
@@ -222,7 +222,7 @@ class VectorSpherical implements PointSpherical{
    * @readonly
    * @returns Object{azimuth , radius , z}
    */
-  get toCylindrical(): PointCylindrical{
+  get toCylindrical(): cylindrical{
 
     let zenith = this.zenith;
     let radius = this.radius;
@@ -234,13 +234,13 @@ class VectorSpherical implements PointSpherical{
     }
 
   }
-  static ZERO    : PointSpherical = {azimuth : 0 , zenith: 0 , radius: 0}
-  static BACK    : PointSpherical = {azimuth : 0 , zenith : Math.PI , radius : 1}
-  static DOWN    : PointSpherical = {azimuth : -Math.PI * 0.5 , zenith : Math.PI * 0.5 , radius : 1}
-  static FORWARD : PointSpherical = {azimuth : 0 , zenith : 0 , radius : 1}
-  static LEFT    : PointSpherical = {azimuth : Math.PI , zenith : Math.PI * 0.5 , radius : 1}
-  static RIGHT   : PointSpherical = {azimuth : 0 , zenith : Math.PI * 0.5 , radius : 1}
-  static UP      : PointSpherical = {azimuth : Math.PI * 0.5 , zenith : Math.PI * 0.5 , radius : 1}
+  static ZERO    : spherical = {azimuth : 0 , zenith: 0 , radius: 0}
+  static BACK    : spherical = {azimuth : 0 , zenith : Math.PI , radius : 1}
+  static DOWN    : spherical = {azimuth : -Math.PI * 0.5 , zenith : Math.PI * 0.5 , radius : 1}
+  static FORWARD : spherical = {azimuth : 0 , zenith : 0 , radius : 1}
+  static LEFT    : spherical = {azimuth : Math.PI , zenith : Math.PI * 0.5 , radius : 1}
+  static RIGHT   : spherical = {azimuth : 0 , zenith : Math.PI * 0.5 , radius : 1}
+  static UP      : spherical = {azimuth : Math.PI * 0.5 , zenith : Math.PI * 0.5 , radius : 1}
   static zero    = [0 , 0 , 0];
   static back    = toArray(this.BACK)
   static down = [-Math.PI_HALF || -Math.PI * 0.5 , Math.PI_HALF || Math.PI * 0.5 , 1];

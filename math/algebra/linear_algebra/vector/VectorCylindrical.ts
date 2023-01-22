@@ -1,10 +1,14 @@
 import Vector3D from "./Vector3D.js"
 import VectorSpherical from "./VectorSpherical.js"
 
+
+
 let toArray = ({ azimuth=0 , radius=0 , z=0 }) => { return [azimuth , radius , z] } 
 
+
+
 /**CylindricalVector is instance for presentation of three-dimensional vector in cylindrical coordinates.*/
-class VectorCylindrical implements PointCylindrical{
+class VectorCylindrical implements cylindrical{
 
 
   public azimuth :number=0
@@ -34,26 +38,28 @@ class VectorCylindrical implements PointCylindrical{
   }
 
 
+
+
   /**
    * Returns given spherical vector parameters in cartesian coordinate system.
-   * @param {PointCylindrical} [param0] Object.{azimuth , radius , z}
+   * @param {cylindrical} [param0] Object.{azimuth , radius , z}
    * @returns Point3D
    * */
-  static cartesian({ azimuth=0 , radius=0 , z=0 } :PointCylindrical) :Point3D { return { x: Math.cos(azimuth) * radius , y: Math.sin(azimuth) * radius, z: z } }
+  static cartesian({ azimuth=0 , radius=0 , z=0 } :cylindrical) :point3D { return { x: Math.cos(azimuth) * radius , y: Math.sin(azimuth) * radius, z: z } }
 
   /**
    * Returns 3-dimensional cartesian vector, equivalent to given cylindrical vector.
-   * @param {PointCylindrical} [param0] Object.{azimuth , radius , z}
+   * @param {cylindrical} [param0] Object.{azimuth , radius , z}
    * @returns Vector3D
    * */
-  static cartesianVector({ azimuth=0 , radius=0 , z=0 }: PointCylindrical) :Vector3D { return new Vector3D(this.cartesian({ azimuth , radius , z })) }
+  static cartesianVector({ azimuth=0 , radius=0 , z=0 }: cylindrical) :Vector3D { return new Vector3D(this.cartesian({ azimuth , radius , z })) }
 
   /**
    * Returns given spherical vector parameters in cylinric coordinate system.
-   * @param {PointCylindrical} [param0] Object.{azimuth , radius , z}
-   * @returns PointSpherical
+   * @param {cylindrical} [param0] Object.{azimuth , radius , z}
+   * @returns spherical
    * */
-  static spherical({ azimuth=0 , radius=0 , z=0 } :PointCylindrical) :PointSpherical {
+  static spherical({ azimuth=0 , radius=0 , z=0 } :cylindrical) :spherical {
     let new_radius = Math.hypot(radius , z)
     return {
       azimuth : azimuth,
@@ -64,16 +70,16 @@ class VectorCylindrical implements PointCylindrical{
 
   /**
    * Return spherical vector, equivalent to given cilindrical vector.
-   * @param {PointCylindrical} [param0] Objet.{azimuth , radius , z}
+   * @param {cylindrical} [param0] Objet.{azimuth , radius , z}
    * @returns VectorSpherical
    * */
-  static sphericalVector({azimuth=0 , radius=0 , z=0} :PointCylindrical) :VectorSpherical { return new VectorSpherical(this.spherical({ azimuth , radius , z })) }
+  static sphericalVector({azimuth=0 , radius=0 , z=0} :cylindrical) :VectorSpherical { return new VectorSpherical(this.spherical({ azimuth , radius , z })) }
 
-  /**
-   * {azimuth : 0 , radius : 0 , z : 0}
-   * @static
-   */
-  static ZERO: PointCylindrical = {azimuth : 0 , radius : 0 , z : 0}
+
+
+
+
+  static ZERO: cylindrical = {azimuth : 0 , radius : 0 , z : 0}
 
   static zero: number[] = toArray(this.ZERO)
 }
