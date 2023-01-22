@@ -1,5 +1,5 @@
 {
-  "name": "mathplusts",
+  "name": "@tornado3708/mathplusts",
   "version": "0.0.1",
   "description": "MathPlusTS - typescript library for extending built-in Math object. It will include vectors, matrices, geometrical shapes etc.",
   "main": "mathplus.ts",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tornado3708/MathPlusTS.git"
+    "url": "https://github.com/Tornado3708/MathPlusTS.git"
   },
   "author": "Tornado3708",
   "license": "ISC",
@@ -17,7 +17,8 @@
     "url": "https://github.com/Tornado3708/MathPlusTS/issues"
   },
   "homepage": "https://github.com/Tornado3708/MathPlusTS#readme",
-  "dependencies": {
-    "typescript": "^4.9.4"
+
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
