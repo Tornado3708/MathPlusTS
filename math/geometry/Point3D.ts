@@ -1,7 +1,8 @@
 import Vector3D from "../algebra/linear_algebra/vector/Vector3D.js"
 
 
-export default class Dot3D implements point3D{
+/***/
+export default class Point3D implements point3D{
   
   public x: number = 0
   public y: number = 0
@@ -25,8 +26,8 @@ export default class Dot3D implements point3D{
    * @param d2 
    * @returns 
    */
-  distance(d2 :point3D) :number { return Dot3D.distance(this , d2) }
-  vector(start=Vector3D.ZERO) :Vector3D { return Dot3D.vector  (this , start) }
+  distance(d2 :point3D) :number { return Point3D.distance(this , d2) }
+  vector(start=Vector3D.ZERO) :Vector3D { return Point3D.vector  (this , start) }
 
 
   /**
