@@ -1,7 +1,7 @@
 import magnitude from "./magnitude.js"
 import { simple3D } from "../simplify.js"
 
-export default function unit3d({x=0,y=0,z=0}): Point3D {
+export default function unit3d({x=0,y=0,z=0}): point3D {
   let mag = 1 / magnitude(x,y,z)
   return simple3D(x / mag , y / mag , z / mag)
 }
