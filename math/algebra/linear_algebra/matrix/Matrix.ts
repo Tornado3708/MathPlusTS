@@ -22,18 +22,23 @@ class Matrix extends Array implements matrix {
   /**
    * Creates Matrix using 2-dimensional array.
    * @param {matrix} matrix 2-dimensional array.
-   */
+   * */
   constructor(matrix: matrix){
     super()
     let length = matrix[0].length
     for(let i in matrix){
-      if(matrix[i].length === length) this[i] = matrix[i]
+      if(matrix[i].length === length)
+        this[i] = matrix[i]
       else{
         let diff = length - matrix[i].length
-        if(diff > 0) for(let i = 0; i < diff; i++){ matrix[i].push(0) }
+        if(diff > 0) for(let i = 0; i < diff; i++){
+          matrix[i].push(0)
+        }
         else{
           let now = matrix[i].length
-          for(let i = 0; i > diff; i--){ matrix[i].splice(now + i, 1) }
+          for(let i = 0; i > diff; i--){
+            matrix[i].splice(now + i, 1)
+          }
         }
       }
     }
@@ -42,33 +47,40 @@ class Matrix extends Array implements matrix {
   
   /**
    * Addition function. Gets matrix or number as second parameter.
-   * @param {number | matrix} add Matrix or number for addition.
+   * @param {num_mat} add Matrix or number for addition.
    * */
-  add (add: number | matrix=0)  :void { Matrix.add (this ,  add) }
+  add = (add: num_mat=0) :void => Matrix.add(this ,  add)
 
   /**
    * Subtraction function. Gets matrix or number as second parameter.
-   * @param {number | matrix} sub Matrix or number for subtraction.
+   * @param {num_mat} sub Matrix or number for subtraction.
    * */
-  sub (sub: number | matrix=0)  :void { Matrix.sub (this ,  sub) }
+  sub = (sub: num_mat=0)  :void => Matrix.sub(this ,  sub)
 
   /**
    * Multiplication function. Gets matrix or number as second parameter.
-   * @param {number | matrix} mult Matrix or number for multiplication.
+   * @param {num_mat} mult Matrix or number for multiplication.
    * */
-  mult(mult: number | matrix=0) :void { Matrix.mult(this , mult) }
+  mult = (mult: num_mat=0) :void => Matrix.mult(this , mult) 
 
   /**
    * Division function. Gets matrix or number as second parameter.
-   * @param {number | matrix} div Matrix or number for division. 
+   * @param {num_mat} div Matrix or number for division. 
    * */
-  div (div: number | matrix=0)  :void { Matrix.div (this ,  div) }
+  div = (div: num_mat=0) :void => Matrix.div(this ,  div) 
+
+
+
+
 
   /**Transpose matrix.*/
   transposing() :void { Matrix.transposing(this) }
   
   /**Reversing matrix.*/
   reversing()   :void { Matrix.reversing  (this) }
+
+
+
 
   /**
    * Returns size of matrix as array. [Matrix[0].length , Matrix.length].
@@ -82,12 +94,14 @@ class Matrix extends Array implements matrix {
    * */
   get strSize() :string { return Matrix.strSize(this) }
 
+  
+  
+  
   /**
    * Returns true if matrix row count is eqiuvalent to matrix column count. Else returns false.
    * @returns Boolean
    * */
   get iSquare() :boolean { return Matrix.isSquare(this) }
-
 
   /**
    * Returns true if this matrix width and given matrix height are same.
@@ -98,6 +112,7 @@ class Matrix extends Array implements matrix {
 
 
 
+  
   /**
    * Addition function. Gets number as second parameter.
    * @param {matrix} [matrix] [matrix]
@@ -138,6 +153,9 @@ class Matrix extends Array implements matrix {
    * */
   static divNumber (matrix :matrix , number :number=1) :void { this.multNumber(matrix, 1 / number) }
 
+  
+  
+  
   /**Addition function. Gets matrix as second parameter.
    * @param {matrix} main_matrix Matrix for changing.
    * @param {matrix} add_matrix  Matrix for addition.
@@ -206,6 +224,9 @@ class Matrix extends Array implements matrix {
     this.multMatrix(main_matrix, div)
   }
 
+  
+  
+  
   /**
    * Addition function. Gets matrix or number as second parameter.
    * @param {matrix}  [matrix] [matrix]
@@ -236,6 +257,7 @@ class Matrix extends Array implements matrix {
 
 
 
+  
   /**
    * Transposing of matrix.
    * @param {matrix} [matrix] [matrix]
@@ -262,6 +284,7 @@ class Matrix extends Array implements matrix {
 
 
 
+  
   /**
    * Returns array with size parameters of given matrix.
    * @param {matrix} [matrix] [matrix]
@@ -302,7 +325,6 @@ class Matrix extends Array implements matrix {
   }
 
   
-
 
 
   /**

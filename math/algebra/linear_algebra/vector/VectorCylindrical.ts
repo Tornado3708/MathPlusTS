@@ -8,7 +8,7 @@ let toArray = ({ azimuth=0 , radius=0 , z=0 }) => { return [azimuth , radius , z
 
 
 /**CylindricalVector is instance for presentation of three-dimensional vector in cylindrical coordinates.*/
-class VectorCylindrical implements cylindrical{
+export default class VectorCylindrical implements cylindrical{
 
 
   public azimuth :number=0
@@ -83,4 +83,3 @@ class VectorCylindrical implements cylindrical{
 
   static zero: number[] = toArray(this.ZERO)
 }
-export default VectorCylindrical
