@@ -1,7 +1,7 @@
 import Vector3D from "../algebra/linear_algebra/vector/Vector3D.js"
 
 
-export default class Dot3D implements Point3D{
+export default class Dot3D implements point3D{
   
   public x: number = 0
   public y: number = 0
@@ -18,9 +18,31 @@ export default class Dot3D implements Point3D{
     
   }
 
-  distance(d2 :Point3D)       :number   { return Dot3D.distance(this , d2) }
+
+
+  /**
+   * Returns distance between this dot
+   * @param d2 
+   * @returns 
+   */
+  distance(d2 :point3D) :number { return Dot3D.distance(this , d2) }
   vector(start=Vector3D.ZERO) :Vector3D { return Dot3D.vector  (this , start) }
 
-  static distance(d2_a :Point3D , d2_b :Point3D)            :number  { return Math.hypot(d2_a.x - d2_b.x , d2_a.y - d2_b.y , d2_a.z - d2_b.z) }
-  static vector(d2 :Point3D, start :Point3D=Vector3D.ZERO) :Vector3D { return new Vector3D([d2.x - start.x , d2.y - start.y , d2.z - start.z]) }
+
+  /**
+   * Returns distance between two 3-dimensional dots.
+   * @param {point3D} param0 Dot A.
+   * @param {point3D} param1 Dot B.
+   * @returns Number
+   * */
+  static distance({ x:x1=0 , y:y1=0 , z:z1=0 } :point3D, { x:x2=0 , y:y2=0 ,z:z2=0 } :point3D) :number { return Math.hypot(x1 - x2 , y1 - y2 , z1 - z2) }
+
+
+  /**
+   * Returns 3-dimensional cartesian vector with parameters of given dot, relative to start coordinates.
+   * @param {point3D} param0 Dot for transformation.
+   * @param {point3D} param1 Start point, as relative start of coordinate system.
+   * @returns Vector3D
+   * */
+  static vector({x=0,y=0,z=0} :point3D, {x:x0,y:y0,z:z0} :point3D=Vector3D.ZERO) :Vector3D { return new Vector3D([x - x0 , y - y0 , z - z0]) }
 }
