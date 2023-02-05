@@ -10,6 +10,9 @@ import Epicycloid from "./Epicycloid.js"
  * */
 export default class Epitrochoid {
 
+  static #buffer = {
+    matrix: [[0,0]]
+  }
 
 /**
  * Returns value of x-axis of centered trochoid by angle, radius of center circle, radius of satellite circle and distance from center of satellite circle.
@@ -17,9 +20,9 @@ export default class Epitrochoid {
  * @param {number} [centerR] Radius of center circle. Default value: 1.
  * @param {number} [satelliteR] Radius of satellite circle. Default value: 1.
  * @param {number} [distance] Distance from center of satellite circle.Default value: satelliteR.
- * @returns Number
+ * @returns {number} Number
  * */
-  static x(angle: number ,centerR: number = 1, satelliteR: number = 1, distance: number = satelliteR){
+  static x(angle: number ,centerR: number = 1, satelliteR: number = 1, distance: number = satelliteR) :number {
 
     return(distance === satelliteR 
       ? Epicycloid.x(angle, centerR, satelliteR) 
@@ -33,9 +36,9 @@ export default class Epitrochoid {
  * @param {number} [centerR] Radius of center circle. Default value: 1.
  * @param {number} [satelliteR] Radius of satellite circle. Default value: 1.
  * @param {number} [distance] Distance from center of satellite circle.Default value: satelliteR.
- * @returns Number
+ * @returns {number} Number
  * */
-  static y(angle: number ,centerR: number = 1, satelliteR: number = 1, distance: number = satelliteR){
+  static y(angle: number ,centerR: number = 1, satelliteR: number = 1, distance: number = satelliteR) :number {
 
     return(distance === satelliteR
       ? Epicycloid.y(angle, centerR, satelliteR)
@@ -51,16 +54,18 @@ export default class Epitrochoid {
    * @param {number} [distance] Distance from center of [satelliteR] circle.
    * @param {number} [length] Duration of generation.
    * @param {number} [step] Step of generation.
-   * @returns [ [ x: number , y: number ] , ... ]
+   * @returns {matrix} [ [ x: number , y: number ] , ... ]
    * */
   static generate(start: number=0,centerR: number = 1 ,satelliteR: number = 1,distance: number = satelliteR ,length: number=Math.TAU , step: number=Math.TAU * .001) :matrix {
-    let matrix = []
+    this.#buffer.matrix = []
     for(let i = start; i < start + length; i+=step){
-      matrix.push([
+      this.#buffer.matrix.push([
         this.x(i,centerR,satelliteR,distance),
         this.y(i,centerR,satelliteR,distance)
       ])
     }
-  return matrix
+  return this.#buffer.matrix
   }
+
+  static get last() :matrix { return this.#buffer.matrix }
 }

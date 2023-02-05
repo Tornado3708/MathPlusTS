@@ -5,6 +5,14 @@
  * */
 class Cycloid {
 
+  static #buffer = {
+  start: 0,
+  length: 0,
+  radius: 0,
+  step: 0,
+  matrix: [[0,0]]
+}
+
   /**
    * Returns value on x-axis with angle and radius.
    * @param {number} [angle]  Angle of "rolling".
@@ -32,11 +40,25 @@ class Cycloid {
    * @param {number} [step] Step of calculation. 
    * @returns [ [x: number , y: number ], ... ]
    * */
-  static generate(start: number = 0, length: number = Math.TAU, radius: number = 1, step: number = Math.TAU * .001): matrix {
-    let matrix = []
-    for(let i = start; i < length; i+=step){ matrix.push([this.x(i , radius) , this.y(i , radius)]) }
-    return matrix
+  static generate(start: number = 0, length: number = Math.TAU, radius: number = 1, step: number = Math.TAU * .001) :matrix {
+    if(
+      this.#buffer.start  !== start  ||
+      this.#buffer.length !== length ||
+      this.#buffer.radius !== radius ||
+      this.#buffer.step   !== step 
+    ){
+      this.#buffer.matrix = []
+      for(let i = start; i < start + length; i+=step){ this.#buffer.matrix.push([this.x(i , radius) , this.y(i , radius)]) }
+    }
+    
+    return this.#buffer.matrix
   }
+
+  /**
+   * Returns last generated cycloid (for optimisation).
+   * @returns {matrix} matrix
+   * */
+  static get last() :matrix { return this.#buffer.matrix }
 
 }
 
