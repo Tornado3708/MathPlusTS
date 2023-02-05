@@ -1,5 +1,8 @@
+import magnitude from "../../../generic_calculations/magnitude.js"
+import Point2D   from "../Point2D.js"
+
 /**Class that represents 2-dimensional circle.*/
-export default class Circle implements round2D{
+export default class Circle implements round2D {
 
   public x      :number=0
   public y      :number=0
@@ -75,7 +78,27 @@ export default class Circle implements round2D{
   /**
    * Returns circumference of given circle radius.
    * @param {number} [radius] [radius] 
-   * @returns 
-   */
+   * @returns Number
+   * */
   static circumference(radius :number) :number { return this.diameter(radius) * Math.PI }
+
+  /**
+   * Returns distance between bounds of two circles.
+   * @param {round2D} [param0] Circle A. 
+   * @param {round2D} [param1] Circle B. 
+   * @returns Number
+   * */
+  static distance({ x:x1=0 , y:y1=0 , radius:r1=0 } :round2D, { x:x2=0 , y:y2=0 , radius:r2=0 } :round2D): number { return magnitude(x1 - x2 , y1 - y2) - (r1 + r2) }
+
+
+  // static contact( { x:x1=0 , y:y1=0 , radius:r1=0 } :round2D, { x:x2=0 , y:y2=0 , radius:r2=0 } :round2D) :number[] {
+    // let center = {
+    //   x: (x1 + x2) * .5,
+    //   y: (y1 + y2) * .5
+    // }
+    // let distance = Point2D.distance({x:x2 , y:y2} , {x:x1 , y:y1})
+    // return }
+
+  /**toDo*/
+  // static triangulation({x:x1=0 , y:y1=0 , radius:r1=0} :round2D, {x:x2=0,y:y2=0,radius:r2=0} :round2D, {x:x3=0,y:y3=0,radius:r3=0}){/*toDo*/}
 }

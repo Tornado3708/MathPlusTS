@@ -62,6 +62,6 @@ export default class Point3D implements point3D{
 
 
 
-  static ZERO: point3D = Vector3D.ZERO
-  static zero: matrix  = Vector3D.zero
+  static ZERO = {x:0,y:0,z:0}
+  static zero = [0,0,0]
 }

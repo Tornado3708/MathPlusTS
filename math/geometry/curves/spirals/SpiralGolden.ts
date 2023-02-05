@@ -8,7 +8,6 @@ let buffer = {
 
 class SpiralGolden {
 
-
   /**
    * Returns value of x-axis of golden spiral by angle and coefficient.
    * @param {number} angle Angle of spiral.

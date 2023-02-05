@@ -44,7 +44,7 @@ export default class Point2D {
 
 
 
-  static ZERO = Vector2D.ZERO
-  static zero = Vector2D.zero
+  static ZERO = {x:0,y:0}
+  static zero = [0,0]
   
 }
