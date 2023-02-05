@@ -20,7 +20,7 @@ import Spiral            from "./math/geometry/curves/Spiral.js"
  * @param {number} [x] Value for calculation.
  * @param {number} [norm] Value for normalization.
  * @returns Number
- */
+ * */
 function sinc(x: number ,norm: number = 1): number{ return Math.sin(x * norm) / (x * norm) || 1; }
 
 
@@ -29,7 +29,7 @@ function sinc(x: number ,norm: number = 1): number{ return Math.sin(x * norm) / 
  * @param {number} [x] Value for calculation.
  * @param {number} [norm] Value for normalization.
  * @returns Number
- */
+ * */
 function cosc(x: number, norm: number = 1): number{ return Math.cos(x * norm) / (x * norm) || Infinity; }
 
 
@@ -37,7 +37,7 @@ function cosc(x: number, norm: number = 1): number{ return Math.cos(x * norm) / 
  * Cas - "cosine and sine". Sum of sine and cosine from one number.
  * @param {number} [x] Value for calculation.
  * @returns Number
- */
+ * */
 function cas(x: number): number{ return Math.sin(x) + Math.cos(x) || 0; }
 
 
@@ -45,7 +45,7 @@ function cas(x: number): number{ return Math.sin(x) + Math.cos(x) || 0; }
  * Secant. 1 / cos(x).
  * @param {number} [x] Value for calculation.
  * @returns Number
- */
+ * */
 function sec(x: number): number { return 1 / Math.cos(x) || 1; }
 
 
@@ -53,7 +53,7 @@ function sec(x: number): number { return 1 / Math.cos(x) || 1; }
  * Cosecant. 1 / sin(x).
  * @param {number} [x] Value for calculation.
  * @returns Number
- */
+ * */
 function cosec(x: number): number{ return 1 / Math.sin(x) || 1; }
 
 
@@ -61,7 +61,7 @@ function cosec(x: number): number{ return 1 / Math.sin(x) || 1; }
  * Returns value of degrees, equivalent to value in radians.
  * @param {number} [radians] Radians for translation to degrees.
  * @returns Number
- */
+ * */
 function toDegrees(radians: number): number{ return radians * Math.RAD2DEG || 0; }
 
 
@@ -69,7 +69,7 @@ function toDegrees(radians: number): number{ return radians * Math.RAD2DEG || 0;
  * Returns value of radians, equivalent to value in degrees.
  * @param {number} [degrees] Radians for translation to degrees.
  * @returns Number
- */
+ * */
 function toRadians(degrees: number): number{ return degrees * Math.DEG2RAD || 0; }
 
 
@@ -99,6 +99,7 @@ const PHI = (SQRT5 + 1) * .5;
 const phi = (SQRT5 - 1) * .5;
 
 
+/**Factorial calculation.*/
 function factorial(n :number) :number {
   if(n === 1) return 1
   if(n === 2) return 2
@@ -107,6 +108,7 @@ function factorial(n :number) :number {
   return int 
 }
 
+/**Installation function for extending Math object.*/
 export function install(): void{
 
   Math.Complex           = Complex
@@ -152,4 +154,5 @@ export function install(): void{
 
   Math.RAD2DEG    = 180 * (1 / Math.PI)
   Math.DEG2RAD    = Math.PI * (1 / 180)
+
 }
