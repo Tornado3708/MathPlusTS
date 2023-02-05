@@ -1,16 +1,23 @@
 import Vector3D from "../algebra/linear_algebra/vector/Vector3D.js"
 
 
-/***/
+/**Representation of 3-dimensional point.*/
 export default class Point3D implements point3D{
   
   public x: number = 0
   public y: number = 0
   public z: number = 0
 
+  /**
+   * - {   x: number   ,   y: number   ,   z: number   }
+   * - [ [ x: number   ,   y: number   ,   z: number ] ]
+   * - [ [ x: number ] , [ y: number ] , [ z: number ] ]
+   * - [   x: number   ,   y: number   ,   z: number   ]
+   * @param {point3D | matrix | number[] | undefined} [param0] Parameters.
+   * */
   constructor({...params}){
 
-    this.x = params.x ?? params[0][0] ?? params[0] ?? 0
+    this.x = params.x ?? params[0][0]                 ?? params[0] ?? 0
     this.y = params.y ?? params[0][1] ?? params[1][0] ?? params[1] ?? 0
     this.z = params.z ?? params[0][2] ?? params[2][0] ?? params[2] ?? 0
     if(!isFinite(this.x)){ this.x = 0 }
