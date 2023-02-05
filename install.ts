@@ -1,5 +1,7 @@
 import Complex           from "./math/comlpex/Complex.js"
 
+import Equation          from "./math/algebra/elementary_algebra/Equation.js"
+
 import Matrix            from "./math/algebra/linear_algebra/matrix/Matrix.js"
 
 import Tensor            from "./math/algebra/linear_algebra/tensor/Tensor.js"
@@ -112,6 +114,8 @@ function factorial(n :number) :number {
 export function install(): void{
 
   Math.Complex           = Complex
+
+  Math.Equation          = Equation
 
   Math.Matrix            = Matrix
   

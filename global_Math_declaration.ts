@@ -24,7 +24,6 @@ declare global {
   interface Math {
 
     Complex           :typeof Complex
-
     Equation          :typeof Equation
 
     Tensor            :typeof Tensor
