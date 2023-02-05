@@ -1,4 +1,3 @@
-import magnitude from "../../../generic_calculations/magnitude.js"
 import PolygonRegular from "./polygons/PolygonRegular.js"
 import Star from "./polygons/Star.js"
 
