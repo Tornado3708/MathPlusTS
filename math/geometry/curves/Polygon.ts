@@ -1,5 +1,5 @@
 import PolygonRegular from "./polygons/PolygonRegular.js"
-import Star from "./polygons/Star.js"
+import { Star } from "./polygons/Star.js"
 
 
 

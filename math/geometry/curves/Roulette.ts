@@ -1,4 +1,4 @@
-// import Cyclogon from "./roulettes/Cyclogon.js"
+import Cyclogon from "./roulettes/Cyclogon.js"
 import Cycloid          from "./roulettes/Cycloid.js"
 import Epicycloid       from "./roulettes/Epicycloid.js"
 import Epitrochoid      from "./roulettes/Epitrochoid.js"
@@ -14,7 +14,7 @@ import Trochoid         from "./roulettes/Trochoid.js"
  * */
 export default class Roulette {
   
-  // static Cyclogon       = Cyclogon
+  static Cyclogon       = Cyclogon
   static Cycloid        = Cycloid
   static Epicycloid     = Epicycloid
   static Epitrochoid    = Epitrochoid

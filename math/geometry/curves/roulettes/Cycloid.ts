@@ -40,13 +40,8 @@ class Cycloid {
    * @param {number} [step] Step of calculation. 
    * @returns [ [x: number , y: number ], ... ]
    * */
-  static generate(start: number = 0, length: number = Math.TAU, radius: number = 1, step: number = Math.TAU * .001) :matrix {
-    if(
-      this.#buffer.start  !== start  ||
-      this.#buffer.length !== length ||
-      this.#buffer.radius !== radius ||
-      this.#buffer.step   !== step 
-    ){
+  static generate(start :number=0, length :number=Math.TAU, radius :number=1, step :number=Math.TAU*.001) :matrix {
+    if(this.#buffer.start !== start || this.#buffer.length !== length || this.#buffer.radius !== radius || this.#buffer.step !== step){
       this.#buffer.matrix = []
       for(let i = start; i < start + length; i+=step){ this.#buffer.matrix.push([this.x(i , radius) , this.y(i , radius)]) }
     }

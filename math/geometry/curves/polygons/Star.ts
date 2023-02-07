@@ -1,7 +1,8 @@
+
 /**
  * Polygon for representation of stars.
  * */
-export default class Star {
+export class Star {
 
   static #buffer = {
     main: 0,
@@ -12,10 +13,10 @@ export default class Star {
 
   /**
    * Returns star in matrix form.
-   * @param {{x :number , y :number , peaks :number, in_radius :number, out_radius :number, angle :number}} [param0] Object.{x :number, y :number, peaks :number, in_radius :number, out_radius :number, angle :number}
-   * @returns {number[]} Array with points in matrix form.
+   * @param {{x: number, y: number, peaks: number, in_radius: number, out_radius: number, angle: number}} [param0] Object.{x: number, y: number, peaks: number, in_radius: number, out_radius: number, angle: number}
+   * @returns {matrix} [ [ x: number , y: number ] , ... ]
    * */
-  static generate({x = 0, y = 0 , peaks = 0 , in_radius = 0, out_radius = 0, angle = 0}: { x: number; y: number; peaks: number; in_radius: number; out_radius: number; angle: number}): number[][]{
+  static generate({x = 0, y = 0 , peaks = 0 , in_radius = 0, out_radius = 0, angle = 0}: {x: number, y: number, peaks: number, in_radius: number, out_radius: number, angle: number}) :matrix {
     this.#buffer.star = []
     this.#buffer.one = Math.TAU * (1 / peaks)
     for(let i = 0; i < peaks; i++){

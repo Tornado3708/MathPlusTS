@@ -1,12 +1,15 @@
-let buffer = {
+/**
+ * Representation of golden spiral.
+ */
+class SpiralGolden {
+
+  static #buffer = {
   matrix: [[0,0]],
   start: 0,
   mult: 0,
   length: 0,
   step: 0
 }
-
-class SpiralGolden {
 
   /**
    * Returns value of x-axis of golden spiral by angle and coefficient.
@@ -40,23 +43,24 @@ class SpiralGolden {
    * @returns {matrix} matrix
    * */
   static generate(start: number = 0, mult: number = 1, length: number = Math.TAU, step: number = length * .001) :matrix {
+    let _buffer = this.#buffer
     if(
-      buffer .start !== start  ||
-      buffer  .mult !== mult   ||
-      buffer.length !== length ||
-      buffer  .step !== step
-      ){
-        buffer.matrix = []
-        for(let i = start; i < start + length; i+=step){ buffer.matrix.push([ this.x(i,mult) , this.y(i,mult) ]) }
-      }
-      return buffer.matrix
+      _buffer .start !== start  ||
+      _buffer  .mult !== mult   ||
+      _buffer.length !== length ||
+      _buffer  .step !== step
+    ){
+      this.#buffer.matrix = []
+      for(let i = start; i < start + length; i+=step){ this.#buffer.matrix.push([ this.x(i,mult) , this.y(i,mult) ]) }
+    }
+    return this.#buffer.matrix
   }
 
   /**
    * Returns last generated matrix.
    * @returns {matrix} matrix
    * */
-  static last() :matrix { return buffer.matrix }
+  static get last() :matrix { return this.#buffer.matrix }
 }
 
 export default SpiralGolden

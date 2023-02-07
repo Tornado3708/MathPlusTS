@@ -8,6 +8,7 @@ import Cycloid from "./Cycloid.js"
  * */
 export default class Trochoid {
 
+  /**Hidden buffer for optimisation.*/
   static #buffer = {
   start:0,
   radius: 0,
@@ -23,10 +24,10 @@ export default class Trochoid {
    * @param {number} [angle] Angle of trochoid.
    * @param {number} [distance] Distance from center of trochoid.
    * @param {number} [radius] Radius of circle of trochoid.
-   * @returns Number
+   * @returns {number} Number
    * */
-  static x(angle: number ,radius: number=1, distance: number=radius): number { 
-    return (distance === radius ? Cycloid.x(angle, radius) : radius * angle - distance * Math.sin(angle)) }
+  static x(angle :number, radius :number=1, distance :number=radius) :number { 
+    return (distance === radius ? Cycloid.x(angle, radius) : radius * angle - distance * Math.sin(angle))}
 
   
   /**
@@ -35,12 +36,10 @@ export default class Trochoid {
    * @param {number} [angle] Angle of trochoid.
    * @param {number} [distance] Distance from center of trochoid.
    * @param {number} [radius] Radius of circle of trochoid.
-   * @returns Number
+   * @returns {number} Number
    * */
   static y(angle: number, radius: number=1, distance: number=radius): number{
     return (distance === radius ? Cycloid.y(angle, radius) : radius - distance * Math.cos(angle)) }
-
-
 
 
   /**
@@ -53,13 +52,8 @@ export default class Trochoid {
    * @returns {matrix} matrix
    * */ 
   static generate(start :number=0, radius :number=1, distance :number=radius, length :number=Math.TAU, step: number=length * .001) :matrix {
-    if(
-      this.#buffer   .start !== start    ||
-      this.#buffer  .radius !== radius   || 
-      this.#buffer.distance !== distance ||
-      this.#buffer  .length !== length   ||
-      this.#buffer    .step !== step
-    ){
+    let _buffer = this.#buffer
+    if(_buffer.start !== start || _buffer.radius !== radius || _buffer.distance !== distance || _buffer.length !== length || _buffer.step !== step){
       this.#buffer.matrix   = []
       this.#buffer   .start = start
       this.#buffer  .radius = radius

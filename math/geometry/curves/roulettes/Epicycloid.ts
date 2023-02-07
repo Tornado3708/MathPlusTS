@@ -6,6 +6,7 @@
  * */
 export default class Epicycloid {
 
+  /**Hidden buffer for optimisation.*/
   static #buffer = {
     matrix: [[0,0]],
     radii: 0,
@@ -18,9 +19,9 @@ export default class Epicycloid {
    * @param {number} [angle] Angle of epicycloid. Needs value in radians.
    * @param {number} [cRadius] Radius of main circle. Default value: 1.
    * @param {number} [sRadius] Radius of satellite circle. Default value: 1.
-   * @returns Number
+   * @returns {number} Number
    * */
-  static x(angle: number, cRadius: number = 1, sRadius: number = 1) :number {
+  static x(angle :number, cRadius :number=1, sRadius :number=1) :number {
     if(cRadius !== this.#buffer.cRadius && sRadius !== this.#buffer.sRadius){
       this.#buffer.cRadius = cRadius
       this.#buffer.sRadius = sRadius
@@ -35,9 +36,9 @@ export default class Epicycloid {
    * @param {number} [angle] Angle of epicycloid. Needs value in radians.
    * @param {number} [cRadius] Radius of center circle. Default value: 1.
    * @param {number} [sRadius] Radius of satellite circle. Default value: 1.
-   * @returns Number
+   * @returns {number} Number
    * */
-  static y(angle: number, cRadius: number = 1, sRadius: number = 1) :number{
+  static y(angle :number, cRadius :number=1, sRadius :number=1) :number {
     if(cRadius !== this.#buffer.cRadius && sRadius !== this.#buffer.sRadius){
       this.#buffer.cRadius = cRadius
       this.#buffer.sRadius = sRadius
@@ -48,7 +49,6 @@ export default class Epicycloid {
 
 
 
-
   /**
    * Returns matrix with points of epicycloid, generated with properties.
    * @param {number} [cRadius] Radius of main circle.
@@ -56,7 +56,7 @@ export default class Epicycloid {
    * @param {number} [start] Start angle.
    * @param {number} [length] Duration of rotation.
    * @param {number} [step] Step of calculation.
-   * @returns [ [x: number , y: number ] , ... ]
+   * @returns {matrix} [ [x: number , y: number ] , ... ]
    * */
   static generate(cRadius: number=1,sRadius: number=1,start: number=0, length: number=Math.TAU,step: number=Math.TAU * .001): matrix{
     this.#buffer.matrix = []
@@ -67,7 +67,7 @@ export default class Epicycloid {
 
   /**
    * Returns last generated epicycloid (for optimisation).
-   * @returns 
-   */
+   * @returns {matrix} [ [ x: number , y: number ] , ... ]
+   * */
   static get last(): matrix { return this.#buffer.matrix }
 }
