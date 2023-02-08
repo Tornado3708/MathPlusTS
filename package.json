@@ -1,10 +1,11 @@
 {
   "name": "@tornado3708/mathplus_ts",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "MathPlusTS - typescript library for extending built-in Math object. It will include vectors, matrices, geometrical shapes etc.",
   "main": "mathplus.js",
   "scripts": {
     "build": "tsc --build",
+    "bin": "cd ./mathplus && mkdir bin",
     "clean": "tsc --build --clean"
   },
   "bin": {
