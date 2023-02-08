@@ -5,7 +5,7 @@
     "rootDir": "./",
     "outDir" : "./../mathplus/",
     "strict": true,
-    "removeComments": true
+    "removeComments": false
   },
   "include": [
     "."
