@@ -184,7 +184,7 @@ class Vector2D implements point2D {
    * @param {point2D} vec2 
    * @returns Magnitude of vector.
    */
-  static magnitude(vec2:point2D) :number { return magnitude(vec2.x,vec2.y) }
+  static magnitude(vec2:point2D) :number { return magnitude(vec2.x,vec2.y) || 0 }
 
   /**Returns azimuth of given vector.
    * @param {point2D} vec2 Object with properties.
@@ -215,7 +215,7 @@ class Vector2D implements point2D {
    * @param {point2D} vec2_b Vector B.
    * @returns Dot product of vectors.
    * */
-  static dotProduct(vec2_a :point2D, vec2_b :point2D) :number { return vec2_a.x * vec2_b.x + vec2_a.y * vec2_b.y }
+  static dotProduct(vec2_a :point2D, vec2_b :point2D) :number { return (vec2_a.x * vec2_b.x + vec2_a.y * vec2_b.y) || 0 }
 
   /**Returns normalised dot product of these vectors.
    * @param {point2D} vec2_a Vector A.
@@ -225,7 +225,7 @@ class Vector2D implements point2D {
   static dotProductCos(vec2_a: point2D, vec2_b: point2D): number {
     let result = this.dotProduct(vec2_a, vec2_b)
     result = result * (1 / (this.magnitude(vec2_a) * this.magnitude(vec2_b)))
-    return result + Number.EPSILON * Math.sign(result)
+    return (result + Number.EPSILON * Math.sign(result)) || 0
   }
   
   /**Returns azimuth between these vectors.
@@ -233,7 +233,7 @@ class Vector2D implements point2D {
    * @param {point2D} vec2_b Vector B.
    * @returns Arccosine of dot product.
    * */
-  static dotProductAcos(vec2_a :point2D, vec2_b :point2D) :number { return Math.acos(this.dotProductCos(vec2_a, vec2_b)) }
+  static dotProductAcos(vec2_a :point2D, vec2_b :point2D) :number { return Math.acos(this.dotProductCos(vec2_a, vec2_b)) || 0 }
 
 
 
@@ -244,7 +244,7 @@ class Vector2D implements point2D {
    * @param {point2D} vec2_b Vector B.
    * @returns Cross product of these vectors.
    * */
-  static crossProduct(vec2_a :point2D, vec2_b :point2D) :number { return vec2_a.x * vec2_b.y - vec2_a.y * vec2_b.x }
+  static crossProduct(vec2_a :point2D, vec2_b :point2D) :number { return (vec2_a.x * vec2_b.y - vec2_a.y * vec2_b.x) || 0 }
 
   /**Returns normalised cross product of these vectors.
    * @param {point2D} vec2_a Vector A.
@@ -254,7 +254,7 @@ class Vector2D implements point2D {
   static crossProductSin(vec2_a :point2D, vec2_b :point2D) :number {
     let result = this.crossProduct(vec2_a, vec2_b)
     result = result * (1 / (this.magnitude(vec2_a) * this.magnitude(vec2_b)))
-    return result + Number.EPSILON * Math.sign(result) * .5 
+    return (result/* + Number.EPSILON * Math.sign(result) * .5*/) || 0
   }
 
   /**Returns azimuth between two vectors.
@@ -262,7 +262,7 @@ class Vector2D implements point2D {
    * @param {point2D} vec2_b Vector B.
    * @returns Arcsine of cross product.
    * */
-  static crossProductAsin(vec2_a :point2D, vec2_b :point2D) :number { return Math.asin(this.crossProductSin(vec2_a, vec2_b)) }
+  static crossProductAsin(vec2_a :point2D, vec2_b :point2D) :number { return Math.asin(this.crossProductSin(vec2_a, vec2_b)) || 0 }
 
 
 

@@ -33,6 +33,20 @@ export default class Point2D {
    * */
   static distance({...dot_a} :point2D={x:0,y:0},{...dot_b} :point2D={x:0,y:0}) :number { return Math.hypot(dot_a.x - dot_b.x, dot_a.y - dot_b.y) }
   
+
+  /**
+   * Returns distances between two dots on x- and y- axis.
+   * @param {point2D} [param0] First point.
+   * @param {point2D} [param1] Second point.
+   * @returns {point2D} Differences.
+   */
+  static distances({...dot_a} :point2D={x:0,y:0},{...dot_b} :point2D={x:0,y:0}) :point2D {
+    return {
+      x : dot_a.x - dot_b.x,
+      y : dot_a.y - dot_b.y
+    }
+  }
+
   /**
    * Returns point as vector, relative to [start] point. Default [start] point is { x: 0 , y: 0 , z: 0 }.
    * @param {point2D} [param0] Point for transformation. 
