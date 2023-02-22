@@ -9,11 +9,15 @@ import VectorPolar from "./VectorPolar.js"
 
 
 
+
+
 /**Class for representation of vector in 2-dimensional space.*/
 class Vector2D implements point2D {
 
+  
   public x :number = 0
   public y :number = 0
+
 
   /**- [ x: number     ,   y: number ]
    * - { x: number     ,   y: number }
@@ -62,11 +66,15 @@ class Vector2D implements point2D {
 
 
 
+
+
   /**Returns magnitude of vector.*/
   get magnitude() :number { return magnitude(this.x, this.y) }
 
   /**Returns azimuth of vector.*/
   get azimuth() :number { return azimuth(this.y, this.x) }
+
+
 
 
 
@@ -84,6 +92,8 @@ class Vector2D implements point2D {
 
 
 
+
+
   /**Rotates vector by azimuth in radians.
    * @param {number} azimuth Azimuth for rotation.
    * */
@@ -92,6 +102,8 @@ class Vector2D implements point2D {
 
 
   
+
+
   /**Returns coordinates of this vector in polar coordinates.*/
   get polar() :polar { return cart2polar(this) }
 

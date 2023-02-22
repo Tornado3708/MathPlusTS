@@ -1,7 +1,9 @@
 const version = require("./commands/version.js")
 
 
-const mathplus_title = `MathPlus is library for extending built-in Math project.`
+const mathplus_title = `MathPlus is library for extending built-in Math project.
+  \nYou can use one of next commands:\n
+  version [ -major , -minor , -patch ] - \"version\"\n`
 
 
 const [,,command=``, ...args] = process.argv
