@@ -8,7 +8,29 @@ import { Star } from "./polygons/Star.js"
  * 
  * - [Regular] - regular polygon.
  * */
-export default class Polygon {
+export default class Polygon extends Array {
+
+  /**
+   * Returns new Polygon.
+   * @param {number[] | matrix} [points] Points.
+   * */
+  constructor(...points:any){
+    super()
+    let p = points
+    switch(p[0].constructor.name){
+      case 'Array':
+        for(let segment in p){ this.push(segment) }
+        break
+      case 'Number':
+        while(p.length > 1){
+          this.push( [ p[ 0 ] , p[ 1 ] ] )
+          points.splice( 0 , 2 )
+        }
+        break
+      default:
+        throw Error(`Expected Array<number>|Matrix. Got ${points[0].constructor.name}, value is ${points[0]}`)
+    }
+  }
 
   static #buffer = {
     polygon   : [[0,0]],

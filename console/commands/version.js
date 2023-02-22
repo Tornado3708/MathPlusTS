@@ -13,9 +13,3 @@ function version(id=``){
   }
 }
 module.exports = version
-// {
-//   version,
-//   major,
-//   minor,
-//   patch
-// }

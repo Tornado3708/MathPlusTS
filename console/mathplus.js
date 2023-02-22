@@ -11,7 +11,7 @@ const [,,command=``, ...args] = process.argv
 switch(command){
   case "calculate": 
     if(args.length !== 0){
-      console.log(args)
+      // console.log(args)
     }else{
       throw Error(`No arguments for calculations.`)
     }

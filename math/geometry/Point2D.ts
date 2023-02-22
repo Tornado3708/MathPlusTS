@@ -1,5 +1,5 @@
 import Vector2D from "../algebra/linear_algebra/vector/Vector2D.js"
-
+import { const2d } from "../constants.js"
 
 /**Representation of 2-dimensional point.*/
 export default class Point2D {
@@ -58,7 +58,7 @@ export default class Point2D {
 
 
 
-  static ZERO = {x:0,y:0}
+  static ZERO = const2d.ZERO
   static zero = [0,0]
   
 }

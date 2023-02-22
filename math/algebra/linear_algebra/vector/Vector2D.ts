@@ -5,7 +5,7 @@ import norm2d      from "../../../../generic_calculations/norm2d.js"
 import unit2d      from "../../../../generic_calculations/unit2d.js"
 import Dot2D       from "../../../geometry/Point2D.js"
 import VectorPolar from "./VectorPolar.js"
-
+import { const2d } from "../../../constants.js"
 
 
 
@@ -321,19 +321,19 @@ class Vector2D implements point2D {
 
 
 
-  static ZERO       :point2D = { x:  0 , y:  0 }
-  static DOWN       :point2D = { x:  0 , y: -1 }
-  static LEFT       :point2D = { x: -1 , y:  0 }
-  static RIGHT      :point2D = { x:  1 , y:  0 } 
-  static UP         :point2D = { x:  0 , y:  1 }
-  static LEFT_DOWN  :point2D = { x: -Math.SQRT1_2 , y: -Math.SQRT1_2 }
-  static LEFT_UP    :point2D = { x: -Math.SQRT1_2 , y:  Math.SQRT1_2 }
-  static RIGHT_DOWN :point2D = { x:  Math.SQRT1_2 , y: -Math.SQRT1_2 }
-  static RIGHT_UP   :point2D = { x:  Math.SQRT1_2 , y:  Math.SQRT1_2 }
-  static DOWN_LEFT           = this.LEFT_DOWN
-  static DOWN_RIGHT          = this.RIGHT_DOWN
-  static UP_LEFT             = this.LEFT_UP
-  static UP_RIGHT            = this.RIGHT_UP
+  static ZERO  = const2d.ZERO
+  static DOWN  = const2d.DOWN
+  static LEFT  = const2d.LEFT
+  static RIGHT = const2d.RIGHT 
+  static UP    = const2d.UP
+  static LEFT_DOWN  = const2d.LEFT_DOWN
+  static LEFT_UP    = const2d.LEFT_UP
+  static RIGHT_DOWN = const2d.RIGHT_DOWN
+  static RIGHT_UP   = const2d.RIGHT_UP
+  static DOWN_LEFT  = this.LEFT_DOWN
+  static DOWN_RIGHT = this.RIGHT_DOWN
+  static UP_LEFT    = this.LEFT_UP
+  static UP_RIGH    = this.RIGHT_UP
  
   
 

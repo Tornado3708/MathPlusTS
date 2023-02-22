@@ -6,7 +6,7 @@ import zenith            from "../../../../generic_calculations/zenith.js"
 import Dot3D             from "../../../geometry/Point3D.js"
 import VectorCylindrical from "./VectorCylindrical.js"
 import VectorSpherical   from "./VectorSpherical.js"
-
+import { const3d }       from "../../../constants.js"
 
 
 
@@ -1197,36 +1197,36 @@ class Vector3D implements point3D {
 
 
 
-  static ZERO    :point3D = { x:  0 , y:  0 , z:  0 }
-  static LEFT    :point3D = { x: -1 , y:  0 , z:  0 }
-  static RIGHT   :point3D = { x:  1 , y:  0 , z:  0 }
-  static DOWN    :point3D = { x:  0 , y: -1 , z:  0 }
-  static UP      :point3D = { x:  0 , y:  1 , z:  0 }
-  static BACK    :point3D = { x:  0 , y:  0 , z: -1 }
-  static FORWARD :point3D = { x:  0 , y:  0 , z:  1 }
+  static ZERO    = const3d.ZERO
+  static LEFT    = const3d.LEFT
+  static RIGHT   = const3d.RIGHT
+  static DOWN    = const3d.DOWN
+  static UP      = const3d.UP
+  static BACK    = const3d.BACK
+  static FORWARD = const3d.FORWARD
   
 
 
 
-  static FORWARD_DOWN  :point3D = { x:  0            , y: -Math.SQRT1_2 , z:  Math.SQRT1_2 }
-  static FORWARD_LEFT  :point3D = { x: -Math.SQRT1_2 , y:  0            , z:  Math.SQRT1_2 }
-  static FORWARD_RIGHT :point3D = { x:  Math.SQRT1_2 , y:  0            , z:  Math.SQRT1_2 }
-  static FORWARD_UP    :point3D = { x:  0            , y:  Math.SQRT1_2 , z:  Math.SQRT1_2 }
+  static FORWARD_DOWN  = const3d.FORWARD_DOWN
+  static FORWARD_LEFT  = const3d.FORWARD_LEFT
+  static FORWARD_RIGHT = const3d.FORWARD_RIGHT
+  static FORWARD_UP    = const3d.FORWARD_UP
   
-  static LEFT_BACK     :point3D = { x: -Math.SQRT1_2 , y:  0            , z: -Math.SQRT1_2 }
-  static LEFT_DOWN     :point3D = { x: -Math.SQRT1_2 , y: -Math.SQRT1_2 , z:  0 }
+  static LEFT_BACK     = const3d.LEFT_BACK
+  static LEFT_DOWN     = const3d.LEFT_DOWN
   static LEFT_FORWARD  = this.FORWARD_LEFT
-  static LEFT_UP       :point3D = { x: -Math.SQRT1_2 , y:  Math.SQRT1_2 , z:  0 }
+  static LEFT_UP       = const3d.LEFT_UP
   
-  static RIGHT_DOWN    :point3D = { x:  Math.SQRT1_2 , y: -Math.SQRT1_2 , z:  0 }
-  static RIGHT_UP      :point3D = { x:  Math.SQRT1_2 , y:  Math.SQRT1_2 , z:  0 }
-  static RIGHT_BACK    :point3D = { x:  Math.SQRT1_2 , y:  0            , z: -Math.SQRT1_2 }
+  static RIGHT_DOWN    = const3d.RIGHT_DOWN
+  static RIGHT_UP      = const3d.RIGHT_UP
+  static RIGHT_BACK    = const3d.RIGHT_BACK
   static RIGHT_FORWARD = this.FORWARD_RIGHT
   
-  static BACK_DOWN     :point3D = { x:  0            , y: -Math.SQRT1_2 , z: -Math.SQRT1_2 }
+  static BACK_DOWN     = const3d.BACK_DOWN
   static BACK_LEFT     = this.LEFT_BACK
   static BACK_RIGHT    = this.RIGHT_BACK
-  static BACK_UP       :point3D = { x:  0            , y:  Math.SQRT1_2 , z: -Math.SQRT1_2 }
+  static BACK_UP       = const3d.BACK_UP
   
   static UP_BACK       = this.BACK_UP
   static UP_FORWARD    = this.FORWARD_UP
@@ -1241,19 +1241,19 @@ class Vector3D implements point3D {
 
 
 
-  static LEFT_DOWN_BACK     :point3D = { x: -SQRT3_3 , y: -SQRT3_3 , z: -SQRT3_3 }
-  static LEFT_DOWN_FORWARD  :point3D = { x: -SQRT3_3 , y: -SQRT3_3 , z:  SQRT3_3 }
-  static LEFT_UP_BACK       :point3D = { x: -SQRT3_3 , y:  SQRT3_3 , z: -SQRT3_3 }
-  static LEFT_UP_FORWARD    :point3D = { x: -SQRT3_3 , y:  SQRT3_3 , z:  SQRT3_3 }
+  static LEFT_DOWN_BACK     = const3d.LEFT_DOWN_BACK
+  static LEFT_DOWN_FORWARD  = const3d.LEFT_DOWN_FORWARD
+  static LEFT_UP_BACK       = const3d.LEFT_UP_BACK
+  static LEFT_UP_FORWARD    = const3d.LEFT_UP_FORWARD
   static LEFT_BACK_DOWN     = this.LEFT_DOWN_BACK
   static LEFT_BACK_UP       = this.LEFT_UP_BACK
   static LEFT_FORWARD_DOWN  = this.LEFT_DOWN_FORWARD
   static LEFT_FORWARD_UP    = this.LEFT_UP_FORWARD
   
-  static RIGHT_DOWN_BACK    :point3D = { x:  SQRT3_3 , y: -SQRT3_3 , z: -SQRT3_3 }
-  static RIGHT_DOWN_FORWARD :point3D = { x:  SQRT3_3 , y: -SQRT3_3 , z:  SQRT3_3 }
-  static RIGHT_UP_BACK      :point3D = { x:  SQRT3_3 , y:  SQRT3_3 , z: -SQRT3_3 }
-  static RIGHT_UP_FORWARD   :point3D = { x:  SQRT3_3 , y:  SQRT3_3 , z:  SQRT3_3 }
+  static RIGHT_DOWN_BACK    = const3d.RIGHT_DOWN_BACK
+  static RIGHT_DOWN_FORWARD = const3d.RIGHT_DOWN_FORWARD
+  static RIGHT_UP_BACK      = const3d.RIGHT_UP_BACK
+  static RIGHT_UP_FORWARD   = const3d.RIGHT_UP_FORWARD
   static RIGHT_BACK_DOWN    = this.RIGHT_DOWN_BACK
   static RIGHT_BACK_UP      = this.RIGHT_UP_BACK
   static RIGHT_FORWARD_DOWN = this.RIGHT_DOWN_FORWARD
