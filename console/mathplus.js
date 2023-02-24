@@ -15,7 +15,10 @@ switch(command){
     }else{
       throw Error(`No arguments for calculations.`)
     }
-    case `version`: console.log(version(args[0]))
+    break
+  case `init`: console.log(`Initialisation finished`)
+    break
+  case `version`: console.log(version(args[0]))
     break
   case ``: console.log(mathplus_title)
     break

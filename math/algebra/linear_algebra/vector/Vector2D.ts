@@ -25,7 +25,7 @@ class Vector2D implements point2D {
    * - [ [ x: number   ,   y: number ] ]
    * @param params Parameters of new Vector2D.*/
   constructor({...params}){
-    
+      
       this.x = params.x ?? params[0][0] ??                 params[0] ?? 0
       this.y = params.y ?? params[0][1] ?? params[1][0] ?? params[1] ?? 0
       if(!isFinite(this.x)){ this.x = 0 }
@@ -353,6 +353,8 @@ class Vector2D implements point2D {
   static up_right   = this.right_up
 
 }
+
+declare global { interface Math { Vector2D: typeof Vector2D } }
 
 
 export default Vector2D

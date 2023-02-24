@@ -71,7 +71,7 @@ export default class VectorCylindrical implements cylindrical{
   /**
    * Return spherical vector, equivalent to given cilindrical vector.
    * @param {cylindrical} [param0] Objet.{azimuth , radius , z}
-   * @returns VectorSpherical
+   * @returns {VectorSpherical} SphericalVector
    * */
   static sphericalVector({azimuth=0 , radius=0 , z=0} :cylindrical) :VectorSpherical { return new VectorSpherical(this.spherical({ azimuth , radius , z })) }
 
@@ -83,3 +83,5 @@ export default class VectorCylindrical implements cylindrical{
 
   static zero: number[] = toArray(this.ZERO)
 }
+
+declare global { interface Math { VectorCylindrical : typeof VectorCylindrical } }

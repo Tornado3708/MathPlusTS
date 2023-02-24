@@ -5,8 +5,8 @@ import Equation          from "./math/algebra/elementary_algebra/Equation.js"
 import Matrix            from "./math/algebra/linear_algebra/matrix/Matrix.js"
 import Tensor            from "./math/algebra/linear_algebra/tensor/Tensor.js"
 import VectorCylindrical from "./math/algebra/linear_algebra/vector/VectorCylindrical.js"
-import Vector2D          from "./math/algebra/linear_algebra/vector/Vector2D.js"
-import Vector3D          from "./math/algebra/linear_algebra/vector/Vector3D.js"
+// import Vector2D          from "./math/algebra/linear_algebra/vector/Vector2D.js"
+// import Vector3D          from "./math/algebra/linear_algebra/vector/Vector3D.js"
 import VectorPolar       from "./math/algebra/linear_algebra/vector/VectorPolar.js"
 import VectorSpherical   from "./math/algebra/linear_algebra/vector/VectorSpherical.js"
 
@@ -30,8 +30,8 @@ declare global {
 
     Matrix            :typeof Matrix
 
-    Vector2D          :typeof Vector2D
-    Vector3D          :typeof Vector3D
+    // Vector2D          :typeof Vector2D
+    // Vector3D          :typeof Vector3D
     VectorPolar       :typeof VectorPolar
     VectorSpherical   :typeof VectorSpherical
     VectorCylindrical :typeof VectorCylindrical

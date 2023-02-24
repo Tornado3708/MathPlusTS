@@ -10,12 +10,9 @@ import { const3d }       from "../../../constants.js"
 
 
 
-let SQRT3_3 = Math.SQRT3 / 3
-
-
 
 /**Class for representation of vector in 3-dimensional space.*/
-class Vector3D implements point3D {
+export default class Vector3D implements point3D {
 
   /**Value of x-axis.*/   public x :number=0
   /**Value of y-axis.*/   public y :number=0
@@ -1398,5 +1395,4 @@ class Vector3D implements point3D {
 
 }
 
-
-export default Vector3D
+declare global { interface Math { Vector3D : typeof Vector3D } }

@@ -1,19 +1,15 @@
 {
   "name": "@tornado3708/mathplus_ts",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "MathPlusTS - typescript library for extending built-in Math object. It will include vectors, matrices, geometrical shapes etc.",
-  "main": "mathplus.js",
-  "scripts": {
-    "build": "tsc --build",
-    "bin": "cd ./mathplus && mkdir bin",
-    "clean": "tsc --build --clean"
-  },
+  "main": "mathplus.ts",
+  "scripts": {},
   "bin": {
-    "mathplus": "./bin/mathplus"
+    "mathplus": "bin/mathplus"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Tornado3708/MathPlusTS.git"
+    "url": "git+https://github.com/Tornado3708/MathPlusTS.git"
   },
   "author": "Tornado3708",
   "license": "MIT",
