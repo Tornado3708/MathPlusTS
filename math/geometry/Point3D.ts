@@ -1,5 +1,5 @@
 import Vector3D from "../algebra/linear_algebra/vector/Vector3D.js"
-
+import { const3d_zero } from "../constants.js"
 
 /**Representation of 3-dimensional point.*/
 export default class Point3D implements point3D{
@@ -31,23 +31,23 @@ export default class Point3D implements point3D{
   /**
    * Returns distance between this point and given point.
    * @param {point3D} [p2] Given point.
-   * @returns Number
+   * @returns {number} Number
    * */
   distance(p2 :point3D) :number { return Point3D.distance(this , p2) }
 
   /**
    * Returns vector with this point parameters, relative to [start] point.
    * @param {point3D} [start] [start] If is, vector will be generated relative to [start] as start of 3-dimensional coordinate system.
-   * @returns Number
+   * @returns {number} Number
    * */
-  vector = (start: point3D  = Vector3D.ZERO) :Vector3D => Point3D.vector(this , start) 
+  vector = (start :point3D=Vector3D.ZERO) :Vector3D => Point3D.vector(this , start) 
 
 
   /**
    * Returns distance between two 3-dimensional dots.
-   * @param {point3D} param0 Dot A.
-   * @param {point3D} param1 Dot B.
-   * @returns Number
+   * @param {point3D} [param0] Dot A.
+   * @param {point3D} [param1] Dot B.
+   * @returns {number} Number
    * */
   static distance({ x:x1=0 , y:y1=0 , z:z1=0 } :point3D, { x:x2=0 , y:y2=0 ,z:z2=0 } :point3D) :number { return Math.hypot(x1 - x2 , y1 - y2 , z1 - z2) }
 
@@ -62,6 +62,6 @@ export default class Point3D implements point3D{
 
 
 
-  static ZERO = {x:0,y:0,z:0}
+  static ZERO = const3d_zero
   static zero = [0,0,0]
 }

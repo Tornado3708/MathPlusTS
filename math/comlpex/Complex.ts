@@ -11,15 +11,15 @@ type complex = { real :number , imag :number }
 /**Represing complex number.*/
 export default class Complex implements complex {
 
-  public real: number = 0
-  public imag: number = 0
+  public real :number=0
+  public imag :number=0
 
   /**
    * - { real : number , imag : number }
    * - [ real : number , imag : number ]
    * @param {complex | number[]} [param0] Parameters for constructor.
    * */
-  constructor({...complex} :any){
+  constructor( { ...complex } :any ){
 
     this.real = complex.real ?? complex[0] ?? 0
     this.imag = complex.imag ?? complex[1] ?? 0
@@ -32,7 +32,7 @@ export default class Complex implements complex {
    * Addition function.
    * @param {complex} [param0] Object with parameters.
    * */
-  add = ({real=0 , imag=0} :complex) => Complex.add(this , { real , imag }) 
+  add = ( { real=0 , imag=0 } :complex ) => Complex.add(this , { real , imag }) 
 
   /**
    * Subtraction function.

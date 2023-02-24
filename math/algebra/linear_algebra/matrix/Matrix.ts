@@ -17,7 +17,7 @@ function matrix_operator(
 type num_mat = number | matrix
 
 /**Class for representation of matrix.*/
-class Matrix extends Array implements matrix {
+export default class Matrix extends Array implements matrix {
 
   /**
    * Creates Matrix using 2-dimensional array.
@@ -358,6 +358,3 @@ class Matrix extends Array implements matrix {
    */
   static equalSize(matrix_a :matrix , matrix_b :matrix) :boolean { return (matrix_a.length === matrix_b.length) && (matrix_a[0].length === matrix_b[0].length) }
 }
-  
-
-export default Matrix

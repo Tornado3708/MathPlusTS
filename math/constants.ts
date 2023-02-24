@@ -1,11 +1,17 @@
 let SQRT3_3 = Math.SQRT3 / 3
 
+export const const2d_zero       = { x:  0               , y: 0      }
+export const const3d_zero       = { ...const2d_zero     , z: 0      }
+export const const_polar_zero   = { azimuth: 0          , radius: 0 }
+export const const_cyl_zero     = { ...const_polar_zero , z: 0      }
+export const const_sph_zero     = { ...const_polar_zero , zenith: 0 }
+
 /**
  * Vector and points constants (2d).
  */
 export const const2d = {
 
-  ZERO : { x:  0 , y:  0 },
+  ZERO : const2d_zero,
   DOWN : { x:  0 , y: -1 },
   LEFT : { x: -1 , y:  0 },
   RIGHT: { x:  1 , y:  0 },
@@ -22,7 +28,7 @@ export const const2d = {
  * Vector and point constants (3d).
  */
 export const const3d = {
-  ZERO   : { ...const2d.ZERO  , z:  0 },
+  ZERO   : const3d_zero,
   LEFT   : { ...const2d.LEFT  , z:  0 },
   RIGHT  : { ...const2d.RIGHT , z:  0 },
   DOWN   : { ...const2d.DOWN  , z:  0 },
@@ -59,7 +65,7 @@ export const const3d = {
 
 export const const_polar = {
 
-  ZERO : { azimuth:  0          , radius: 0 },
+  ZERO : const_polar_zero,
   DOWN : { azimuth: -Math.PI*.5 , radius: 1 },
   LEFT : { azimuth:  Math.PI    , radius: 1 },
   RIGHT: { azimuth:  0          , radius: 1 },
@@ -76,13 +82,13 @@ export const const_polar = {
 
 export const const_cylindrical = {
   
-  ZERO   : { ...const_polar.ZERO  , z:  0 },
-  DOWN   : { ...const_polar.DOWN  , z:  0 },
-  LEFT   : { ...const_polar.LEFT  , z:  0 },
-  RIGHT  : { ...const_polar.RIGHT , z:  0 },
-  UP     : { ...const_polar.UP    , z:  0 },
-  BACK   : { ...const_polar.ZERO  , z: -1 },
-  FORWARD: { ...const_polar.ZERO  , z:  1 },
+  ZERO    : const_cyl_zero,
+  DOWN    : { ...const_polar.DOWN  , z:  0 },
+  LEFT    : { ...const_polar.LEFT  , z:  0 },
+  RIGHT   : { ...const_polar.RIGHT , z:  0 },
+  UP      : { ...const_polar.UP    , z:  0 },
+  BACK    : { ...const_polar.ZERO  , z: -1 },
+  FORWARD : { ...const_polar.ZERO  , z:  1 },
   
   LEFT_UP       : { ...const_polar.LEFT_UP    , z:  0 },
   LEFT_DOWN     : { ...const_polar.LEFT_DOWN  , z:  0 },
@@ -103,13 +109,13 @@ export const const_cylindrical = {
 
 export const const_spherical = {
 
-  ZERO   : { ...const_polar.ZERO  , zenith: 0 },
-  DOWN   : { ...const_polar.DOWN  , zenith: Math.PI_HALF },
-  LEFT   : { ...const_polar.LEFT  , zenith: Math.PI_HALF },
-  RIGHT  : { ...const_polar.RIGHT , zenith: Math.PI_HALF },
-  UP     : { ...const_polar.UP    , zenith: Math.PI_HALF },
-  BACK   : { ...const_polar.ZERO  , zenith: Math.PI},
-  FORWARD: { ...const_polar.ZERO  , zenith: 0 },
+  ZERO    : const_sph_zero,
+  DOWN    : { ...const_polar.DOWN  , zenith: Math.PI_HALF },
+  LEFT    : { ...const_polar.LEFT  , zenith: Math.PI_HALF },
+  RIGHT   : { ...const_polar.RIGHT , zenith: Math.PI_HALF },
+  UP      : { ...const_polar.UP    , zenith: Math.PI_HALF },
+  BACK    : { ...const_polar.ZERO  , zenith: Math.PI},
+  FORWARD : { ...const_polar.ZERO  , zenith: 0 },
 
 
 

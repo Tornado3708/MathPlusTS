@@ -16,3 +16,5 @@ export default class Spiral {
   static Sinusoidal  = SpiralSinusoidal
 
 }
+
+declare global { interface Math { Spiral: typeof Spiral } }

@@ -38,7 +38,7 @@ function recursionDefine(node_main :any[], node_define :any[]){
 }
 
 
-class Tensor extends Array {
+export default class Tensor extends Array {
   constructor(tensor:number[] | undefined = undefined, length:number[]=[]){
     super()
     if(!tensor)
@@ -65,5 +65,3 @@ class Tensor extends Array {
     return depth
   }
 }
-
-export default Tensor

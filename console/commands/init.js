@@ -3,7 +3,7 @@ const fs       = require('fs')
 
 function init(){
   
-  
+  exec('echo "OK"')
   console.log(`Initialisation finished`)
 
 }
