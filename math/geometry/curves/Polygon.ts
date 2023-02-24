@@ -68,3 +68,5 @@ export default class Polygon extends Array {
   static get lastSides()     :number[] { return this.#buffer.sides }
   static get lastPerimeter() :number   { return this.#buffer.perimeter }
 }
+
+declare global { interface Math { Polygon: typeof Polygon } }

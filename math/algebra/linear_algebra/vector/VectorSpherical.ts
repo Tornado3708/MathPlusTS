@@ -1,9 +1,10 @@
 import VectorCylindrical from "./VectorCylindrical.js"
 import Vector3D          from "./Vector3D.js"
+import { const_spherical } from "../../../constants.js"
 
 const toArray = ({ azimuth , zenith , radius } :spherical) => {return [azimuth , zenith , radius] }
 
-class VectorSpherical implements spherical{
+export default class VectorSpherical implements spherical{
 
 
   public radius  :number=0
@@ -224,25 +225,22 @@ class VectorSpherical implements spherical{
    */
   get toCylindrical(): cylindrical{
 
-    let zenith = this.zenith;
-    let radius = this.radius;
-
     return {
       azimuth: this.azimuth,
-      radius:  radius * Math.cos(zenith),
-      z:       radius * Math.sin(zenith)
+      radius:  this.radius * Math.cos(this.zenith),
+      z:       this.radius * Math.sin(this.zenith)
     }
 
   }
-  static ZERO    : spherical = {azimuth : 0 , zenith: 0 , radius: 0}
-  static BACK    : spherical = {azimuth : 0 , zenith : Math.PI , radius : 1}
-  static DOWN    : spherical = {azimuth : -Math.PI * 0.5 , zenith : Math.PI * 0.5 , radius : 1}
+  static ZERO    = const_spherical.ZERO
+  // static BACK    = const_spherical.BACK
+  static DOWN    = const_spherical.DOWN
   static FORWARD : spherical = {azimuth : 0 , zenith : 0 , radius : 1}
   static LEFT    : spherical = {azimuth : Math.PI , zenith : Math.PI * 0.5 , radius : 1}
   static RIGHT   : spherical = {azimuth : 0 , zenith : Math.PI * 0.5 , radius : 1}
   static UP      : spherical = {azimuth : Math.PI * 0.5 , zenith : Math.PI * 0.5 , radius : 1}
   static zero    = [0 , 0 , 0];
-  static back    = toArray(this.BACK)
+  // static back    = toArray(this.BACK)
   static down = [-Math.PI_HALF || -Math.PI * 0.5 , Math.PI_HALF || Math.PI * 0.5 , 1];
   static forward = [0 , 0 , 1];
   static left = [Math.PI , Math.PI_HALF || Math.PI * 0.5 , 1];
@@ -250,4 +248,4 @@ class VectorSpherical implements spherical{
   static up = [Math.PI_HALF || Math.PI * 0.5 , Math.PI_HALF || Math.PI * 0.5 , 1];
 }
 
-export default VectorSpherical
+declare global { interface Math { VectorSpherical: typeof VectorSpherical } }

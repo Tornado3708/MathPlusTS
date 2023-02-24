@@ -12,7 +12,7 @@ import { const2d } from "../../../constants.js"
 
 
 /**Class for representation of vector in 2-dimensional space.*/
-class Vector2D implements point2D {
+export default class Vector2D implements point2D {
 
   
   public x :number = 0
@@ -309,7 +309,7 @@ class Vector2D implements point2D {
    * @param {point2D} vec2 Object with properties.
    * @returns 2-dimensional array.
    * */
-  static matrix(vec2 :point2D): matrix { return [ [ vec2.x , vec2.y ] ] }
+  static matrix( { x=0 , y=0 } :point2D): matrix { return [ [ x , y ] ] }
 
   /**
    * Returns [vec2] as dot in 2-dimensional point.
@@ -326,6 +326,7 @@ class Vector2D implements point2D {
   static LEFT  = const2d.LEFT
   static RIGHT = const2d.RIGHT 
   static UP    = const2d.UP
+  
   static LEFT_DOWN  = const2d.LEFT_DOWN
   static LEFT_UP    = const2d.LEFT_UP
   static RIGHT_DOWN = const2d.RIGHT_DOWN
@@ -343,6 +344,7 @@ class Vector2D implements point2D {
   static left       = this.matrix(this.LEFT)
   static right      = this.matrix(this.RIGHT)
   static up         = this.matrix(this.UP)
+
   static left_down  = this.matrix(this.LEFT_DOWN)
   static left_up    = this.matrix(this.LEFT_UP)
   static right_down = this.matrix(this.RIGHT_DOWN)
@@ -355,6 +357,3 @@ class Vector2D implements point2D {
 }
 
 declare global { interface Math { Vector2D: typeof Vector2D } }
-
-
-export default Vector2D

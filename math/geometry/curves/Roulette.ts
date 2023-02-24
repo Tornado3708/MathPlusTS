@@ -23,3 +23,5 @@ export default class Roulette {
   static Trochoid       = Trochoid
 
 }
+
+declare global { interface Math { Roulette: typeof Roulette } }

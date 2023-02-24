@@ -32,11 +32,11 @@ declare global {
 
     // Vector2D          :typeof Vector2D
     // Vector3D          :typeof Vector3D
-    VectorPolar       :typeof VectorPolar
-    VectorSpherical   :typeof VectorSpherical
-    VectorCylindrical :typeof VectorCylindrical
+    // VectorPolar       :typeof VectorPolar
+    // VectorSpherical   :typeof VectorSpherical
+    // VectorCylindrical :typeof VectorCylindrical
 
-    Polygon           :typeof Polygon
+    // Polygon           :typeof Polygon
     Roulette          :typeof Roulette
     Spiral            :typeof Spiral
 

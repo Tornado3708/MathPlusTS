@@ -1,6 +1,11 @@
-const { exec } = require('child-process')
-const fs = require('fs')
+const { exec } = require('child_process')
+const fs       = require('fs')
 
-export default function init(){
+function init(){
   
+  
+  console.log(`Initialisation finished`)
+
 }
+
+module.exports = init

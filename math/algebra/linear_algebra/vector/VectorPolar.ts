@@ -1,12 +1,10 @@
 import Vector2D from "./Vector2D.js"
 import { simple2D } from "../../../../simplify.js"
-
-
-function toArray(obj :polar){ return [ obj.azimuth , obj.radius ] }
+import { const_polar , pol2Array } from "../../../constants.js"
 
 
 /**Class for representation of 2-dimensional radius vector.*/
-class VectorPolar implements polar {
+export default class VectorPolar implements polar {
 
 
   public azimuth :number = 0
@@ -137,44 +135,38 @@ class VectorPolar implements polar {
 
 
 
-  static ZERO   :polar = { azimuth:  0          , radius: 0 }
-  static DOWN   :polar = { azimuth: -Math.PI*.5 , radius: 1 }
-  static LEFT   :polar = { azimuth:  Math.PI    , radius: 1 }
-  static RIGHT  :polar = { azimuth:  0          , radius: 1 }
-  static UP     :polar = { azimuth:  Math.PI*.5 , radius: 1 }
+  static ZERO  :polar = const_polar .ZERO
+  static DOWN  :polar = const_polar .DOWN
+  static LEFT  :polar = const_polar .LEFT
+  static RIGHT :polar = const_polar .RIGHT
+  static UP    :polar = const_polar .UP
+
+  static LEFT_UP    :polar = const_polar .LEFT_UP
+  static LEFT_DOWN  :polar = const_polar .LEFT_DOWN
+  static RIGHT_UP   :polar = const_polar .RIGHT_UP
+  static RIGHT_DOWN :polar = const_polar .RIGHT_DOWN
+  static UP_LEFT    :polar = this        .LEFT_UP
+  static UP_RIGHT   :polar = this        .RIGHT_UP
+  static DOWN_LEFT  :polar = this        .LEFT_DOWN
+  static DOWN_RIGHT :polar = this        .RIGHT_DOWN
+
+
+
+
+  static zero       :number[] = [ 0 , 0 ]
+  static down       :number[] = pol2Array( this.DOWN )
+  static left       :number[] = pol2Array( this.LEFT )
+  static right      :number[] = pol2Array( this.RIGHT )
+  static up         :number[] = pol2Array( this.UP )
+  static left_up    :number[] = pol2Array( this.LEFT_UP )
+  static left_down  :number[] = pol2Array( this.LEFT_DOWN )
+  static right_up   :number[] = pol2Array( this.RIGHT_UP )
+  static right_down :number[] = pol2Array( this.RIGHT_DOWN )
+  static up_left    :number[] =            this.left_up
+  static up_right   :number[] =            this.right_up
+  static down_left  :number[] =            this.left_down
+  static down_right :number[] =            this.right_down
   
-
-
-
-  static LEFT_UP    :polar = { azimuth: Math.PI * .75          , radius: 1 }
-  static LEFT_DONW  :polar = { azimuth: -this.LEFT_UP.azimuth  , radius: 1 }
-  static RIGHT_UP   :polar = { azimuth: Math.PI * .25          , radius: 1 }
-  static RIGHT_DOWN :polar = { azimuth: -this.RIGHT_UP.azimuth , radius: 1 }
-  static UP_LEFT                = this.LEFT_UP
-  static UP_RIGHT               = this.RIGHT_UP
-  static DOWN_LEFT              = this.LEFT_DONW
-  static DOWN_RIGHT             = this.RIGHT_DOWN
-
-
-
-
-  static zero  :number[] = [ 0 , 0 ]
-  static down  :number[] = toArray(this.DOWN)
-  static left  :number[] = toArray(this.LEFT)
-  static right :number[] = toArray(this.RIGHT)
-  static up    :number[] = toArray(this.UP)
-
-
-
-
-  static left_up    :number[] = toArray(this.LEFT_UP)
-  static left_down  :number[] = toArray(this.LEFT_DONW)
-  static right_up   :number[] = toArray(this.RIGHT_UP)
-  static right_down :number[] = toArray(this.RIGHT_DOWN)
-  static up_left    = this.left_up
-  static up_right   = this.right_up
-  static down_left  = this.left_down
-  static down_right = this.right_down
 }
 
-export default VectorPolar
+declare global { interface Math { VectorPolar: typeof VectorPolar } }
