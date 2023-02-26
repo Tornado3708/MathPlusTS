@@ -1,4 +1,4 @@
-const npm = require("./../../package.json")
+const npm = require("../../../package.json")
 const id_error = `Version id ... doesn\'t exist. Delete this id or use one of these: \n -major \n -minor \n -patch`
 
 function version(id=``){

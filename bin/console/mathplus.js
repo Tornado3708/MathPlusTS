@@ -1,5 +1,6 @@
 const version = require("./commands/version.js")
 const init    = require("./commands/init.js")
+const test    = require("./commands/test.js")
 
 
 const mathplus_title = `MathPlus is library for extending built-in Math project.
@@ -17,7 +18,10 @@ switch(command){
       throw Error(`No arguments for calculations.`)
     }
     break
-  case `init`: init()
+
+  case 'test': test()
+    break
+  case `init`: init( args )
     break
   case `version`: console.log(version(args[0]))
     break
@@ -26,4 +30,3 @@ switch(command){
   default: 
     throw Error(`'${command}' is not a command.`)
 }
-// console.log(command,args)

@@ -17,7 +17,7 @@ export default class Complex implements complex {
   /**
    * - { real : number , imag : number }
    * - [ real : number , imag : number ]
-   * @param {complex | number[]} [param0] Parameters for constructor.
+   * @param { complex | number[] } [param0] Parameters for constructor.
    * */
   constructor( { ...complex } :any ){
 
@@ -30,101 +30,101 @@ export default class Complex implements complex {
 
   /**
    * Addition function.
-   * @param {complex} [param0] Object with parameters.
+   * @param { complex } [param0] Object with parameters.
    * */
-  add = ( { real=0 , imag=0 } :complex ) => Complex.add(this , { real , imag }) 
+  add = ( { real=0 , imag=0 } :complex ) => Complex.add( this , { real , imag } ) 
 
   /**
    * Subtraction function.
-   * @param {complex} [param0] Object with parameters.
+   * @param { complex } [param0] Object with parameters.
    * */
-  sub = ({real=0 , imag=0} :complex) => Complex.add(this , { real: -real , imag: -imag }) 
+  sub = ( { real=0 , imag=0 } :complex ) => Complex.add( this , { real: -real , imag: -imag } ) 
 
   /**
    * Multiplication function.
-   * @param {complex} [param0] Object with parameters.
+   * @param { complex } [param0] Object with parameters.
    * */
-  mult = ({real=0 , imag=0} :complex) => Complex.mult(this , { real , imag }) 
+  mult = ( { real=0 , imag=0 } :complex ) => Complex.mult( this , { real , imag } ) 
 
   /**
    * Division function.
-   * @param {complex} [param0] Object with parameters.
+   * @param { complex } [param0] Object with parameters.
    * */
-  div = ({real=0 , imag=0} :complex) => Complex.mult(this , { real: 1 / real , imag: 1 / imag }) 
+  div = ( { real=0 , imag=0 } :complex ) => Complex.mult( this , { real: 1 / real , imag: 1 / imag } )
 
 
 
   
   /**Returns modulus of this complex number.*/
-  get modulus(){ return Complex.modulus(this) }
+  get modulus(){ return Complex.modulus( this ) }
 
   /**Returns argument of this complex number.*/
-  get argument(){ return Complex.argument(this) }
+  get argument(){ return Complex.argument( this ) }
 
 
 
 
   /**
    * Addition function.
-   * @param {complex} [complex] Given complex number.
-   * @param {complex} [param1] Complex number for addition.
+   * @param { complex } [complex] Given complex number.
+   * @param { complex } [param1] Complex number for addition.
    * */
-  static add(complex: complex,{real=0,imag=0}: complex): void { complex.real += real , complex.imag += imag }
+  static add( complex: complex , { real=0 , imag=0 } :complex) :void { complex.real += real , complex.imag += imag }
 
   /**
    * Subtraction function.
-   * @param {complex} [complex] Given complex number.
-   * @param {complex} [param1] Complex number for subtraction.
+   * @param { complex } [complex] Given complex number.
+   * @param { complex } [param1] Complex number for subtraction.
    * */
-  static sub(complex: complex,{real=0,imag=0}: complex): void { this.add(complex , { real:-real , imag:-imag }) }
+  static sub( complex :complex , { real=0 , imag=0 } :complex ) :void { this.add( complex , { real: -real , imag: -imag } ) }
 
   /**
    * Multiplication function.
-   * @param {complex} [complex] Given complex number.
-   * @param {complex} [param1] Complex number for multiplication.
+   * @param { complex } [complex] Given complex number.
+   * @param { complex } [param1] Complex number for multiplication.
    * */
-  static mult(complex: complex,{real=0,imag=0}: complex): void { complex.real *= real , complex.imag *= imag }
+  static mult( complex :complex , { real=0 , imag=0 } :complex ) :void { complex.real *= real , complex.imag *= imag }
 
   /**
    * Division function.
-   * @param {complex} [complex] Given complex number.
-   * @param {complex} [param1] Complex number for division.
+   * @param { complex } [complex] Given complex number.
+   * @param { complex } [param1] Complex number for division.
    * */
-  static div(complex: complex,{real=0,imag=0}: complex): void { this.mult(complex , { real: 1 / real , imag: 1 / imag }) }
+  static div( complex :complex , { real=0 , imag=0 } :complex) :void { this.mult( complex , { real: 1 / real , imag: 1 / imag } ) }
 
 
 
   
   /**
    * Returns modulus of given object from complex number parameters.
-   * @param {complex} [param0] Given complex number.
-   * @returns Number
+   * @param { complex } [param0] Given complex number.
+   * @returns { number } Number
    * */
-  static modulus({real,imag} :complex) :number { return magnitude(real , imag) }
+  static modulus = ( { real , imag } :complex ) :number => magnitude( real , imag )
   
   /**
    * Returns argument of given object from complex number parameters.
-   * @param {complex} [param0] Given complex number.
-   * @returns Number
+   * @param { complex } [param0] Given complex number.
+   * @returns { number } Number
    * */
-  static argument({real,imag} :complex) :number { return azimuth(imag , real) }
+  static argument( { real , imag } :complex ) :number { return azimuth( imag , real ) }
 
 
 
 
   /**
    * Returns modulus and argument of given complex number.
-   * @param {complex} [param0] Given complex number.
-   * @returns Object.{ modulus : number, argument : number }
+   * @param { complex } [param0] Given complex number.
+   * @returns { { modulus :number , argument :number } } Object.{ modulus : number, argument : number }
    * */
-  static toPolar({real,imag} :complex) :{ argument :number, modulus :number} { return { argument: azimuth(imag , real) , modulus: magnitude(imag , real) } }
+  static toPolar( { real , imag } :complex ) :{ argument :number, modulus :number } { return { argument: azimuth(imag , real) , modulus: magnitude(imag , real) } }
 
   /**
    * Returns complex number from it`s argument and modulus.
-   * @param {{argument: number, modulus: number}} [param0] Argument and modulus.
-   * @returns Complex
+   * @param { { argument :number, modulus :number } } [param0] Argument and modulus.
+   * @returns { Complex } Complex
    * */
-  static fromPolar({argument=0,modulus=0}: { argument: number; modulus: number }) :Complex { return new Complex([Math.cos(argument) * modulus , Math.sin(argument) * modulus]) }
+  static fromPolar = ( { argument=0 , modulus=0 } :{ argument :number , modulus :number } ) :Complex => new Complex( [ Math.cos( argument ) * modulus , Math.sin( argument ) * modulus ] )
 
 
 

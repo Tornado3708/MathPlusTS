@@ -3,7 +3,14 @@ const fs       = require('fs')
 
 function init(){
   
-  exec('echo "OK"')
+  exec('tsc --build' ,
+
+    ( error , attr1 ,attr2 ) => {
+      
+      if(error) throw new Error(error)
+      console.log( attr1 , attr2 )
+    })
+
   console.log(`Initialisation finished`)
 
 }

@@ -10,7 +10,7 @@ import Tensor            from "./math/algebra/linear_algebra/tensor/Tensor.js"
 // import VectorPolar       from "./math/algebra/linear_algebra/vector/VectorPolar.js"
 // import VectorSpherical   from "./math/algebra/linear_algebra/vector/VectorSpherical.js"
 
-import Polygon           from "./math/geometry/curves/Polygon.js"
+// import Polygon           from "./math/geometry/curves/Polygon.js"
 import Roulette          from "./math/geometry/curves/Roulette.js"
 import Spiral            from "./math/geometry/curves/Spiral.js"
 
