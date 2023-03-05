@@ -173,7 +173,6 @@ export function install(){
 
 
 declare global {
-  interface Window extends MathPlus {}
   interface Math {
 
     factorial: (n: number)               => number

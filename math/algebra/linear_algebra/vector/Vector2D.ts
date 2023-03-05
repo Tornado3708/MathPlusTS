@@ -15,8 +15,8 @@ import { const2d } from "../../../constants.js"
 export default class Vector2D implements point2D {
 
   
-  public x :number = 0
-  public y :number = 0
+  public x :number=0
+  public y :number=0
 
 
   /**- [ x: number     ,   y: number ]
@@ -354,10 +354,4 @@ export default class Vector2D implements point2D {
   static up_left    = this.left_up
   static up_right   = this.right_up
 
-}
-
-declare global {
-  interface Math     { Vector2D? : typeof Vector2D }
-  interface Window   { Vector2D? : typeof Vector2D }
-  interface MathPlus { Vector2D  : typeof Vector2D }
 }

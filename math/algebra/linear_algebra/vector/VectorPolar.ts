@@ -168,9 +168,3 @@ export default class VectorPolar implements polar {
   static down_right :number[] =            this.right_down
   
 }
-
-declare global {
-  interface Math     { VectorPolar? : typeof VectorPolar }
-  interface Window   { VectorPolar? : typeof VectorPolar }
-  interface MathPlus { VectorPolar  : typeof VectorPolar }
-}

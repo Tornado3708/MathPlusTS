@@ -1,4 +1,4 @@
-import Cyclogon from "./roulettes/Cyclogon.js"
+import Cyclogon         from "./roulettes/Cyclogon.js"
 import Cycloid          from "./roulettes/Cycloid.js"
 import Epicycloid       from "./roulettes/Epicycloid.js"
 import Epitrochoid      from "./roulettes/Epitrochoid.js"
@@ -23,5 +23,3 @@ export default class Roulette {
   static Trochoid       = Trochoid
 
 }
-
-declare global { interface Math { Roulette: typeof Roulette } }

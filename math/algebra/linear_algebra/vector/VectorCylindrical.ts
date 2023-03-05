@@ -7,7 +7,7 @@ import { const_cylindrical , cyl2Array } from "../../../constants.js"
 
 
 /**CylindricalVector is instance for presentation of three-dimensional vector in cylindrical coordinates.*/
-export default class VectorCylindrical implements cylindrical{
+export default class VectorCylindrical implements cylindrical {
 
 
   public azimuth :number=0
@@ -146,10 +146,4 @@ export default class VectorCylindrical implements cylindrical{
   static back_right    =            this.right_back
   static back_up       =            this.up_back
 
-}
-
-declare global {
-  interface Math     { VectorCylindrical? : typeof VectorCylindrical }
-  interface Window   { VectorCylindrical? : typeof VectorCylindrical }
-  interface MathPlus { VectorCylindrical  : typeof VectorCylindrical }
 }

@@ -1394,9 +1394,3 @@ export default class Vector3D implements point3D {
   static back_up_right      = this.right_up_back
 
 }
-
-declare global {
-  interface Math     { Vector3D? : typeof Vector3D }
-  interface Window   { Vector3D? : typeof Vector3D }
-  interface MathPlus { Vector3D  : typeof Vector3D }
-}
