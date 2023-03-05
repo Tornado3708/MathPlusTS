@@ -1395,4 +1395,8 @@ export default class Vector3D implements point3D {
 
 }
 
-declare global { interface Math { Vector3D : typeof Vector3D } }
+declare global {
+  interface Math     { Vector3D? : typeof Vector3D }
+  interface Window   { Vector3D? : typeof Vector3D }
+  interface MathPlus { Vector3D  : typeof Vector3D }
+}

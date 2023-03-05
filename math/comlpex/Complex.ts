@@ -135,3 +135,6 @@ export default class Complex implements complex {
   static COMPLEX_UNIT :complex = { real: 1 , imag: 1 }
 
 }
+
+declare global {
+  interface Math { Complex: typeof Complex } }

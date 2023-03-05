@@ -65,3 +65,5 @@ export default class Tensor extends Array {
     return depth
   }
 }
+
+declare global { interface Math { Tensor: typeof Tensor } }

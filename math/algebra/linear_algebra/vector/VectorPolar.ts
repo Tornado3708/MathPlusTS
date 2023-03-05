@@ -169,4 +169,8 @@ export default class VectorPolar implements polar {
   
 }
 
-declare global { interface Math { VectorPolar: typeof VectorPolar } }
+declare global {
+  interface Math     { VectorPolar? : typeof VectorPolar }
+  interface Window   { VectorPolar? : typeof VectorPolar }
+  interface MathPlus { VectorPolar  : typeof VectorPolar }
+}

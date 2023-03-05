@@ -356,4 +356,8 @@ export default class Vector2D implements point2D {
 
 }
 
-declare global { interface Math { Vector2D: typeof Vector2D } }
+declare global {
+  interface Math     { Vector2D? : typeof Vector2D }
+  interface Window   { Vector2D? : typeof Vector2D }
+  interface MathPlus { Vector2D  : typeof Vector2D }
+}

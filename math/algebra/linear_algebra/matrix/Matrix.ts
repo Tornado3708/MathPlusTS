@@ -358,3 +358,5 @@ export default class Matrix extends Array implements matrix {
    */
   static equalSize(matrix_a :matrix , matrix_b :matrix) :boolean { return (matrix_a.length === matrix_b.length) && (matrix_a[0].length === matrix_b[0].length) }
 }
+
+declare global { interface Math { Matrix: typeof Matrix } }

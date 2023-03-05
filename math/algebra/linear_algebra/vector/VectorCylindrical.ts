@@ -148,4 +148,8 @@ export default class VectorCylindrical implements cylindrical{
 
 }
 
-declare global { interface Math { VectorCylindrical : typeof VectorCylindrical } }
+declare global {
+  interface Math     { VectorCylindrical? : typeof VectorCylindrical }
+  interface Window   { VectorCylindrical? : typeof VectorCylindrical }
+  interface MathPlus { VectorCylindrical  : typeof VectorCylindrical }
+}

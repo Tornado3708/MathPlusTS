@@ -4,7 +4,7 @@
     "module": "ES6",
     "rootDir": "./",
     "allowJs": false,
-    "outDir": "../mathplus",
+    "outDir": "./mathplus",
     "removeComments": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

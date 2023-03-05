@@ -1,21 +1,4 @@
-import Complex           from "./math/comlpex/Complex.js"
-
-import Equation          from "./math/algebra/elementary_algebra/Equation.js"
-
-import Matrix            from "./math/algebra/linear_algebra/matrix/Matrix.js"
-
-import Tensor            from "./math/algebra/linear_algebra/tensor/Tensor.js"
-
-import Vector2D          from "./math/algebra/linear_algebra/vector/Vector2D.js"
-import Vector3D          from "./math/algebra/linear_algebra/vector/Vector3D.js"
-import VectorCylindrical from "./math/algebra/linear_algebra/vector/VectorCylindrical.js"
-import VectorSpherical   from "./math/algebra/linear_algebra/vector/VectorSpherical.js"
-import VectorPolar       from "./math/algebra/linear_algebra/vector/VectorPolar.js"
-
-
-import Polygon           from "./math/geometry/curves/Polygon.js"
-import Roulette          from "./math/geometry/curves/Roulette.js"
-import Spiral            from "./math/geometry/curves/Spiral.js"
+import MathPlus from "./MathPlus.js"
 
 /**
  * Sinc - "sinus cardinalis". Divides sine by [x], what was used for calculation of this sine. It can be normalized by [norm]. Default return value: 1.
@@ -110,26 +93,47 @@ function factorial(n :number) :number {
   return int 
 }
 
+/**
+ * Returns percentage. 1 as 100%.
+ * @param { number } [value] [value]
+ * @param { number } [max] "100%" 
+ * @returns { number } Percents.
+ */
+function percent( value:number , max:number ) :number { return value * ( 1 / max ) }
+
+
+function object() :void { window.MathPlus = MathPlus }
+
+function math(){
+  Math = {...Math, ...MathPlus }
+}
+
+function all(){
+  object()
+  math()
+}
+
+
 /**Installation function for extending Math object.*/
-export function install(): void{
+export function install(){
 
-  Math.Complex           = Complex
+  // Math.Complex           = Complex
 
-  Math.Equation          = Equation
+  // Math.Equation          = Equation
 
-  Math.Matrix            = Matrix
+  // Math.Matrix            = Matrix
   
-  Math.Tensor            = Tensor
+  // Math.Tensor            = Tensor
 
-  Math.Vector2D          = Vector2D
-  Math.Vector3D          = Vector3D
-  Math.VectorPolar       = VectorPolar
-  Math.VectorSpherical   = VectorSpherical
-  Math.VectorCylindrical = VectorCylindrical
+  // Math.Vector2D          = Vector2D
+  // Math.Vector3D          = Vector3D
+  // Math.VectorPolar       = VectorPolar
+  // Math.VectorSpherical   = VectorSpherical
+  // Math.VectorCylindrical = VectorCylindrical
 
-  Math.Polygon           = Polygon
-  Math.Roulette          = Roulette
-  Math.Spiral            = Spiral
+  // Math.Polygon           = Polygon
+  // Math.Roulette          = Roulette
+  // Math.Spiral            = Spiral
   
   
   Math.factorial  = factorial
@@ -158,5 +162,41 @@ export function install(): void{
 
   Math.RAD2DEG    = 180 * (1 / Math.PI)
   Math.DEG2RAD    = Math.PI * (1 / 180)
+
+  return {
+    object,
+    math,
+    all
+  }
+
+}
+
+
+declare global {
+  interface Window extends MathPlus {}
+  interface Math {
+
+    factorial: (n: number)               => number
+    sinc     : (x: number, norm: number) => number
+    cosc     : (x: number, norm: number) => number
+    cas      : (x: number)               => number
+    sec      : (x: number)               => number
+    cosec    : (x: number)               => number
+    toDegrees: (radians: number)         => number
+    toRadians: (degrees: number)         => number
+
+    PI_QUARTER :number
+    PI_HALF    :number
+    PI_TWO     :number
+    TAU        :number
+    SQRT3      :number
+    SQRT5      :number
+    PHI        :number
+    phi        :number
+    RAD2DEG    :number
+    DEG2RAD    :number
+
+  }
+
 
 }

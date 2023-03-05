@@ -248,4 +248,7 @@ export default class VectorSpherical implements spherical{
   static up = [Math.PI_HALF || Math.PI * 0.5 , Math.PI_HALF || Math.PI * 0.5 , 1];
 }
 
-declare global { interface Math { VectorSpherical: typeof VectorSpherical } }
+declare global {
+  interface Math     { VectorSpherical? : typeof VectorSpherical }
+  interface MathPlus { VectorSpherical  : typeof VectorSpherical }
+}
